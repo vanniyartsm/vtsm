@@ -1,0 +1,139 @@
+<script src='https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js'></script>
+<script src="https://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+
+<% 
+var users = locals.users;
+var DATE_FORMAT = 'YYYY-MM-DD hh:mm:ss A'
+var moment = locals.moment; 
+console.info('btcRequested = ', btcRequested);
+%>
+<div class="utils__content">
+    <!-- START: components/mail-templates -->
+    <section class="card">
+        <div class="card-header">
+            <span class="utils__title">
+                <strong>Bitcoin Initiated Pending Items</strong>
+            </span>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-xl-12">
+                    <!-- Left Tables -->
+                    <div class="tab-pane show active" id="b1">
+                        <div class="cui-ecommerce-dashboard-info">
+                            <div class="cui-ecommerce-dashboard-info-block">
+                                <div class="nav-tabs-horizontal">
+                                    <ul class="nav nav-tabs mb-4" role="tablist">
+                                        <li class="nav-item">
+                                            <a class="nav-link active" href="javascript: void(0);" data-toggle="tab" data-target="#requested" role="tab">Requested</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="javascript: void(0);" data-toggle="tab" data-target="#pending" role="tab">Initiated</a>
+                                        </li>
+                                    </ul>
+                                    <div class="tab-content">
+                                        <div class="tab-pane active" id="requested">
+                                            <div id="requested-btcs" class="dataTables_wrapper dt-bootstrap4">
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                        <table class="table table-hover nowrap dataTable dtr-inline" id="usersTbl"
+                                                            role="grid" aria-describedby="users">
+                                                            <thead class="thead-default">
+                                                                <tr role="row">
+                                                                    <th>S. No.</th>
+                                                                    <th>Requested By</th>
+                                                                    <th>Value</th>
+                                                                    <th>Initiated Date</th>
+                                                                    <th>Address</th>
+                                                                    <th>Txn Id</th>
+                                                                    <th>Type</th>
+                                                                    <th>Action</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <% 
+                                                                    if (btcRequested) {
+                                                                    for(var i=0; i < btcRequested.length; i++) {
+                                                                        var btcReq = btcRequested[i];
+                                                                        console.info('btcReq = ', btcReq);
+                                                                    %>
+
+                                                                <tr role="row" class="odd">
+                                                                    <td tabindex="0" class="sorting_1"><%= (i + 1) %></td>
+                                                                    <td><a href="javascript: void(0);"
+                                                                            data-url="/web/admin/user/info/<%= btcReq.user._id %>"
+                                                                            data-title="User Info" data-method="GET"
+                                                                            class="link-underlined side-panel-trigger slide-btn text-success"><%= btcReq.user.userName %></a>
+                                                                    </td>
+                                                                    <td><%= btcReq.value.value %></td>
+                                                                    <td><%= moment(btcReq.initiatedDate).format(DATE_FORMAT) %></td>
+                                                                    <td><%= btcReq.address %></td>
+                                                                    <td><%= btcReq.transactionHash %></td>
+                                                                    <td><%= btcReq.addressType %></td>
+                                                                    <td>
+                                                                        <button class="btn btn-primary side-panel-trigger slide-btn "
+                                                                                data-url="/web/admin/deposit/approval/<%= btcReq._id %>"
+                                                                                data-title="Bitcoin Approval" data-method="GET">Approval</button>
+                                                                    </td>
+                                                                </tr>
+                                                                <% } 
+                                                                    }%>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane" id="pending">
+                                            <div id="pending-btcs" class="dataTables_wrapper dt-bootstrap4">
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                        <table class="table table-hover nowrap dataTable dtr-inline" id="usersTbl"
+                                                            role="grid" aria-describedby="users">
+                                                            <thead class="thead-default">
+                                                                <tr role="row">
+                                                                    <th>S. No.</th>
+                                                                    <th>Requested By</th>
+                                                                    <th>Value</th>
+                                                                    <th>Initiated Date</th>
+                                                                    <th>Address</th>
+                                                                    <th>Type</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <% 
+                                                                    if (btcPending) {
+                                                                    for(var i=0; i < btcPending.length; i++) {
+                                                                        var btcPen = btcPending[i];
+                                                                    %>
+
+                                                                <tr role="row" class="odd">
+                                                                    <td tabindex="0" class="sorting_1"><%= (i + 1) %></td>
+                                                                    <td><a href="javascript: void(0);"
+                                                                        data-url="/web/admin/user/info/<%= btcPen.user._id %>"
+                                                                        data-title="User Info" data-method="GET"
+                                                                        class="link-underlined side-panel-trigger slide-btn text-success"><%= btcPen.user.userName %></a>
+                                                                    </td>
+                                                                    <td><%= btcPen.value.value %></td>
+                                                                    <td><%= moment(btcPen.initiatedDate).format(DATE_FORMAT) %></td>
+                                                                    <td><%= btcPen.address %></td>
+                                                                    <td><%= btcPen.addressType %></td>
+                                                                </tr>
+                                                                <% } 
+                                                                    }%>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</div>

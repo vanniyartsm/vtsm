@@ -1,0 +1,54 @@
+<header class="site--header cd-header my-sticky-element noselect">
+	<div class="container">
+		<a href="/"><div class="site--header_logo"><span class="hide">QUBEROS</span></div></a>
+
+		<nav class="main-nav">
+			<ul class="caps">
+                <li><a href="/" class="company" alt="quberos.com">Home</a></li>
+                <li><a href="/web/site/crypto-trading" class="features" alt="Crypto Trading">Crypto Trading</a></li>
+                <li><a href="/web/site/quberos-token" class="quberos" alt="Quberos Token">Quberos Token</a></li>
+                <li><a href="/web/site/business-opp" class="business" alt="Business Oppportunity">Business Oppportunity</a></li>
+				<li><a href="/web/site/about-us" class="about" alt="About Us">About Us</a></li>
+				
+				<%
+					var user = req.session.user;
+					if (user) {
+				%>
+				<li><a class="login" alt="Login"
+					href="/web/auth/index"
+					title="Login">Log in</a></li>
+				<% } else { %>
+					<li><a class="login" alt="Login"
+						href="/web/auth/login"
+						title="Login">Log In</a></li>
+				<% } %>
+			</ul>
+		</nav>
+
+		<div class="mobile-menu">
+			<nav class="mobile-nav">
+				<ul class="caps">
+                    <li><a href="/" class="company" alt="quberos.com">Home</a></li>
+                    <li><a href="/web/site/crypto-trading" class="features" alt="Crypto Trading">Crypto Trading</a></li>
+                    <li><a href="/web/site/quberos-token" class="quberos" alt="Quberos Token">Quberos Token</a></li>
+                    <li><a href="/web/site/business-opp" class="business" alt="Business Oppportunity">Business Oppportunity</a></li>
+                    <li><a href="/web/site/about-us" class="about" alt="About Us">About Us</a></li>
+                    <%
+					if (user) {
+				%>
+				<li><a class="login" alt="Login"
+					href="/web/auth/index"
+					title="Login">Log in</a></li>
+				<% } else { %>
+					<li><a class="login" alt="Login"
+						href="/web/auth/login"
+						title="Login">Log In</a></li>
+				<% } %>
+				</ul>
+			</nav>
+		</div>
+
+		<a class="cd-primary-nav-trigger" href="#0"><span class="cd-menu-icon"></span></a>
+
+	</div>
+</header>

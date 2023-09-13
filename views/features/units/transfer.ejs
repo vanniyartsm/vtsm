@@ -1,0 +1,195 @@
+<% var DATE_FORMAT = 'YYYY-MM-DD hh:mm:ss A' %>
+<div class="utils__content">
+    <!-- START: components/mail-templates -->
+    <section class="card">
+        <div class="card-header">
+            <span class="utils__title">
+                <strong>Transactions</strong>
+            </span>
+        </div>
+        <div class="card-header">
+            <div class="pull-right mt-2">
+                <span class="mr-3">
+                    &nbsp;
+                </span>
+            </div>
+            <span class="utils__title">
+                Available Points : $<a href="javascript: void(0);"
+                    class="utils__link--blue utils__link--underlined text-success"
+                    id="available"><%= locals.balance.available %></a>
+            </span>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-xl-6 col-lg-12">
+                    <%- include('../common/message') %>
+                    <form id="purchase-elc-form" class="form form-horizontal form-bordered bb-form"
+                        data-url="${context}/miner/buy/coin" data-title="Deposit Bitcoin" data-method="POST"
+                        data-form="true" name="buy-elc-form" data-message="true">
+                        <div class="form-body">
+                            <input type="hidden" id="btcFinalBalance" name="btcFinalBalance" />
+                            <input type="hidden" id="hash" name="hash" />
+                            <div class="row">
+                                <div class="col-md-10 col-xs-12">
+                                    <div class="userCard px-3 py-3">
+                                        <div class="utils__title utils__title--flat mb-3">
+                                            <strong>Transfer Points</strong>
+                                        </div>
+                                        <input type="hidden" id="userId" value="<%= req.session.user._id %>" />
+                                        <input type="hidden" class="form-control required" id="availablePoints"
+                                            name="availablePoints" value="<%= locals.balance.available %>">
+                                        <div class="form-group row">
+                                            <label class="col-md-3 col-form-label" for="l0">Transfer Points</label>
+                                            <div class="col-md-9">
+                                                <input type="number" class="form-control required" id="transferPoints"
+                                                    placeholder="Number of Points" name="transferPoints"
+                                                    aria-required="true" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-md-3 col-form-label" for="l0">User</label>
+
+                                            <div class="col-md-9">
+                                                <div class="input-group">
+                                                    <input type="text" class="form-control required" id="userName"
+                                                        placeholder="User Name" name="userName" aria-required="true"
+                                                        required maxlength="15">
+                                                    <div class="input-group-append">
+                                                        <a href="javascript: void(0);" class="btn btn-success btn-sm"
+                                                            id="transaction-username-btn">
+                                                            Check UserName
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-12">
+                                                <div class="" role="alert" id="username-message">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <div class="form-group row">
+                                <div class="col-md-9 offset-md-3">
+                                    <button type="button" id="transfer-points-btn" style="margin-left: 12px;"
+                                        class="btn btn-primary">Transfer</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="col-xl-12">
+                <!-- Left Tables -->
+                <div class="nav-tabs-horizontal mb-5">
+                    <ul class="nav nav-tabs mb-3" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link font-size-16 text-black show active" href="javascript: void(0);"
+                                data-toggle="tab" data-target="#b1" role="tab"
+                                aria-selected="false"><strong>Transactions History</strong></a>
+                        </li>
+                    </ul>
+                    <div class="tab-content padding-top-20">
+                        <div class="tab-pane show active" id="b1">
+                            <div class="cui-ecommerce-dashboard-info">
+                                <div class="cui-ecommerce-dashboard-info-block">
+                                    <div id="purchaseUnits" class="dataTables_wrapper dt-bootstrap4">
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <table class="table table-hover nowrap dataTable dtr-inline"
+                                                    id="purchaseUnitsTbl" role="grid" aria-describedby="example1_info">
+                                                    <thead class="thead-default">
+                                                        <tr role="row">
+                                                            <th>S. No.</th>
+                                                            <th>Date</th>
+                                                            <th>Account</th>
+                                                            <th>From</th>
+                                                            <th>To</th>
+                                                            <th>Credit</th>
+                                                            <th>Debit</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <% 
+                                                               if (locals.result) {
+                                                               for(var i=0; i < locals.result.length; i++) {
+                                                                 var transfer = locals.result[i];
+                                                             %>
+
+                                                        <tr role="row" class="odd">
+                                                            <td tabindex="0" class="sorting_1"><%= (i + 1) %></td>
+                                                            <td><a href="javascript: void(0);"
+                                                                    class="link-underlined"><%= moment(transfer.created).format(DATE_FORMAT) %></a>
+                                                            </td>
+                                                            <td><%= transfer.account.accountName %></td>
+                                                            <td><%= (transfer.transferUser) ? transfer.transferUser.fromUser : '' %>
+                                                            </td>
+                                                            <td><%= (transfer.transferUser) ? transfer.transferUser.toUser : '' %>
+                                                            </td>
+                                                            <td><%= '$' + transfer.credit.value %></td>
+                                                            <td><%= '$' + transfer.debit.value %></td>
+                                                        </tr>
+                                                        <% } 
+                                                             }%>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+    </section>
+
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $(document.body).on('click', '#transaction-username-btn', function () {
+            console.info('clicked ',);
+            var userName = $('#userName').val();
+
+            if (userName == "") {
+                swal("Error!", "Please provide userName", "error");
+            } else {
+                $.ajax({
+                    url: "/rest/api/v1/user/" + userName,
+                    data: '',
+                    processData: false,
+                    type: 'GET',
+                    error: function (err) {
+                        //console.info('err = ', err);
+                    },
+                    success: function (result) {
+                        console.info('result : ', result);
+                        if (result.status.code == 200) {
+                            console.info('result code : ', result.status.code);
+                            var message = '<strong>User Name : ' + result.data.firstName + " " + result.data.lastName + '</strong>'
+                            $('#username-message').html(message);
+                            $('#username-message').removeClass('alert alert-danger');
+                            $('#username-message').addClass('alert alert-info');
+                        } else {
+                            console.info('result status : ', result.status);
+                            var message = '<strong>Error : ' + result.status.detail + '</strong>'
+                            $('#username-message').html(message);
+                            $('#username-message').removeClass('alert alert-info');
+                            $('#username-message').addClass('alert alert-danger');
+                        }
+
+                    }
+                });
+            }
+        });
+    });
+</script>

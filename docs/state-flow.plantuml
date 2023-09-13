@@ -1,0 +1,69 @@
+@startuml
+
+title Quberos State Model
+
+[*] --> PurchaseFlow
+
+state PurchaseFlow {
+    TradeWallet : User purchases using BTC
+    TradeWallet : 1 trade point is 1 USD
+    
+    TradeWallet -> TradeWallet : Transfer to other user
+    
+    TradeWallet --down> PurchaseLot
+    PurchaseLot : User purchases Lot using Trade Points
+    PurchaseLot --> QuberosWallet
+    
+    QuberosWallet : User gets 360 Quberos token
+    QuberosWallet : in Quberos wallet for a single lot purchase
+    
+    QuberosWallet --> CancelLot
+    CancelLot : User cancels lot at anytime
+}
+
+CancelLot --> Withdraw : Auto withdraw
+
+[*] --> Payout : Auto Payout
+
+state "Auto Schedule Payout" as Payout {
+    [*] --> BinaryPayout
+    BinaryPayout : Max 25 Pairs and Min of 1 Pair
+    BinaryPayout : Powerside carry forward
+
+    [*] --> SuperBinaryPayout
+    SuperBinaryPayout : Max 256 Pairs and Min of 2 Pairs
+    SuperBinaryPayout : Powerside carry forward
+
+    [*] --> TradingPayoutBonus
+    TradingPayoutBonus : Silver Bonus
+    TradingPayoutBonus : Gold Bonus
+    TradingPayoutBonus : Pearl Bonus
+    TradingPayoutBonus : Diamond Bonus
+    TradingPayoutBonus : Platinum Bonus
+
+    QuberosWallet --> TradingPayoutBonus : 6QCs debits every week payout per lot
+
+    BinaryPayout --> CashWallet : All bonus credit
+    SuperBinaryPayout --> CashWallet : All bonus credit
+    TradingPayoutBonus --> CashWallet : All bonus credit
+    note left
+    Payout ends
+    end note
+    
+    TradingPayoutBonus --> LotWallet : 6QCs Lot Bonus credits every week payout per lot
+
+    LotWallet --> TradeWallet : Internal Transfer 
+    CashWallet --> TradeWallet : Internal Transfer
+}
+
+LotWallet --> Withdraw : User withdraw
+CashWallet --> Withdraw : User withdraw
+
+    Withdraw --> Approval : Admin Approval
+    
+    Approval --> [*]
+    note left
+    Final
+    end note
+
+@enduml

@@ -1,0 +1,166 @@
+<% var DATE_FORMAT = 'YYYY-MM-DD hh:mm:ss A' %>
+<div class="utils__content">
+        <!-- START: components/mail-templates -->
+        <section class="card">
+            <div class="card-header">
+                <span class="utils__title">
+                    <strong>Supports</strong>
+                </span>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-xl-6 col-lg-12">
+                            <%- include('../../common/message') %>
+                            <form id="purchase-elc-form" class="form form-horizontal form-bordered bb-form"
+							data-url="${context}/miner/buy/coin" data-title="Deposit Bitcoin"
+							data-method="POST" data-form="true" name="buy-elc-form" data-message="true">
+						<div class="form-body">
+							<input type="hidden" id="btcFinalBalance" name="btcFinalBalance"/>
+							<input type="hidden" id="hash" name="hash"/>
+							<div class="row">
+								<div class="col-md-10 col-xs-12">
+                                    <input type="hidden" id="userId" value="<%= req.session.user._id %>" />
+									<div class="form-group row">
+			                            <label class="col-md-3 col-form-label" for="l0">Subject</label>
+			                            <div class="col-md-9">
+			                                <input type="text" class="form-control required" id="subject" placeholder="Subject" name="subject" aria-required="true" maxlength="255" required>
+			                            </div>
+                                    </div>
+                                    <div class="form-group row">
+			                            <label class="col-md-3 col-form-label" for="l0">Reason</label>
+			                            <div class="col-md-9">
+                                            <select class="form-control" id="reason" name="reason">
+                                                <option value="Withdrawal" data-id="0001">Withdrawal</option>
+                                                <option value="Deposit" data-id="0002">Deposit</option>
+                                                <option value="Trading" data-id="0003">Trading</option>
+                                                <option value="Crypto Issue" data-id="0004">Crypto Issue</option>
+                                                <option value="Lots Issue" data-id="0005">Lots Issue</option>
+                                                <option value="Suggestions &amp;amp; Feedback" data-id="0006">Suggestions &amp; Feedback</option>
+                                                <option value="Questions &amp;amp; Problems" data-id="0007">Questions &amp; Problems</option>
+                                                <option value="Report an Issue" data-id="0008">Report an Issue</option>
+                                                <option value="Payout Issue" data-id="0009">Payout Issue</option>
+                                                <option value="Others" data-id="0010">Others</option>
+                                            </select>
+			                            </div>
+                                    </div>
+                                    <div class="form-group row">
+			                            <label class="col-md-3 col-form-label" for="l0">Department</label>
+			                            <div class="col-md-9">
+                                            <select class="form-control" id="department" name="department">
+                                                <option value="Compliance, Verification (KYC/AML)">Compliance, Verification (KYC/AML)</option>
+                                                <option value="Finance (Deposit, Withdrawal)" selected>Finance (Deposit, Withdrawal)</option>
+                                                <option value="Payout, Commission">Payout, Commission</option>
+                                                <option value="General Customer Support (Users Accounts, Login, Password)">General Customer Support (Users Accounts, Login, Password)</option>
+                                                <option value="Partnership, Business Proposals">Partnership, Business Proposals</option>
+                                                <option value="Technical IT">Technical IT</option>
+                                                <option value="General Feedback">General Feedback</option>
+                                            </select>
+			                            </div>
+			                        </div>
+			                        <div class="form-group row">
+			                            <label class="col-md-3 col-form-label" for="l0">Description</label>
+			                            <div class="col-md-9">
+			                                <textarea class="form-control" rows="5" id="description" name="description" required maxlength="500"></textarea>
+			                            </div>
+			                        </div>
+								</div>
+							</div>
+						</div>
+						
+						<div class="form-actions">
+                            <div class="form-group row">
+                                <div class="col-md-9 offset-md-3">
+                                    <button type="button" id="support-btn" style="margin-left: 12px;"
+								class="btn btn-primary">Submit Request</button>
+                                </div>
+                            </div>
+                        </div>
+					</form>
+                    </div>
+                </div>
+
+                <div class="col-xl-12">
+                        <!-- Left Tables -->
+                        <div class="nav-tabs-horizontal mb-5">
+                           <ul class="nav nav-tabs mb-3" role="tablist">
+                               <li class="nav-item">
+                                   <a class="nav-link font-size-16 text-black show active" href="javascript: void(0);"
+                                       data-toggle="tab" data-target="#b1" role="tab"
+                                       aria-selected="false"><strong>History</strong></a>
+                               </li>
+                           </ul>
+                           <div class="tab-content padding-top-20">
+                               <div class="tab-pane show active" id="b1">
+                                   <div class="cui-ecommerce-dashboard-info">
+                                       <div class="cui-ecommerce-dashboard-info-block">
+                                           <div id="supports" class="dataTables_wrapper dt-bootstrap4">
+                                               <div class="row">
+                                                   <div class="col-sm-12">
+                                                       <table class="table table-hover nowrap dataTable dtr-inline"
+                                                           id="supportsTbl" role="grid"
+                                                           aria-describedby="example1_info">
+                                                           <thead class="thead-default">
+                                                               <tr role="row">
+                                                                   <th>S. No.</th>
+                                                                   <th>#Ticket</th>
+                                                                   <th>Date</th>
+                                                                   <th>Subject</th>
+                                                                   <th>Reason</th>
+                                                                   <th>Status</th>
+                                                               </tr>
+                                                           </thead>
+                                                           <tbody>
+                                                               <% 
+                                                               if (supports) {
+                                                               
+                                                               for(var i=0; i < supports.length; i++) {
+                                                                 var support = supports[i];
+                                                             %>
+     
+                                                               <tr role="row" class="odd">
+                                                                   <td tabindex="0" class="sorting_1"><%= (i + 1) %></td>
+                                                                   <td><a href="javascript: void(0);"
+                                                                    data-url="/web/support/details/<%= support._id %>/<%= support.ticketNo %>"
+                                                                    data-title="Support DETAILS (<%= support.ticketNo %>)" data-method="GET"
+                                                                    class="link-underlined side-panel-trigger slide-btn text-success"><%= support.ticketNo %></a>
+                                                                  </td>
+                                                                   <td><%= moment(support.created).format(DATE_FORMAT) %></td>
+                                                                   <td><%= support.subject %></td>
+                                                                   <td><%= support.reason %></td>
+                                                                   <td id="support-request-status">
+                                                                    <% if (support.closed) { %>
+                                                                        <a href="javascript:void(0);" class="btn btn-danger btn-sm">
+                                                                          CLOSED
+                                                                        </a>
+                                                                    <%  } else if (support.responded) { %>
+                                                                        <a href="javascript:void(0);" class="btn btn-success btn-sm">
+                                                                          RESPONDED
+                                                                        </a>
+                                                                    <% } else if (support.reinitiated) { %>
+                                                                        <a href="javascript:void(0);" class="btn btn-warning btn-sm">
+                                                                            RE-INITIATED
+                                                                        </a>
+                                                                    <% } else if (support.initiated) { %>
+                                                                        <a href="javascript:void(0);" class="btn btn-info btn-sm">
+                                                                            INITIATED
+                                                                        </a>
+                                                                    <% } %>
+                                                                        </td>
+                                                               </tr>
+                                                               <% } 
+                                                             }%>
+                                                           </tbody>
+                                                       </table>
+                                                   </div>
+                                               </div>
+                                           </div>
+                                       </div>
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
+                
+            </div>
+        </section>
+       
+        </div>

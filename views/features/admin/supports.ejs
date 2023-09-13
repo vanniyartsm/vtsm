@@ -1,0 +1,180 @@
+<% var DATE_FORMAT = 'YYYY-MM-DD hh:mm:ss A' %>
+<div class="utils__content">
+    <!-- START: components/mail-templates -->
+    <section class="card">
+        <div class="card-header">
+            <span class="utils__title">
+                <strong>Supports</strong>
+            </span>
+        </div>
+        <div class="card-body">
+            <div class="col-xl-12">
+                <!-- Left Tables -->
+                <div class="nav-tabs-horizontal mb-5">
+                    <ul class="nav nav-tabs mb-3" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link font-size-16 text-black show active" href="javascript: void(0);"
+                                data-toggle="tab" data-target="#not-closed-support" role="tab"
+                                aria-selected="false"><strong>Not Closed</strong></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link font-size-16 text-black show" href="javascript: void(0);"
+                                data-toggle="tab" data-target="#closed-support" role="tab"
+                                aria-selected="false"><strong>Closed</strong></a>
+                        </li>
+                    </ul>
+                    <div class="tab-content padding-top-20">
+                        <div class="tab-pane show active" id="not-closed-support">
+                            <div class="cui-ecommerce-dashboard-info">
+                                <div class="cui-ecommerce-dashboard-info-block">
+                                    <div id="supports" class="dataTables_wrapper dt-bootstrap4">
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <table class="table table-hover nowrap dataTable dtr-inline"
+                                                    id="supportsTbl" role="grid" aria-describedby="example1_info">
+                                                    <thead class="thead-default">
+                                                        <tr role="row">
+                                                            <th>S. No.</th>
+                                                            <th>#Ticket</th>
+                                                            <th>User</th>
+                                                            <th>Date</th>
+                                                            <th>Subject</th>
+                                                            <th>Reason</th>
+                                                            <th>Status</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <% 
+                                                               if (supports) {
+                                                               
+                                                               for(var i=0; i < supports.length; i++) {
+                                                                 var support = supports[i];
+                                                             %>
+
+                                                        <tr role="row" class="odd">
+                                                            <td tabindex="0" class="sorting_1"><%= (i + 1) %></td>
+                                                            <td><a href="javascript: void(0);"
+                                                                    data-url="/web/support/details/<%= support._id %>/<%= support.ticketNo %>"
+                                                                    data-title="Support DETAILS (<%= support.ticketNo %>)"
+                                                                    data-method="GET"
+                                                                    class="link-underlined side-panel-trigger slide-btn text-success"><%= support.ticketNo %></a>
+                                                            </td>
+                                                            <td><%= support.user.userName %></td>
+                                                            <td><%= moment(support.created).format(DATE_FORMAT) %></td>
+                                                            <td><%= support.subject %></td>
+                                                            <td><%= support.reason %></td>
+                                                            <td id="support-request-status">
+                                                                <% if (support.closed) { %>
+                                                                <a href="javascript:void(0);"
+                                                                    class="btn btn-primary btn-sm">
+                                                                    CLOSED
+                                                                </a>
+                                                                <%  } else if (support.responded) { %>
+                                                                <a href="javascript:void(0);"
+                                                                    class="btn btn-success btn-sm">
+                                                                    RESPONDED
+                                                                </a>
+                                                                <% } else if (support.initiated) { %>
+                                                                <a href="javascript:void(0);"
+                                                                    class="btn btn-info btn-sm">
+                                                                    INITIATED
+                                                                </a>
+                                                                <% } else if (support.reinitiated) { %>
+                                                                <a href="javascript:void(0);"
+                                                                    class="btn btn-warning btn-sm">
+                                                                    RE-INITIATED
+                                                                </a>
+                                                                <% } %>
+                                                            </td>
+                                                        </tr>
+                                                        <% } 
+                                                             }%>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tab-pane show" id="closed-support">
+                            <div class="cui-ecommerce-dashboard-info">
+                                <div class="cui-ecommerce-dashboard-info-block">
+                                    <div id="supports" class="dataTables_wrapper dt-bootstrap4">
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <table class="table table-hover nowrap dataTable dtr-inline"
+                                                    id="closedSupportsTbl" role="grid" aria-describedby="example1_info">
+                                                    <thead class="thead-default">
+                                                        <tr role="row">
+                                                            <th>S. No.</th>
+                                                            <th>#Ticket</th>
+                                                            <th>User</th>
+                                                            <th>Date</th>
+                                                            <th>Subject</th>
+                                                            <th>Reason</th>
+                                                            <th>Status</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <% 
+                                                               if (closedSupports) {
+                                                               
+                                                               for(var i=0; i < closedSupports.length; i++) {
+                                                                 var support = closedSupports[i];
+                                                             %>
+
+                                                        <tr role="row" class="odd">
+                                                            <td tabindex="0" class="sorting_1"><%= (i + 1) %></td>
+                                                            <td><a href="javascript: void(0);"
+                                                                    data-url="/web/support/details/<%= support._id %>/<%= support.ticketNo %>"
+                                                                    data-title="Support DETAILS (<%= support.ticketNo %>)"
+                                                                    data-method="GET"
+                                                                    class="link-underlined side-panel-trigger slide-btn text-success"><%= support.ticketNo %></a>
+                                                            </td>
+                                                            <td><%= support.user.userName %></td>
+                                                            <td><%= moment(support.created).format(DATE_FORMAT) %></td>
+                                                            <td><%= support.subject %></td>
+                                                            <td><%= support.reason %></td>
+                                                            <td id="support-request-status">
+                                                                <% if (support.closed) { %>
+                                                                <a href="javascript:void(0);"
+                                                                    class="btn btn-danger btn-sm">
+                                                                    CLOSED
+                                                                </a>
+                                                                <%  } else if (support.responded) { %>
+                                                                <a href="javascript:void(0);"
+                                                                    class="btn btn-success btn-sm">
+                                                                    RESPONDED
+                                                                </a>
+                                                                <% } else if (support.initiated) { %>
+                                                                <a href="javascript:void(0);"
+                                                                    class="btn btn-info btn-sm">
+                                                                    INITIATED
+                                                                </a>
+                                                                <% } else if (support.reinitiated) { %>
+                                                                <a href="javascript:void(0);"
+                                                                    class="btn btn-warning btn-sm">
+                                                                    RE-INITIATED
+                                                                </a>
+                                                                <% } %>
+                                                            </td>
+                                                        </tr>
+                                                        <% } 
+                                                             }%>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+    </section>
+
+</div>

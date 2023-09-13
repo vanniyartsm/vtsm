@@ -1,0 +1,111 @@
+<script src='https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js'></script>
+<script src="https://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+
+<% 
+var users = users;
+var A_USER = "596c8bf65a12076ff0cc74b1";
+var DATE_FORMAT = 'YYYY-MM-DD hh:mm:ss A'
+var moment = moment; %>
+<div class="utils__content">
+    <!-- START: components/mail-templates -->
+    <section class="card">
+        <div class="card-header">
+            <span class="utils__title">
+                <strong>Info Users</strong>
+            </span>
+        </div>
+        <div class="card-header">
+            <div class="pull-right mt-2">
+                <span class="mr-3">
+            &nbsp;							
+                </span>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-xl-12">
+                   <!-- Left Tables -->
+                          <div class="tab-pane show active" id="b1">
+                              <div class="cui-ecommerce-dashboard-info">
+                                  <div class="cui-ecommerce-dashboard-info-block">
+                                      <div id="users" class="dataTables_wrapper dt-bootstrap4">
+                                          <div class="row">
+                                              <div class="col-sm-12">
+                                                  <table class="table table-hover nowrap dataTable dtr-inline"
+                                                      id="usersTbl" role="grid"
+                                                      aria-describedby="users">
+                                                      <thead class="thead-default">
+                                                          <tr role="row">
+                                                              <th>S. No.</th>
+                                                              <th>User Name</th>
+                                                              <th>Full Name</th>
+                                                              <th>Email Address</th>
+                                                              <th>Phone</th>
+                                                              <th>Status</th>
+                                                              <th>Sponsor</th>
+                                                              <th>Action</th>
+                                                              <th>Login</th>
+                                                          </tr>
+                                                      </thead>
+                                                      <tbody>
+                                                          <% 
+                                                          if (users) {
+                                                          for(var i=0; i < users.length; i++) {
+                                                            var user = users[i];
+                                                        %>
+
+                                                          <tr role="row" class="odd">
+                                                              <td tabindex="0" class="sorting_1"><%= (i + 1) %></td>
+                                                              <td><a href="javascript: void(0);"
+                                                                data-url="/web/admin/user/info/<%= user._id %>"
+                                                                data-title="User Info" data-method="GET"
+                                                                class="link-underlined side-panel-trigger slide-btn text-success"><%= user.userName %></a>
+                                                              </td>
+                                                              <td><%= user.firstName %> <%= user.lastName %></td>
+                                                              <td><%= user.emailAddress %></td>
+                                                              <td><%= user.phoneNo %></td>
+                                                              <td><%= user.active %></td>
+                                                              <td>
+                                                                <% if (user.sponsorId != -1) { %>
+                                                                    <a href="#" class="btn btn-sm side-panel-trigger slide-btn btn-warning mr-1" data-url="/web/admin/sponsor/<%= user.sponsorId %>/<%= user.userName %>" data-title="Sponsor Tree View" data-method="GET">Sponsor</a></td>
+                                                                <% } else { %>
+                                                                    -
+                                                                <% } %>
+                                                              <td id="request-initiated">
+                                                                <% if (user.sponsorId != -1) { %>
+                                                                    <a href="javascript: void(0);"
+                                                                    data-url="/web/admin/profile/info/<%= user._id %>"
+                                                                    data-title="Profile Info" data-method="GET"
+                                                                    class="btn btn-sm side-panel-trigger slide-btn btn-primary">EDIT</a>
+                                                                <% } else { %>
+                                                                    -
+                                                                <% } %>
+                                                              </td>
+                                                              
+                                                              <td>
+                                                                <% if (user && A_USER != user._id) { %>
+                                                                <a href="/web/admin/loginas/<%= user._id %>"
+                                                                    class="btn btn-sm btn-success">Login</a>
+                                                                    <% } %>
+                                                              </td>
+                                                              
+                                                          </tr>
+                                                          <% } 
+                                                        }%>
+                                                      </tbody>
+                                                  </table>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                  </div>
+
+                </div>
+            </div>
+            
+            
+        </div>
+    </section>
+   
+    </div>

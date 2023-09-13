@@ -1,0 +1,86 @@
+<% 
+    var user = req.session.user;
+    var A_USER = "596c8bf65a12076ff0cc74b1";
+    var userId, sponsorId;
+
+    if (user) {
+      userId = user._id;
+      sponsorId = user.referralCode;
+    }
+%>
+
+<div class="top-bar">
+  <!-- left aligned items -->
+  <div class="top-bar__left">
+    <div class="top-bar__logo">
+      <a href="/">
+        <img src="/inner/assets/images/logo.png" alt="Quberos Logo" />
+      </a>
+    </div>
+
+  </div>
+  <!-- right aligned items -->
+  <div class="top-bar__right">
+    <div class="top-bar__item">
+      <div class="dropdown top-bar__avatar-dropdown">
+        <input type="hidden" id="userId" name="userId" value="<%= userId %>"/>
+        <input type="hidden" id="sponsorId" name="sponsorId" value="<%= sponsorId %>"/>
+        <a href="javascript: void(0);" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+            <span class="top-bar__avatar">
+                <img src="<%= locals.context %>/inner/assets/images/user.jpg" alt="User" />
+            </span>
+        </a>
+        <div class="dropdown-menu dropdown-menu-right" role="menu">
+          <a class="dropdown-item" href="javascript:void(0)"><i class="dropdown-icon icmn-user"></i> Hi, <%= (user) ? user.userName : '' %></a>
+
+		  <!--<c:if test="${registration.registrationPK.loginID eq 2}">
+		  <div class="dropdown-divider"></div>
+          	<div class="dropdown-header">Admin Pages</div>
+          	<a class="dropdown-item" href="<%= locals.context %>/support/ticket/status"><i class="dropdown-icon icmn-circle-right"></i> Support</a>
+          	<a class="dropdown-item" href="<%= locals.context %>/admin/users"><i class="dropdown-icon icmn-circle-right"></i> Users Info</a>
+          	<a class="dropdown-item" href="<%= locals.context %>/admin/totalpv/view"><i class="dropdown-icon icmn-circle-right"></i> Total PV</a>
+          	<a class="dropdown-item" href="<%= locals.context %>/admin/withdraw/request"><i class="dropdown-icon icmn-circle-right"></i> Withdrawals</a>
+          	<a class="dropdown-item" href="<%= locals.context %>/admin/initiated/btc"><i class="dropdown-icon icmn-circle-right"></i> BTC Deposit Initiated</a>
+			</c:if>
+          <c:if test="${not empty loggedInAs && registration.registrationPK.loginID ne 2}">
+            <div class="dropdown-divider"></div>
+          	<div class="dropdown-header">Admin</div>
+            <a class="dropdown-item" href="<%= locals.context %>/user/login/2"><i class="dropdown-icon icmn-circle-right"></i> Switch to Admin
+            </a>
+          </c:if>-->
+          <div class="dropdown-divider"></div>
+          <% if (user && A_USER == user._id) { %>
+            <div class="dropdown-header">Admin</div>
+              <a class="dropdown-item" href="/web/admin/users"><i class="dropdown-icon icmn-circle-right"></i> Users</a>
+              <a class="dropdown-item" href="/web/admin/infousers"><i class="dropdown-icon icmn-circle-right"></i> Info Users</a>
+              <a class="dropdown-item" href="/web/admin/btc/initiated"><i class="dropdown-icon icmn-circle-right"></i> Bitcoin Initiated</a>
+              <a class="dropdown-item" href="/web/admin/support/tickets"><i class="dropdown-icon icmn-circle-right"></i> Support</a>
+              <a class="dropdown-item" href="/web/admin/withdraw/requests"><i class="dropdown-icon icmn-circle-right"></i> Withdraw Requests</a>
+              <a class="dropdown-item" href="/web/admin/withdraw/history"><i class="dropdown-icon icmn-circle-right"></i> Withdraw History</a>
+              <a class="dropdown-item" href="/web/admin/payouts/binary/cutoffs"><i class="dropdown-icon icmn-circle-right"></i> Binary Cutoffs</a>
+              <a class="dropdown-item" href="/web/admin/payouts/trading/cutoffs"><i class="dropdown-icon icmn-circle-right"></i> Trading Cutoffs</a>
+              <!-- <a class="dropdown-item" href="/web/admin/accounts"><i class="dropdown-icon icmn-circle-right"></i> Accounts</a> -->
+
+            <div class="dropdown-divider"></div>
+          <% } %>
+          <% 
+
+                if (req.session.loginas) { %>
+                  <a class="dropdown-item" href="/web/admin/returnback/<%= A_USER %>"><i class="dropdown-icon icmn-circle-right"></i> Return Back</a>
+              <% } %>
+          <a class="dropdown-item" href="/web/auth/logout"><i class="dropdown-icon icmn-exit"></i> Logout</a>
+        </div>
+      </div>
+    </div>
+    <div class="top-bar__item">
+      <div class="top-bar__menu-button">
+        <a href="/web/auth/logout"><i class="fa fa-sign-out"></i></a>
+      </div>
+    <!-- <div class="top-bar__item">
+      <div class="top-bar__menu-button menu-right__action--menu-toggle">
+        <i class="fa fa-bars"></i>
+      </div>
+      -->
+    </div>
+  </div>
+</div>

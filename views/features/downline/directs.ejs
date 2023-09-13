@@ -1,0 +1,66 @@
+<% var DATE_FORMAT = 'YYYY-MM-DD hh:mm:ss A' %>
+<% var moment = locals.moment; %>
+<div class="utils__content">
+    <!-- START: components/mail-templates -->
+    <section class="card">
+        <div class="card-header">
+            <span class="utils__title">
+                <strong>My DIRECTS </strong>
+            </span>
+        </div>
+        
+        <div class="card-body">
+            <div class="row">
+
+                <div class="col-xl-12">
+                   <!-- Left Tables -->
+                   <div id="blockchainIntiated" class="dataTables_wrapper dt-bootstrap4">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <table class="table table-hover nowrap dataTable dtr-inline"
+                                id="viewTbl" role="grid"
+                                aria-describedby="example1_info">
+                                <thead class="thead-default">
+                                    <tr role="row">
+                                        <th>S. No.</th>
+                                        <th>Date</th>
+                                        <th>UserName</th>
+                                        <th>Email Adress</th>
+                                        <th>Purchased Lots</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% 
+                                    if (locals.directs) {
+                                    for(var i=0; i < locals.directs.length; i++) {
+                                      var direct = locals.directs[i];
+                                  %>
+
+                                    <tr role="row" class="odd">
+                                        <td tabindex="0" class="sorting_1"><%= (i + 1) %></td>
+                                        <td><a href="javascript: void(0);"
+                                                class="link-underlined"><%= moment(direct.created).format(DATE_FORMAT) %></a>
+                                        </td>
+                                        <td><%= direct.userName %></td>
+                                        <td><%= direct.emailAddress %></td>
+                                        <td><%= (direct.bCount + direct.sbCount) %></td>
+                                        <td><%= direct.status %></td>
+                                    </tr>
+                                    <%
+                                      } 
+                                  }%>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                </div>
+            </div>
+            
+            
+        </div>
+    </section>
+   
+    </div>

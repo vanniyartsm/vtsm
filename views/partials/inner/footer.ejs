@@ -1,0 +1,215 @@
+<div class="body-overlay"></div>
+<div id="side-panel" class="dark">
+<div class="card" data-order-id="card-7">
+    <div class="card-header slide-card-header ui-sortable-handle">
+        <div class="pull-right utils__sortable__control slide__utils__sortable__control">
+            <i class="icmn-cross utils__sortable__close side-panel-trigger" id="side-panel-trigger-close" data-toggle="tooltip" data-placement="left" title="" data-original-title="Remove"></i>
+        </div>
+        <div class="utils__title"><strong id="slide-title">Server Statistics</strong></div>
+    </div>
+    <div class="card-body">
+        <div id="slide-container" class="app-content">
+			<div class="loader-wrapper" id="panel-loader-wrapper">
+				<div class="loader-container">
+					<div class="ball-grid-pulse loader-primary">
+						<div></div>
+						<div></div>
+						<div></div>
+						<div></div>
+						<div></div>
+						<div></div>
+						<div></div>
+						<div></div>
+						<div></div>
+					</div> Loading...
+				</div>
+			</div>
+        </div>
+    </div>
+</div>
+</div>
+
+<script src="https://res.cloudinary.com/dradavcfw/raw/upload/v1581611972/quberos/inner/assets/vendors/popper.js/dist/umd/popper.js"></script>
+<script src="https://res.cloudinary.com/dradavcfw/raw/upload/v1581609930/quberos/inner/assets/vendors/bootstrap/dist/js/bootstrap.js"></script>
+<script src="https://res.cloudinary.com/dradavcfw/raw/upload/v1581609962/quberos/inner/assets/vendors/jquery-mousewheel/jquery.mousewheel.min.js"></script>
+<script src="https://res.cloudinary.com/dradavcfw/raw/upload/v1581609962/quberos/inner/assets/vendors/html5-form-validation/dist/jquery.validation.min.js"></script>
+<script src="https://res.cloudinary.com/dradavcfw/raw/upload/v1581609962/quberos/inner/assets/vendors/moment/min/moment.min.js"></script>
+<script src="https://res.cloudinary.com/dradavcfw/raw/upload/v1581609962/quberos/inner/assets/vendors/bootstrap-sweetalert/dist/sweetalert.min.js"></script>
+<script src="https://res.cloudinary.com/dradavcfw/raw/upload/v1581609930/quberos/inner/assets/vendors/remarkable-bootstrap-notify/dist/bootstrap-notify.min.js"></script>
+<script src="https://res.cloudinary.com/dradavcfw/raw/upload/v1581609930/quberos/inner/assets/vendors/datatables/media/js/jquery.dataTables.min.js"></script>
+<script src="https://res.cloudinary.com/dradavcfw/raw/upload/v1581609930/quberos/inner/assets/vendors/datatables/media/js/dataTables.bootstrap4.js"></script>
+<script src="https://res.cloudinary.com/dradavcfw/raw/upload/v1581609930/quberos/inner/assets/vendors/datatables-fixedcolumns/js/dataTables.fixedColumns.js"></script>
+<script src="https://res.cloudinary.com/dradavcfw/raw/upload/v1581609930/quberos/inner/assets/vendors/datatables-responsive/js/dataTables.responsive.js"></script>
+<script src="https://res.cloudinary.com/dradavcfw/raw/upload/v1581609930/quberos/inner/assets/vendors/jquery-steps/build/jquery.steps.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gasparesganga-jquery-loading-overlay@2.1.6/dist/loadingoverlay.min.js"></script>
+
+<script src="<%= locals.context %>/inner/assets/vendors/peity/jquery.peity.min.js"></script>
+<script src="<%= locals.context %>/inner/assets/vendors/jquery-qrcode/jquery.qrcode.min.js"></script>
+<script src="<%= locals.context %>/inner/assets/vendors/html5-form-validation/dist/jquery.validation.min.js"></script>
+<script src="<%= locals.context %>/inner/assets/components/menu-left/common/menu-left.cleanui.js"></script>
+<script src="<%= locals.context %>/inner/assets/components/menu-right/common/menu-right.cleanui.js"></script>
+
+<script src="<%= locals.context %>/inner/assets/js/unison.min.js" type="text/javascript"></script>
+<script src="<%= locals.context %>/inner/assets/js/panel-main.js"></script>
+<script src="<%= locals.context %>/inner/assets/js/slide-panel.js"></script>
+<script src="<%= locals.context %>/inner/assets/js/ejs.js" type="text/javascript"></script>
+<script src="<%= locals.context %>/inner/assets/js/custom.js" type="text/javascript"></script>
+
+<!-- START: page scripts -->
+<script>
+  (function($) {
+    "use strict";
+    $(function () {
+
+      ///////////////////////////////////////////////////////////
+      // tooltips
+      $('[data-toggle=tooltip]').tooltip()
+
+      ///////////////////////////////////////////////////////////
+      // ladda buttons
+      //Ladda.bind('.ladda-button', {timeout: 2000})
+
+      ///////////////////////////////////////////////////////////
+      // Chartistcard
+	/*
+      new Chartist.Line(".chart-area-1", {
+        series: [
+          [2, 11, 8, 14, 18, 20, 26]
+        ]
+      }, {
+        width: "120px",
+        height: "107px",
+
+        showPoint: false,
+        showLine: true,
+        showArea: true,
+        fullWidth: true,
+        showLabel: false,
+        axisX: {
+          showGrid: false,
+          showLabel: false,
+          offset: 0
+        },
+        axisY: {
+          showGrid: false,
+          showLabel: false,
+          offset: 0
+        },
+        chartPadding: 0,
+        low: 0,
+        plugins: [
+          Chartist.plugins.tooltip()
+        ]
+      });
+
+      new Chartist.Line(".chart-area-2", {
+        series: [
+          [20, 80, 67, 120, 132, 66, 97]
+        ]
+      }, {
+        width: "120px",
+        height: "107px",
+
+        showPoint: false,
+        showLine: true,
+        showArea: true,
+        fullWidth: true,
+        showLabel: false,
+        axisX: {
+          showGrid: false,
+          showLabel: false,
+          offset: 0
+        },
+        axisY: {
+          showGrid: false,
+          showLabel: false,
+          offset: 0
+        },
+        chartPadding: 0,
+        low: 0,
+      });
+
+      new Chartist.Line(".chart-area-3", {
+        series: [
+          [42, 40, 80, 67, 84, 20, 97]
+        ]
+      }, {
+        width: "120px",
+        height: "107px",
+
+        showPoint: false,
+        showLine: true,
+        showArea: true,
+        fullWidth: true,
+        showLabel: false,
+        axisX: {
+          showGrid: false,
+          showLabel: false,
+          offset: 0
+        },
+        axisY: {
+          showGrid: false,
+          showLabel: false,
+          offset: 0
+        },
+        chartPadding: 0,
+        low: 0,
+      });*/
+
+    })
+  })(jQuery)
+
+</script>
+<!-- END: page scripts -->
+
+
+<script>
+    ;(function($) {
+      'use strict'
+      $(function() {
+
+        if ($('#purchaseUnitsTbl')) {
+          $('#purchaseUnitsTbl').DataTable({
+            responsive: true
+          });
+        }
+
+        if ($('#lotWalletTbl')) {
+          $('#lotWalletTbl').DataTable({
+            responsive: true
+          });
+        }
+
+        if ($('#usersTbl')) {
+          $('#usersTbl').DataTable({
+            responsive: true
+          });
+        }
+
+        if ($('#viewTbl')) {
+          $('#viewTbl').DataTable({
+            responsive: true
+          });
+        }
+
+        if ($('#supportsTbl')) {
+          $('#supportsTbl').DataTable({
+            responsive: true
+          });
+        }
+
+        if ($('#closedSupportsTbl')) {
+          $('#closedSupportsTbl').DataTable({
+            responsive: true,
+            autoWidth: true
+          });
+        }
+      })
+    })(jQuery)
+
+    function removeSpace(event) {
+      var k = event ? event.which : window.event.keyCode;
+      return ((k > 64 && k < 91) || (k > 96 && k < 123) || k == 8 || (k >= 48 && k <= 57));
+    }
+
+  </script>

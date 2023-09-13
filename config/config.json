@@ -1,0 +1,109 @@
+{
+  "development":{
+    "mongodb":{
+      "host":"localhost",
+      "port":27017,
+      "dbName" : "vmsc-asm-01-db",
+      "debug": true,
+      "connection": true
+    },
+    "system" : {
+      "liveBlockchain" : true,
+      "email" : {
+        "send" : false,
+        "adminEmail" : "vanniyartsm@gmail.com",
+        "infoEmail" : "vanniyartsm@gmail.com",
+        "fromEmail" : "no-reply@vanniyartsm.com"
+      },
+      "payout" : {
+          "live" : true,
+          "testSchedule" : "*/10 * * * * *",
+          "liveSchedule" : "00 00 00 * * *"
+      }
+    },
+    "elasticSearch":{
+      "master" : {
+        "host": "localhost",
+        "port": 9200,
+        "log": "trace"
+      },
+      "slave" : {
+        "host": "localhost",
+        "port": 9200,
+        "log": "trace"
+      },
+      "connection": false,
+      "index": {"vtsmIndex" : "vtsm"}
+    },
+    "server" : {
+      "host" : "localhost",
+      "port" : 3000,
+      "config" : {
+        "subscription" : true
+      }
+    },
+    "email" : {
+      "username": "test@vanniyartsm.com",
+      "password": "test"
+
+    },
+    "testData":{
+      "required" : false,
+      "configure" : {
+        "referral" : 5,
+        "user": 1000
+      }
+    }
+  },
+  "production":{
+    "mongodb":{
+      "host":"localhost",
+      "port":27017,
+      "dbName" : "vtsm-asm-db",
+      "debug": true,
+      "connection": true
+    },
+    "system" : {
+      "btcWalletGenerate" : true,
+      "emailSend" : true,
+      "payout" : {
+          "live" : true,
+          "testSchedule" : "*/10 * * * * *",
+          "liveSchedule" : "0 0 * * *"
+      }
+    },
+    "elasticSearch":{
+      "master" : {
+        "host": "localhost",
+        "port": 9200,
+        "log": "trace"
+      },
+      "slave" : {
+        "host": "localhost",
+        "port": 9200,
+        "log": "trace"
+      },
+      "connection": false,
+      "index": {"vtsmIndex" : "vtsm"}
+    },
+    "server" : {
+      "host" : "localhost",
+      "port" : 80,
+      "config" : {
+        "subscription" : true
+      }
+    },
+    "email" : {
+      "username": "test@vanniyarvtsm.com",
+      "password": "test"
+
+    },
+    "testData":{
+      "required" : false,
+      "configure" : {
+        "referral" : 5,
+        "user": 1000
+      }
+    }
+  }
+}

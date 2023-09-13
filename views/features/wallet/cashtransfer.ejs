@@ -1,0 +1,225 @@
+<% var DATE_FORMAT = 'YYYY-MM-DD hh:mm:ss A' 
+    var requestedWithdraw = result.requestedWithdraw;
+
+    var cashWalletAvailable = 0;
+    if (result.cashWallet) {
+        cashWalletAvailable = result.cashWallet.available;
+    }
+    var lotWalletAvailable = 0;
+
+    if (result.lotWallet) {
+        lotWalletAvailable = result.lotWallet.available
+    }
+
+    if (requestedWithdraw) {
+        if (result.cashWallet && (result.cashWallet._id.toString() == requestedWithdraw.wallet._id.toString())) {
+            cashWalletAvailable = (cashWalletAvailable - requestedWithdraw.points);
+        }
+
+        if (result.lotWallet && (result.lotWallet._id.toString() == requestedWithdraw.wallet._id.toString())) {
+            lotWalletAvailable = (lotWalletAvailable - requestedWithdraw.points);
+        }
+    }
+
+%>
+<div class="utils__content">
+        <!-- START: components/mail-templates -->
+        <section class="card">
+            <div class="card-header">
+                <span class="utils__title">
+                    <strong>Transactions</strong>
+                </span>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-xl-6 col-lg-12">
+                            <%- include('../common/message') %>
+                            <form id="purchase-elc-form" class="form form-horizontal form-bordered bb-form"
+							data-url="/web/wallet/internal/transfer" data-title="Deposit Bitcoin"
+							data-method="POST" data-form="true" name="buy-elc-form" data-message="true">
+						<div class="form-body">
+							<input type="hidden" id="btcFinalBalance" name="btcFinalBalance"/>
+							<input type="hidden" id="hash" name="hash"/>
+							<div class="row">
+								<div class="col-md-10 col-xs-12">
+                                    <div class="userCard px-3 py-3">
+                                        <div class="utils__title utils__title--flat mb-3">
+                                            <strong>Transfer Points to Trade Wallet</strong>
+                                        </div>
+                                        <input type="hidden" id="walletId" value="<%= result._id %>" />
+                                        <input type="hidden" class="form-control required" id="availablePoints" name="availablePoints" value="<%= result.available %>">
+
+                                        
+
+
+                                            <div class="form-group row">
+                                                <label class="col-md-4 col-form-label" for="l0">Wallets</label>
+                                                <div class="col-md-8">
+                                                    <% if (result && ((cashWalletAvailable > 0) || (lotWalletAvailable > 0))) { %>
+                                                        <select class="form-control" id="internal-wallet-from" name="walletFrom">
+                                                            <% if (cashWalletAvailable > 0) { %>
+                                                                <option value="5a3c8bf65a12076ff0cc0003" data-available="<%= cashWalletAvailable %>">Cash Wallet - $<%= cashWalletAvailable %></option>
+                                                            <% } %>
+
+                                                            <% if (lotWalletAvailable > 0) { %>
+                                                                <option value="5a6c8bf65a12076ff0cc0006" data-available="<%= lotWalletAvailable %>">Lot Wallet - $<%= lotWalletAvailable %></option>
+                                                            <% } %>
+                                                        </select>
+                                                    <% } else { %>
+                                                        <label class="col-form-label">No points earned yet</label>
+                                                    <% } %>
+                                                </div>
+                                            </div>
+
+                                        <div class="form-group row">
+                                            <label class="col-md-4 col-form-label" for="l0">Points</label>
+                                            <div class="col-md-8">
+                                                <input type="number" class="form-control required" id="transferPoints" placeholder="Number of Points" name="transferPoints" aria-required="true" required>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label class="col-md-4 col-form-label">Trade Wallet Available</label>
+                                            <div class="col-md-8">
+                                                <label class="col-form-label text-success">$<%= (result.balance.available) ? result.balance.available : 0 %></label>
+                                            </div>
+                                        </div>
+                                    </div>
+								</div>
+							</div>
+						</div>
+                        
+                        
+						<div class="form-actions">
+                            <div class="form-group row">
+                                <div class="col-md-9 offset-md-3">
+                                    <% if (result && ((result.cashWallet && result.cashWallet.available > 0) || (result.lotWallet && result.lotWallet.available > 0))) { %>
+                                        <button type="button" id="internal-transfer-points-btn" style="margin-left: 12px;"
+                                    class="btn btn-primary">Transfer</button>
+                                    <% } else { %>
+                                        Do not have any cash or lot wallet bonus
+                                    <% } %>
+                                </div>
+                            </div>
+                        </div>
+					</form>
+                    </div>
+                </div>
+
+                <div class="col-xl-12">
+                        <!-- Left Tables -->
+                        <div class="nav-tabs-horizontal mb-5">
+                           <ul class="nav nav-tabs mb-3" role="tablist">
+                               <li class="nav-item">
+                                   <a class="nav-link font-size-16 text-black show active" href="javascript: void(0);"
+                                       data-toggle="tab" data-target="#b1" role="tab"
+                                       aria-selected="false"><strong>CashWallet Transactions</strong></a>
+                               </li>
+                               <li class="nav-item">
+                                <a class="nav-link font-size-16 text-black" href="javascript: void(0);"
+                                    data-toggle="tab" data-target="#b2" role="tab"
+                                    aria-selected="false"><strong>LotWallet Transactions</strong></a>
+                            </li>
+                           </ul>
+                           <div class="tab-content padding-top-20">
+                               <div class="tab-pane show active" id="b1">
+                                               <div class="row">
+                                                   <div class="col-sm-12">
+                                                       <table class="table table-hover nowrap dataTable dtr-inline"
+                                                           id="purchaseUnitsTbl" role="grid"
+                                                           aria-describedby="example1_info">
+                                                           <thead class="thead-default">
+                                                               <tr role="row">
+                                                                   <th>S. No.</th>
+                                                                   <th>Date</th>
+                                                                   <th>Credit</th>
+                                                                   <th>Debit</th>
+                                                                   <th>From</th>
+                                                                   <th>Type</th>
+                                                               </tr>
+                                                           </thead>
+                                                           
+                                                           <tbody>
+                                                               <% 
+                                                               if (result.cashWalletTransfers) {
+                                                               for(var i=0; i < result.cashWalletTransfers.length; i++) {
+                                                                 var cwt = result.cashWalletTransfers[i];
+                                                             %>
+     
+                                                               <tr role="row" class="odd">
+                                                                   <td tabindex="0" class="sorting_1"><%= (i + 1) %></td>
+                                                                   <td><a href="javascript: void(0);"
+                                                                           class="link-underlined"><%= moment(cwt.created).format(DATE_FORMAT) %></a>
+                                                                   </td>
+                                                                   <td><%= '$' + cwt.credit.value %></td>
+                                                                   <td><%= '$' + cwt.debit.value %></td>
+                                                                   <td>
+                                                                       <%= (cwt.from) ? cwt.from : "" %>
+                                                                   </td>
+                                                                   <td>
+                                                                    <%= (cwt.type) ? cwt.type : "" %>
+                                                                </td>
+                                                               </tr>
+                                                               <% } 
+                                                             }%>
+                                                           </tbody>
+                                                       </table>
+                                                   </div>
+                                               </div>
+                                          
+                               </div>
+                               <div class="tab-pane" id="b2">
+
+                                            <div class="row">
+                                                <div class="col-sm-12">
+                                                    <table class="table table-hover nowrap dataTable dtr-inline"
+                                                        id="lotWalletTbl" role="grid"
+                                                        aria-describedby="example1_info">
+                                                        <thead class="thead-default">
+                                                            <tr role="row">
+                                                                <th>S. No.</th>
+                                                                <th>Date</th>
+                                                                <th>Credit</th>
+                                                                <th>Debit</th>
+                                                                <th>From</th>
+                                                                <th>Type</th>
+                                                            </tr>
+                                                        </thead>
+                                                        
+                                                        <tbody>
+                                                            <% 
+                                                            if (result && result.lotWalletTransfers) {
+                                                            for(var i=0; i < result.lotWalletTransfers.length; i++) {
+                                                              var lwt = result.lotWalletTransfers[i];
+                                                          %>
+  
+                                                            <tr role="row" class="odd">
+                                                                <td tabindex="0" class="sorting_1"><%= (i + 1) %></td>
+                                                                <td><a href="javascript: void(0);"
+                                                                        class="link-underlined"><%= moment(lwt.created).format(DATE_FORMAT) %></a>
+                                                                </td>
+                                                                <td><%= '$' + lwt.credit.value %></td>
+                                                                <td><%= '$' + lwt.debit.value %></td>
+                                                                <td>
+                                                                    <%= (lwt.from) ? lwt.from : "" %>
+                                                                </td>
+                                                                <td>
+                                                                 <%= (lwt.type) ? lwt.type : "" %>
+                                                             </td>
+                                                            </tr>
+                                                            <% } 
+                                                          }%>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+
+                            </div>
+                           </div>
+                       </div>
+                       
+                </div></div>
+            </div>
+        </section>
+       
+        </div>

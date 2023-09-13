@@ -1,0 +1,79 @@
+
+<div class="utils__content">
+<!-- START: pages/login-beta -->
+<div class="login">
+	
+    <div class="login__block login__block--extended">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="login__block__inner">
+                    <div class="login__block__form">
+                        <a href="/"><img src="/site/assets/images/logo.png" width="120" height="45"></a>
+                        <h4 class="text-uppercase">
+                            <strong>Please log in</strong>
+                        </h4>
+                        <br />
+                        <%- include('../common/message') %>
+                        <form method="post" action="/web/auth" id="login-form">
+                            <div class="form-group">
+                                <label class="form-label">Username</label>
+                                <input id="user-name"
+                                       class="form-control"
+                                       placeholder="Username"
+                                       name="userName"
+                                       type="text"
+                                       maxlength="15">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Password</label>
+                                <input id="user-password"
+                                       class="form-control password"
+                                       name="password"
+                                       type="password" data-validation="[L>=6]"
+                                       data-validation-message="$ must be at least 6 characters"
+                                       placeholder="Password"
+                                       minlength="6"
+                                       maxlength="25">
+                            </div>
+                            <div class="form-group">
+                                <a href="/web/auth/forgot" class="pull-right utils__link--blue utils__link--underlined">Forgot Password?</a>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" name="example6" checked>
+                                        Remember me
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit" class="btn btn-primary mr-3 login-submit-btn" data-destination=".site-wrapper">Sign In</button>
+                                <span class="register-link">
+                                    <a href="/web/auth/register" class="utils__link--blue utils__link--underlined">Register</a> if you don't have account
+                                </span>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="login__block__sidebar">
+                        <h4 class="login__block__sidebar__title">
+                            <strong>Quberos Login</strong>
+                        </h4>
+                        <div class="login__block__sidebar__item">
+                            "There are 3 eras of currency: Commodity based, politically based, and now, math based."
+                        </div>
+                        <div class="">
+                            <i>– Chris Dixon, Technology Investor</i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="login__footer text-center">
+        <ul class="list-unstyled list-inline">
+            
+        </ul>
+    </div>
+</div>
+<!-- END: pages/login-beta -->
+
+</div>
+

@@ -1,0 +1,1657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Clean UI Admin Template HTML</title>
+    <link href="../../components/dummy-assets/common/img/favicon.png" rel="shortcut icon">
+    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,400i,700,700i" rel="stylesheet">
+
+    <!-- VENDORS -->
+    <!-- v2.0.0 -->
+    <link rel="stylesheet" type="text/css" href="../../vendors/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../../vendors/perfect-scrollbar/css/perfect-scrollbar.css">
+    <link rel="stylesheet" type="text/css" href="../../vendors/ladda/dist/ladda-themeless.min.css">
+    <link rel="stylesheet" type="text/css" href="../../vendors/bootstrap-select/dist/css/bootstrap-select.min.css">
+    <link rel="stylesheet" type="text/css" href="../../vendors/select2/dist/css/select2.min.css">
+    <link rel="stylesheet" type="text/css" href="../../vendors/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css">
+    <link rel="stylesheet" type="text/css" href="../../vendors/fullcalendar/dist/fullcalendar.min.css">
+    <link rel="stylesheet" type="text/css" href="../../vendors/bootstrap-sweetalert/dist/sweetalert.css">
+    <link rel="stylesheet" type="text/css" href="../../vendors/summernote/dist/summernote.css">
+    <link rel="stylesheet" type="text/css" href="../../vendors/owl.carousel/dist/assets/owl.carousel.min.css">
+    <link rel="stylesheet" type="text/css" href="../../vendors/ionrangeslider/css/ion.rangeSlider.css">
+    <link rel="stylesheet" type="text/css" href="../../vendors/datatables/media/css/dataTables.bootstrap4.css">
+    <link rel="stylesheet" type="text/css" href="../../vendors/c3/c3.min.css">
+    <link rel="stylesheet" type="text/css" href="../../vendors/chartist/dist/chartist.min.css">
+    <link rel="stylesheet" type="text/css" href="../../vendors/nprogress/nprogress.css">
+    <link rel="stylesheet" type="text/css" href="../../vendors/jquery-steps/demo/css/jquery.steps.css">
+    <link rel="stylesheet" type="text/css" href="../../vendors/dropify/dist/css/dropify.min.css">
+    <link rel="stylesheet" type="text/css" href="../../vendors/font-linearicons/style.css">
+    <link rel="stylesheet" type="text/css" href="../../vendors/font-icomoon/style.css">
+    <link rel="stylesheet" type="text/css" href="../../vendors/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="../../vendors/cleanhtmlaudioplayer/src/player.css">
+    <link rel="stylesheet" type="text/css" href="../../vendors/cleanhtmlvideoplayer/src/player.css">
+    <link rel="stylesheet" type="text/css" href="../../vendors/cleanhtmlvideoplayer/src/player.css">
+    <script src="../../vendors/jquery/dist/jquery.min.js"></script>
+    <script src="../../vendors/popper.js/dist/umd/popper.js"></script>
+    <script src="../../vendors/jquery-ui/jquery-ui.min.js"></script>
+    <script src="../../vendors/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="../../vendors/jquery-mousewheel/jquery.mousewheel.min.js"></script>
+    <script src="../../vendors/perfect-scrollbar/js/perfect-scrollbar.jquery.js"></script>
+    <script src="../../vendors/spin.js/spin.js"></script>
+    <script src="../../vendors/ladda/dist/ladda.min.js"></script>
+    <script src="../../vendors/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
+    <script src="../../vendors/select2/dist/js/select2.full.min.js"></script>
+    <script src="../../vendors/html5-form-validation/dist/jquery.validation.min.js"></script>
+    <script src="../../vendors/jquery-typeahead/dist/jquery.typeahead.min.js"></script>
+    <script src="../../vendors/jquery-mask-plugin/dist/jquery.mask.min.js"></script>
+    <script src="../../vendors/autosize/dist/autosize.min.js"></script>
+    <script src="../../vendors/bootstrap-show-password/bootstrap-show-password.min.js"></script>
+    <script src="../../vendors/moment/min/moment.min.js"></script>
+    <script src="../../vendors/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+    <script src="../../vendors/fullcalendar/dist/fullcalendar.min.js"></script>
+    <script src="../../vendors/bootstrap-sweetalert/dist/sweetalert.min.js"></script>
+    <script src="../../vendors/remarkable-bootstrap-notify/dist/bootstrap-notify.min.js"></script>
+    <script src="../../vendors/summernote/dist/summernote.min.js"></script>
+    <script src="../../vendors/owl.carousel/dist/owl.carousel.min.js"></script>
+    <script src="../../vendors/ionrangeslider/js/ion.rangeSlider.min.js"></script>
+    <script src="../../vendors/nestable/jquery.nestable.js"></script>
+    <script src="../../vendors/datatables/media/js/jquery.dataTables.min.js"></script>
+    <script src="../../vendors/datatables/media/js/dataTables.bootstrap4.js"></script>
+    <script src="../../vendors/datatables-fixedcolumns/js/dataTables.fixedColumns.js"></script>
+    <script src="../../vendors/datatables-responsive/js/dataTables.responsive.js"></script>
+    <script src="../../vendors/editable-table/mindmup-editabletable.js"></script>
+    <script src="../../vendors/d3/d3.min.js"></script>
+    <script src="../../vendors/c3/c3.min.js"></script>
+    <script src="../../vendors/chartist/dist/chartist.min.js"></script>
+    <script src="../../vendors/peity/jquery.peity.min.js"></script>
+    <script src="../../vendors/chartist-plugin-tooltip/dist/chartist-plugin-tooltip.min.js"></script>
+    <script src="../../vendors/jquery-countTo/jquery.countTo.js"></script>
+    <script src="../../vendors/nprogress/nprogress.js"></script>
+    <script src="../../vendors/jquery-steps/build/jquery.steps.min.js"></script>
+    <script src="../../vendors/chart.js/dist/Chart.bundle.min.js"></script>
+    <script src="../../vendors/dropify/dist/js/dropify.min.js"></script>
+    <script src="../../vendors/cleanhtmlaudioplayer/src/jquery.cleanaudioplayer.js"></script>
+    <script src="../../vendors/cleanhtmlvideoplayer/src/jquery.cleanvideoplayer.js"></script>
+    <script src="../../vendors/d3-dsv/dist/d3-dsv.js"></script>
+    <script src="../../vendors/d3-time-format/dist/d3-time-format.js"></script>
+    <script src="../../vendors/techan/dist/techan.min.js"></script>
+
+    <!-- CLEAN UI HTML ADMIN TEMPLATE MODULES-->
+    <!-- v2.0.0 -->
+    <link rel="stylesheet" type="text/css" href="../../components/core/common/core.cleanui.css">
+    <link rel="stylesheet" type="text/css" href="../../components/core/widgets/widgets.cleanui.css">
+    <link rel="stylesheet" type="text/css" href="../../components/vendors/common/vendors.cleanui.css">
+    <link rel="stylesheet" type="text/css" href="../../components/settings/common/settings.cleanui.css">
+    <link rel="stylesheet" type="text/css" href="../../components/settings/themes/themes.cleanui.css">
+    <link rel="stylesheet" type="text/css" href="../../components/menu-left/common/menu-left.cleanui.css">
+    <link rel="stylesheet" type="text/css" href="../../components/menu-right/common/menu-right.cleanui.css">
+    <link rel="stylesheet" type="text/css" href="../../components/top-bar/common/top-bar.cleanui.css">
+    <link rel="stylesheet" type="text/css" href="../../components/footer/common/footer.cleanui.css">
+    <link rel="stylesheet" type="text/css" href="../../components/pages/common/pages.cleanui.css">
+    <link rel="stylesheet" type="text/css" href="../../components/ecommerce/common/ecommerce.cleanui.css">
+    <link rel="stylesheet" type="text/css" href="../../components/apps/common/apps.cleanui.css">
+    <script src="../../components/menu-left/common/menu-left.cleanui.js"></script>
+    <script src="../../components/menu-right/common/menu-right.cleanui.js"></script>
+</head>
+<body class="config--vertical config--borderLess menu-left--colorful menu-left--visible theme--light menu-left--shadow">
+<div class="menu-right">
+    <div class="menu-right__inner">
+        <div class="menu-right__header">
+            <span class="fa fa-times pull-right menu-right__action--menu-toggle"><!-- --></span>
+            Theme Settings
+        </div>
+        <div class="menu-right__content">
+            <div class="menu-right__descr">
+                This module "block-menu-right" gives possibility to construct custom blocks with any widgets, components and elements inside, like this theme settings
+            </div>
+            <div class="menu-right__label">
+                Theme Style
+            </div>
+            <div class="menu-right__setting menu-right--example-option">
+                <div class="btn-group btn-group-justified" data-toggle="buttons">
+                    <div class="btn-group">
+                        <label class="btn btn-default">
+                            <input type="radio" name="options-theme" value=""> Dark
+                        </label>
+                    </div>
+                    <div class="btn-group">
+                        <label class="btn btn-default">
+                            <input type="radio" name="options-theme" value="theme--light"> Light
+                        </label>
+                    </div>
+                </div>
+                <div class="btn-group btn-group-justified" data-toggle="buttons">
+                    <div class="btn-group">
+                        <label class="btn btn-default">
+                            <input type="radio" name="options-theme" value="theme--green"> Green
+                        </label>
+                    </div>
+                    <div class="btn-group">
+                        <label class="btn btn-default">
+                            <input type="radio" name="options-theme" value="theme--blue"> Blue
+                        </label>
+                    </div>
+                </div>
+                <div class="btn-group btn-group-justified" data-toggle="buttons">
+                    <div class="btn-group">
+                        <label class="btn btn-default">
+                            <input type="radio" name="options-theme" value="theme--red"> Red
+                        </label>
+                    </div>
+                    <div class="btn-group">
+                        <label class="btn btn-default">
+                            <input type="radio" name="options-theme" value="theme--orange"> Orange
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-right__label">
+                Boxed Layout
+            </div>
+            <div class="menu-right__setting menu-right--example-option">
+                <div class="btn-group btn-group-justified" data-toggle="buttons">
+                    <div class="btn-group">
+                        <label class="btn btn-default">
+                            <input type="radio" name="options-boxed" value="config--boxed"> On
+                        </label>
+                    </div>
+                    <div class="btn-group">
+                        <label class="btn btn-default">
+                            <input type="radio" name="options-boxed" value=""> Off
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-right__label">
+                Fixed Top Bar
+            </div>
+            <div class="menu-right__setting menu-right--example-option">
+                <div class="btn-group btn-group-justified" data-toggle="buttons">
+                    <div class="btn-group">
+                        <label class="btn btn-default">
+                            <input type="radio" name="options-topbar" value=""> On
+                        </label>
+                    </div>
+                    <div class="btn-group">
+                        <label class="btn btn-default">
+                            <input type="radio" name="options-topbar" value="config--unfixed"> Off
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-right__label">
+                Borderless Cards
+            </div>
+            <div class="menu-right__setting menu-right--example-option">
+                <div class="btn-group btn-group-justified" data-toggle="buttons">
+                    <div class="btn-group">
+                        <label class="btn btn-default">
+                            <input type="radio" name="options-borderLess" value="config--borderLess"> On
+                        </label>
+                    </div>
+                    <div class="btn-group">
+                        <label class="btn btn-default">
+                            <input type="radio" name="options-borderLess" value=""> Off
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-right__label">
+                Colorful Menu
+            </div>
+            <div class="menu-right__setting menu-right--example-option">
+                <div class="btn-group btn-group-justified" data-toggle="buttons">
+                    <div class="btn-group">
+                        <label class="btn btn-default">
+                            <input type="radio" name="options-colorful" value="menu-left--colorful"> On
+                        </label>
+                    </div>
+                    <div class="btn-group">
+                        <label class="btn btn-default">
+                            <input type="radio" name="options-colorful" value=""> Off
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-right__label">
+                Menu Shadow
+            </div>
+            <div class="menu-right__setting menu-right--example-option">
+                <div class="btn-group btn-group-justified" data-toggle="buttons">
+                    <div class="btn-group">
+                        <label class="btn btn-default">
+                            <input type="radio" name="options-shadow" value="menu-left--shadow"> On
+                        </label>
+                    </div>
+                    <div class="btn-group">
+                        <label class="btn btn-default">
+                            <input type="radio" name="options-shadow" value=""> Off
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-right__label">
+                Squared Corners
+            </div>
+            <div class="menu-right__setting menu-right--example-option">
+                <div class="btn-group btn-group-justified" data-toggle="buttons">
+                    <div class="btn-group">
+                        <label class="btn btn-default">
+                            <input type="radio" name="options-corners" value="config--squared-corners"> On
+                        </label>
+                    </div>
+                    <div class="btn-group">
+                        <label class="btn btn-default">
+                            <input type="radio" name="options-corners" value=""> Off
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<nav class="menu-left">
+    <div class="menu-left__lock menu-left__action--menu-toggle">
+        <div class="menu-left__pin-button">
+            <div><!-- --></div>
+        </div>
+    </div>
+    <div class="menu-left__logo">
+        <a href="dashboards-alpha.html">
+            <img src="../../components/dummy-assets/common/img/logo-inverse.png" alt="" />
+        </a>
+    </div>
+    <div class="menu-left__inner">
+        <ul class="menu-left__list menu-left__list--root">
+            <li class="menu-left__item">
+                <a href="javascript: void(0);" class="menu-right__action--menu-toggle">
+                    <span class="menu-left__icon icmn-cog utils__spin-delayed--pseudo-selector"></span>
+                    Theme Settings
+                </a>
+            <li class="menu-left__item menu-left__item--active">
+                <a href="https://docs.cleanuitemplate.com/" target="_blank">
+				    <span class="menu-left__icon icmn-books"></span>
+                    Documentation
+                </a>
+            </li>
+            <li class="menu-left__divider"><!-- --></li>
+            <li class="menu-left__item">
+                <a href="dashboards-alpha.html">
+                    <span class="menu-left__icon icmn-home"></span>
+                    <span class="badge badge-primary pull-right">New</span>
+                    Dashboard Alpha
+                </a>
+            </li>
+            <li class="menu-left__item">
+                <a href="dashboards-beta.html">
+                    <span class="menu-left__icon icmn-home"></span>
+                    Dashboard Beta
+                </a>
+            </li>
+            <li class="menu-left__item">
+                <a href="dashboards-crypto.html">
+                    <span class="menu-left__icon icmn-home"></span>
+                    <span class="badge badge-primary pull-right">New</span>
+                    Dashboard Crypto
+                </a>
+            </li>
+            <li class="menu-left__item">
+                <a href="dashboards-gamma.html">
+                    <span class="menu-left__icon icmn-home"></span>
+                    <span class="badge badge-primary pull-right">New</span>
+                    Dashboard Gamma
+                </a>
+            </li>
+            <li class="menu-left__divider"><!-- --></li>
+            <li class="menu-left__item menu-left__submenu">
+                <a href="javascript: void(0);">
+                    <span class="menu-left__icon icmn-file-text"></span>
+                    Default Pages
+                </a>
+                <ul class="menu-left__list">
+                    <li class="menu-left__item">
+                        <a href="pages-login-alpha.html">
+                            <span class="menu-left__icon">LA</span>
+                            Login Alpha
+                        </a>
+                    </li>
+                    <li class="menu-left__item">
+                        <a href="pages-login-beta.html">
+                            <span class="menu-left__icon">LB</span>
+                            Login Beta
+                        </a>
+                    </li>
+                    <li class="menu-left__item">
+                        <a href="pages-register.html">
+                            <span class="menu-left__icon">R</span>
+                            Register
+                        </a>
+                    </li>
+                    <li class="menu-left__item">
+                        <a href="pages-lockscreen.html">
+                            <span class="menu-left__icon">LS</span>
+                            Lockscreen
+                        </a>
+                    </li>
+                    <li class="menu-left__item">
+                        <a href="pages-pricing-tables.html">
+                            <span class="menu-left__icon">PT</span>
+                            Pricing Tables
+                        </a>
+                    </li>
+                    <li class="menu-left__item">
+                        <a href="pages-invoice.html">
+                            <span class="menu-left__icon">I</span>
+                            Invoice
+                        </a>
+                    </li>
+                    <li class="menu-left__item">
+                        <a href="pages-page-404.html">
+                            <span class="menu-left__icon">P4</span>
+                            Page 404
+                        </a>
+                    </li>
+                    <li class="menu-left__item">
+                        <a href="pages-page-500.html">
+                            <span class="menu-left__icon">P5</span>
+                            Page 500
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="menu-left__item menu-left__submenu">
+                <a href="javascript: void(0);">
+                    <span class="menu-left__icon icmn-download"></span>
+                    Ecommerce
+                </a>
+                <ul class="menu-left__list">
+                    <li class="menu-left__item">
+                        <a href="ecommerce-dashboard.html">
+                            <span class="menu-left__icon">DB</span>
+                            Dashboard
+                        </a>
+                    </li>
+                    <li class="menu-left__item">
+                        <a href="ecommerce-products-catalog.html">
+                            <span class="menu-left__icon">PC</span>
+                            Products Catalog
+                        </a>
+                    </li>
+                    <li class="menu-left__item">
+                        <a href="ecommerce-product-details.html">
+                            <span class="menu-left__icon">PD</span>
+                            Product Details
+                        </a>
+                    </li>
+                    <li class="menu-left__item">
+                        <a href="ecommerce-product-edit.html">
+                            <span class="menu-left__icon">PE</span>
+                            Product Edit
+                        </a>
+                    </li>
+                    <li class="menu-left__item">
+                        <a href="ecommerce-products-list.html">
+                            <span class="menu-left__icon">PL</span>
+                            Products List
+                        </a>
+                    </li>
+                    <li class="menu-left__item">
+                        <a href="ecommerce-orders.html">
+                            <span class="menu-left__icon">O</span>
+                            Orders
+                        </a>
+                    </li>
+                    <li class="menu-left__item">
+                        <a href="ecommerce-cart-checkout.html">
+                            <span class="menu-left__icon">CC</span>
+                            Cart / Checkout
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="menu-left__divider"><!-- --></li>
+            <li class="menu-left__item menu-left__submenu">
+                <a href="javascript: void(0);">
+                    <span class="menu-left__icon icmn-list"></span>
+                    Forms
+                </a>
+                <ul class="menu-left__list">
+                    <li class="menu-left__item">
+                        <a href="forms-basic-form-elements.html">
+                            <span class="menu-left__icon">BF</span>
+                            Basic Form Elements
+                        </a>
+                    </li>
+                    <li class="menu-left__item">
+                        <a href="forms-buttons.html">
+                            <span class="menu-left__icon">B</span>
+                            Buttons
+                        </a>
+                    </li>
+                    <li class="menu-left__item">
+                        <a href="forms-dropdowns.html">
+                            <span class="menu-left__icon">D</span>
+                            Dropdowns
+                        </a>
+                    </li>
+                    <li class="menu-left__item">
+                        <a href="forms-selectboxes.html">
+                            <span class="menu-left__icon">SB</span>
+                            Selectboxes
+                        </a>
+                    </li>
+                    <li class="menu-left__item">
+                        <a href="forms-checkboxes-radio.html">
+                            <span class="menu-left__icon">CR</span>
+                            Checkboxes / Radio
+                        </a>
+                    </li>
+                    <li class="menu-left__item">
+                        <a href="forms-form-wizard.html">
+                            <span class="menu-left__icon">FW</span>
+                            Form Wizard
+                        </a>
+                    </li>
+                    <li class="menu-left__item">
+                        <a href="forms-form-validation.html">
+                            <span class="menu-left__icon">FV</span>
+                            Form Validation
+                        </a>
+                    </li>
+                    <li class="menu-left__item">
+                        <a href="forms-autocomplete.html">
+                            <span class="menu-left__icon">AC</span>
+                            Autocomplete
+                        </a>
+                    </li>
+                    <li class="menu-left__item">
+                        <a href="forms-input-mask.html">
+                            <span class="menu-left__icon">IM</span>
+                            Input Mask
+                        </a>
+                    </li>
+                    <li class="menu-left__item">
+                        <a href="forms-file-uploads.html">
+                            <span class="menu-left__icon">FU</span>
+                            File Uploads
+                        </a>
+                    </li>
+                    <li class="menu-left__item">
+                        <a href="forms-extras.html">
+                            <span class="menu-left__icon">E</span>
+                            Extras
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="menu-left__item menu-left__submenu">
+                <a href="javascript: void(0);">
+                    <span class="menu-left__icon icmn-loop"></span>
+                    Components
+                </a>
+                <ul class="menu-left__list">
+                    <li class="menu-left__item">
+                        <a href="components-date-picker.html">
+                            <span class="menu-left__icon">DP</span>
+                            Date Picker
+                        </a>
+                    </li>
+                    <li class="menu-left__item">
+                        <a href="components-calendar.html">
+                            <span class="menu-left__icon">CL</span>
+                            Calendar
+                        </a>
+                    </li>
+                    <li class="menu-left__item">
+                        <a href="components-carousel.html">
+                            <span class="menu-left__icon">CR</span>
+                            Carousel
+                        </a>
+                    </li>
+                    <li class="menu-left__item">
+                        <a href="components-media-players.html">
+                            <span class="menu-left__icon">MP</span>
+                            Media Players
+                        </a>
+                    </li>
+                    <li class="menu-left__item">
+                        <a href="components-slider.html">
+                            <span class="menu-left__icon">SL</span>
+                            Slider
+                        </a>
+                    </li>
+                    <li class="menu-left__item">
+                        <a href="components-modal.html">
+                            <span class="menu-left__icon">M</span>
+                            Modal
+                        </a>
+                    </li>
+                    <li class="menu-left__item">
+                        <a href="components-tooltips-popovers.html">
+                            <span class="menu-left__icon">TP</span>
+                            Tooltips & Popovers
+                        </a>
+                    </li>
+                    <li class="menu-left__item">
+                        <a href="components-notifications-alerts.html">
+                            <span class="menu-left__icon">NA</span>
+                            Notifications & Alerts
+                        </a>
+                    </li>
+                    <li class="menu-left__item">
+                        <a href="components-loading-progress.html">
+                            <span class="menu-left__icon">LP</span>
+                            Loading Progress
+                        </a>
+                    </li>
+                    <li class="menu-left__item">
+                        <a href="components-progress-bars.html">
+                            <span class="menu-left__icon">PB</span>
+                            Progress Bars
+                        </a>
+                    </li>
+                    <li class="menu-left__item">
+                        <a href="components-badges-labels.html">
+                            <span class="menu-left__icon">BL</span>
+                            Badges & Labels
+                        </a>
+                    </li>
+                    <li class="menu-left__item">
+                        <a href="components-steps.html">
+                            <span class="menu-left__icon">S</span>
+                            Steps
+                        </a>
+                    </li>
+                    <li class="menu-left__item">
+                        <a href="components-breadcrumbs.html">
+                            <span class="menu-left__icon">B</span>
+                            Breadcrumbs
+                        </a>
+                    </li>
+                    <li class="menu-left__item">
+                        <a href="components-pagination.html">
+                            <span class="menu-left__icon">P</span>
+                            Pagination
+                        </a>
+                    </li>
+                    <li class="menu-left__item">
+                        <a href="components-collapse.html">
+                            <span class="menu-left__icon">C</span>
+                            Collapse
+                        </a>
+                    </li>
+                    <li class="menu-left__item">
+                        <a href="components-tabs.html">
+                            <span class="menu-left__icon">T</span>
+                            Tabs
+                        </a>
+                    </li>
+                    <li class="menu-left__item">
+                        <a href="components-text-editor.html">
+                            <span class="menu-left__icon">TE</span>
+                            Text Editor
+                        </a>
+                    </li>
+                    <li class="menu-left__item">
+                        <a href="components-nestable.html">
+                            <span class="menu-left__icon">N</span>
+                            Nestable
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="menu-left__item menu-left__submenu">
+                <a href="javascript: void(0);">
+                    <span class="menu-left__icon icmn-table"></span>
+                    Tables
+                </a>
+                <ul class="menu-left__list">
+                    <li class="menu-left__item">
+                        <a href="tables-basic-tables.html">
+                            <span class="menu-left__icon">BT</span>
+                            Basic Tables
+                        </a>
+                    </li>
+                    <li class="menu-left__item">
+                        <a href="tables-datatables.html">
+                            <span class="menu-left__icon">DT</span>
+                            DataTables
+                        </a>
+                    </li>
+                    <li class="menu-left__item">
+                        <a href="tables-editable-tables.html">
+                            <span class="menu-left__icon">ET</span>
+                            Editable Tables
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="menu-left__item menu-left__submenu">
+                <a href="javascript: void(0);">
+                    <span class="menu-left__icon icmn-stats-bars"></span>
+                    Charts
+                </a>
+                <ul class="menu-left__list">
+                    <li  class="menu-left__item">
+                        <a href="charts-chartistjs.html">
+                            <span class="menu-left__icon">CT</span>
+                            Chartist.js
+                        </a>
+                    </li>
+                    <li  class="menu-left__item">
+                        <a href="charts-chartjs.html">
+                            <span class="menu-left__icon">CR</span>
+                            Chart.js
+                        </a>
+                    </li>
+                    <li  class="menu-left__item">
+                        <a href="charts-c3.html">
+                            <span class="menu-left__icon">C3</span>
+                            C3
+                        </a>
+                    </li>
+                    <li  class="menu-left__item">
+                        <a href="charts-peity.html">
+                            <span class="menu-left__icon">PT</span>
+                            Peity
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li  class="menu-left__item">
+                <a href="components-mail-templates.html">
+                    <span class="menu-left__icon icmn-envelop"></span>
+                    Mail Templates
+                </a>
+            </li>
+            <li class="menu-left__divider"><!-- --></li>
+            <li  class="menu-left__item">
+                <a href="apps-profile.html">
+                    <span class="menu-left__icon icmn-profile"></span>
+                    Profile
+                </a>
+            </li>
+            <li  class="menu-left__item">
+                <a href="apps-messaging.html">
+                    <span class="menu-left__icon icmn-bubbles4"></span>
+                    <span class="badge badge-danger pull-right">768</span>
+                    Messaging
+                </a>
+            </li>
+            <li  class="menu-left__item">
+                <a href="apps-mail.html">
+                    <span class="menu-left__icon icmn-envelop"></span>
+                    <span class="badge badge-success pull-right">84</span>
+                    Mail
+                </a>
+            </li>
+            <li  class="menu-left__item">
+                <a href="apps-calendar.html">
+                    <span class="menu-left__icon icmn-calendar"></span>
+                    Calendar
+                </a>
+            </li>
+            <li  class="menu-left__item">
+                <a href="apps-gallery.html">
+                    <span class="menu-left__icon icmn-images"></span>
+                    Gallery
+                </a>
+            </li>
+            <li class="menu-left__divider"><!-- --></li>
+            <li class="menu-left__item menu-left__submenu">
+                <a href="javascript: void(0);">
+                    <span class="menu-left__icon icmn-checkbox-unchecked"></span>
+                    Layout
+                </a>
+                <ul class="menu-left__list">
+                    <li  class="menu-left__item">
+                        <a href="layout-grid.html">
+                            <span class="menu-left__icon">G</span>
+                            Grid
+                        </a>
+                    </li>
+                    <li  class="menu-left__item">
+                        <a href="layout-cards.html">
+                            <span class="menu-left__icon">PC</span>
+                            Cards / Panels
+                        </a>
+                    </li>
+                    <li  class="menu-left__item">
+                        <a href="layout-sidebars.html">
+                            <span class="menu-left__icon">SB</span>
+                            Sidebars
+                        </a>
+                    </li>
+                    <li  class="menu-left__item">
+                        <a href="layout-utilities.html">
+                            <span class="menu-left__icon">U</span>
+                            Utilities
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="menu-left__item menu-left__submenu">
+                <a href="javascript: void(0);">
+                    <span class="menu-left__icon icmn-star-full"></span>
+                    Icons
+                </a>
+                <ul class="menu-left__list">
+                    <li  class="menu-left__item">
+                        <a href="icons-fontawesome.html">
+                            <span class="menu-left__icon">FA</span>
+                            FontAwesome
+                        </a>
+                    </li>
+                    <li  class="menu-left__item">
+                        <a href="icons-linear-icons-free.html">
+                            <span class="menu-left__icon">LI</span>
+                            Linearicons Free
+                        </a>
+                    </li>
+                    <li  class="menu-left__item">
+                        <a href="icons-icomoon-free.html">
+                            <span class="menu-left__icon">IC</span>
+                            Icomoon Free
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li  class="menu-left__item">
+                <a href="layout-typography.html">
+                    <span class="menu-left__icon icmn-font-size"></span>
+                    Typography
+                </a>
+            </li>
+            <li class="menu-left__divider"><!-- --></li>
+            <li  class="menu-left__item menu-left__item--disabled">
+                <a href="javascript: void(0);">
+                    <span class="menu-left__icon">D</span>
+                    Disabled Item
+                </a>
+            </li>
+            <li class="menu-left__item menu-left__submenu">
+                <a href="javascript: void(0);">
+                    <span class="menu-left__icon">IN</span>
+                    Infinity Nested
+                </a>
+                <!-- level 1 -->
+                <ul class="menu-left__list">
+                    <li class="menu-left__item menu-left__submenu">
+                        <a href="javascript: void(0);">
+                            Level 1
+                        </a>
+                        <!-- level 2 -->
+                        <ul class="menu-left__list">
+                            <li class="menu-left__item menu-left__submenu">
+                                <a href="javascript: void(0);">
+                                    Level 1.2
+                                </a>
+                                <!-- level 3 -->
+                                <ul class="menu-left__list">
+                                    <li  class="menu-left__item">
+                                        <a href="javascript: void(0);">
+                                            Level 1.2.3
+                                        </a>
+                                    </li>
+                                    <li class="menu-left__item menu-left__submenu">
+                                        <a href="javascript: void(0);">
+                                            Level 1.2.3
+                                        </a>
+                                        <!-- level 4 -->
+                                        <ul class="menu-left__list">
+                                            <li  class="menu-left__item">
+                                                <a href="javascript: void(0);">
+                                                    Level 1.2.3.4
+                                                </a>
+                                            </li>
+                                        </ul>
+
+                                    </li>
+                                </ul>
+                            </li>
+                            <li  class="menu-left__item">
+                                <a href="javascript: void(0);">
+                                    Level 1.2
+                                </a>
+                            </li>
+                            <li  class="menu-left__item">
+                                <a href="javascript: void(0);">
+                                    Level 1.2
+                                </a>
+                            </li>
+                            <li  class="menu-left__item">
+                                <a href="javascript: void(0);">
+                                    Level 1.2
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li  class="menu-left__item">
+                        <a href="javascript: void(0);">
+                            Level 1
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="menu-left__divider"><!-- --></li>
+            <li class="menu-left__item">
+                <a href="javascript: void(0);">
+                    <span class="utils__donut utils__donut--success"></span>
+                    Jupiter
+                </a>
+            </li>
+            <li class="menu-left__item">
+                <a href="javascript: void(0);">
+                    <span class="utils__donut utils__donut--primary"></span>
+                    Earth
+                </a>
+            </li>
+            <li class="menu-left__item">
+                <a href="javascript: void(0);">
+                    <span class="utils__donut utils__donut--danger"></span>
+                    Mercury
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="top-bar">
+  <!-- left aligned items -->
+  <div class="top-bar__left">
+    <div class="top-bar__logo">
+      <a href="dashboards-alpha.html">
+        <img src="../../components/dummy-assets/common/img/logo.png" alt="" />
+      </a>
+    </div>
+    <div class="top-bar__item d-none d-md-block">
+      <div class="dropdown">
+        <a href="javascript: void(0);" class="dropdown-toggle text-nowrap" data-toggle="dropdown" aria-expanded="false">
+          <i class="icmn-folder-open mr-2"></i>
+          <span class="d-none d-xl-inline-block"><strong>Issues History</strong></span>
+        </a>
+        <div class="dropdown-menu" role="menu">
+          <a class="dropdown-item" href="javascript:void(0)">Current search</a>
+          <a class="dropdown-item" href="javascript:void(0)">Search for issues</a>
+          <div class="dropdown-divider"></div>
+          <div class="dropdown-header">Opened</div>
+          <a class="dropdown-item" href="javascript:void(0)"><i class="dropdown-icon icmn-checkmark"></i> CLNUI-253
+            Project implemen...</a>
+          <a class="dropdown-item" href="javascript:void(0)"><i class="dropdown-icon icmn-checkmark"></i> CLNUI-234
+            Active history iss...</a>
+          <a class="dropdown-item" href="javascript:void(0)"><i class="dropdown-icon icmn-clock"></i> CLNUI-424 Ionicons
+            intergrat...</a>
+          <a class="dropdown-item" href="javascript:void(0)">More...</a>
+          <div class="dropdown-divider"></div>
+          <div class="dropdown-header">Filters</div>
+          <a class="dropdown-item" href="javascript:void(0)">My open issues</a>
+          <a class="dropdown-item" href="javascript:void(0)">Reported by me</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="javascript:void(0)">Import issues from CSV</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="javascript:void(0)"><i class="dropdown-icon icmn-cog"></i> Settings</a>
+        </div>
+      </div>
+    </div>
+    <div class="top-bar__item d-none d-md-block">
+      <div class="dropdown">
+        <a href="javascript: void(0);" class="dropdown-toggle text-nowrap" data-toggle="dropdown" aria-expanded="false">
+          <i class="icmn-database mr-2"></i>
+          <span class="d-none d-xl-inline-block"><strong>Project Management</strong></span>
+        </a>
+        <div class="dropdown-menu" role="menu">
+          <div class="dropdown-header">Active</div>
+          <a class="dropdown-item" href="javascript:void(0)">Project Management</a>
+          <a class="dropdown-item" href="javascript:void(0)">User Inetrface Development</a>
+          <a class="dropdown-item" href="javascript:void(0)">Documentation</a>
+          <div class="dropdown-header">Inactive</div>
+          <a class="dropdown-item" href="javascript:void(0)">Marketing</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="javascript:void(0)"><i class="dropdown-icon icmn-cog"></i> Settings</a>
+        </div>
+      </div>
+    </div>
+    <div class="top-bar__item d-none d-xl-inline-block">
+      <div class="top-bar__search">
+        <i class="icmn-search"><!-- --></i>
+        <input type="text" placeholder="Type to search..."/>
+      </div>
+    </div>
+  </div>
+  <!-- right aligned items -->
+  <div class="top-bar__right">
+    <div class="top-bar__item d-none d-md-block">
+      <a
+        href="https://themeforest.net/item/clean-ui-admin-template-modular-trendy-design-modules-market-bem-angular-2-visual-builder/19597589?s_rank=4&ref=mediatec_software"
+        target="_blank"
+        class="btn btn-sm btn-outline-danger">Buy Now 24$</a>
+    </div>
+    <div class="top-bar__item top-bar__item--hiddenOn1300">
+      <div class="top-bar__mini-chart text-nowrap">
+        Server Load:
+        <div class="top-bar__mini-chart__inner">
+          <i style="height: 30%;"></i>
+          <i style="height: 78%;"></i>
+          <i style="height: 10%;"></i>
+          <i style="height: 46%;"></i>
+          <i style="height: 26%;"></i>
+          <i style="height: 29%;"></i>
+          <i style="height: 50%;"></i>
+          <i style="height: 89%;"></i>
+          <i style="height: 30%;"></i>
+        </div>
+        20%
+      </div>
+    </div>
+    <div class="top-bar__item d-none d-md-block">
+      <div class="dropdown">
+        <a href="javascript: void(0);" class="dropdown-toggle text-nowrap" data-toggle="dropdown" aria-expanded="false">
+          <i class="menu-notification-icon icmn-home"></i>
+        </a>
+        <div class="dropdown-menu dropdown-menu-right" role="menu">
+
+          <div class="top-bar__activity">
+            <div class="top-bar__activity__item">
+              <i class="top-bar__activity__icon icmn-star-full"></i>
+              <div class="top-bar__activity__inner">
+                <div class="top-bar__activity__title">
+                  <span class="pull-right">now</span>
+                  <a href="javascript: void(0);">Update Status: <span class="badge badge-danger">New</span></a>
+                </div>
+                <div class="top-bar__activity__descr">
+                  Failed to get available update data. To ensure the proper functioning of your application, update now.
+                </div>
+              </div>
+            </div>
+            <div class="top-bar__activity__item">
+              <i class="top-bar__activity__icon icmn-stack"></i>
+              <div class="top-bar__activity__inner">
+                <div class="top-bar__activity__title">
+                  <span class="pull-right">24 min ago</span>
+                  <a href="javascript: void(0);">Income: <span class="badge badge-default">$299.00</span></a>
+                </div>
+                <div class="top-bar__activity__descr">
+                  Failed to get available update data. To ensure the proper functioning of your application, update now.
+                </div>
+              </div>
+            </div>
+            <div class="top-bar__activity__item">
+              <i class="top-bar__activity__icon icmn-list"></i>
+              <div class="top-bar__activity__inner">
+                <div class="top-bar__activity__title">
+                  <span class="pull-right">30 min ago</span>
+                  <a href="javascript: void(0);">Inbox Message</a>
+                </div>
+                <div class="top-bar__activity__descr">
+                  From: <a href="javascript: void(0);">David Bowie</a>
+                </div>
+              </div>
+            </div>
+            <div class="top-bar__activity__item">
+              <i class="top-bar__activity__icon icmn-home"></i>
+              <div class="top-bar__activity__inner">
+                <div class="top-bar__activity__title">
+                  <span class="pull-right">now</span>
+                  <a href="javascript: void(0);">Update Status: <span class="badge badge-primary">New</span></a>
+                </div>
+                <div class="top-bar__activity__descr">
+                  Failed to get available update data. To ensure the proper functioning of your application, update now.
+                </div>
+              </div>
+            </div>
+            <div class="top-bar__activity__item">
+              <i class="top-bar__activity__icon icmn-loop"></i>
+              <div class="top-bar__activity__inner">
+                <div class="top-bar__activity__title">
+                  <span class="pull-right">24 min ago</span>
+                  <a href="javascript: void(0);">Income: <span class="badge badge-warning">$299.00</span></a>
+                </div>
+                <div class="top-bar__activity__descr">
+                  Failed to get available update data. To ensure the proper functioning of your application, update now.
+                </div>
+              </div>
+            </div>
+            <div class="top-bar__activity__item">
+              <i class="top-bar__activity__icon icmn-cog utils__spin-delayed--pseudo-selector"></i>
+              <div class="top-bar__activity__inner">
+                <div class="top-bar__activity__title">
+                  <span class="pull-right">30 min ago</span>
+                  <a href="javascript: void(0);">Inbox Message</a>
+                </div>
+                <div class="top-bar__activity__descr">
+                  From: <a href="javascript: void(0);">David Bowie</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="top-bar__item">
+      <div class="dropdown top-bar__avatar-dropdown">
+        <a href="javascript: void(0);" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+            <span class="top-bar__avatar">
+                <img src="../../components/dummy-assets/common/img/avatars/1.jpg" alt="" />
+            </span>
+        </a>
+        <div class="dropdown-menu dropdown-menu-right" role="menu">
+          <a class="dropdown-item" href="javascript:void(0)"><i class="dropdown-icon icmn-user"></i> Profile</a>
+          <div class="dropdown-divider"></div>
+          <div class="dropdown-header">Home</div>
+          <a class="dropdown-item" href="javascript:void(0)"><i class="dropdown-icon icmn-circle-right"></i> System
+            Dashboard</a>
+          <a class="dropdown-item" href="javascript:void(0)"><i class="dropdown-icon icmn-circle-right"></i> User Boards</a>
+          <a class="dropdown-item" href="javascript:void(0)"><i class="dropdown-icon icmn-circle-right"></i> Issue
+            Navigator (35 New)</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="javascript:void(0)"><i class="dropdown-icon icmn-exit"></i> Logout</a>
+        </div>
+      </div>
+    </div>
+    <div class="top-bar__item">
+      <div class="top-bar__menu-button menu-right__action--menu-toggle">
+        <i class="fa fa-bars"><!-- --></i>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="utils__content">
+<!-- START: dashboard gamma -->
+<nav class="utils__top-sidebar utils__top-sidebar--bg">
+    <div class="pull-right">
+        <a href="javascript: void(0);" class="btn btn-sm btn-outline-default ladda-button">
+            Update
+            <span class="hidden-sm-down"> Dashboard</span>
+        </a>
+    </div>
+    <span class="font-size-18 d-block mb-2">
+        <span class="text-muted">Home ·</span>
+        <strong>Dashboard Gamma</strong>
+    </span>
+</nav>
+<div class="row">
+    <div class="col-xl-12">
+        <div class="utils__title utils__title--flat mb-3">
+            <span class="text-uppercase font-size-16">Progress Information</span>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="progressCard card">
+                    <div class="card-body">
+                        <div class="progressCard__head">
+                            <div class="porgressCard__name">
+                                <h2 class="progressCard__title">Total Profit</h2>
+                                <p class="progressCard__note">Profit</p>
+                            </div>
+                            <div class="progressCard__value text-primary">
+                                <span class="progressCard__valueText">$18M</span>
+                            </div>
+                        </div>
+                        <div class="progressCard__line progress">
+                            <div class="progress-bar" role="progressbar" style="width: 78%" aria-valuenow="78"
+                                 aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                        <div class="progressCard__lineDescr">
+                            <span class="progressCard__lineDescrTitle">Change</span>
+                            <span class="progressCard__lineValue">78%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="progressCard card">
+                    <div class="card-body">
+                        <div class="progressCard__head">
+                            <div class="porgressCard__name">
+                                <h2 class="progressCard__title">Feedbacks</h2>
+                                <p class="progressCard__note">Customer review</p>
+                            </div>
+                            <div class="progressCard__value text-success">
+                                <span class="progressCard__valueText">134</span>
+                            </div>
+                        </div>
+                        <div class="progressCard__line progress">
+                            <div class="progress-bar bg-success" role="progressbar" style="width: 89%"
+                                 aria-valuenow="89" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                        <div class="progressCard__lineDescr">
+                            <span class="progressCard__lineDescrTitle">Change</span>
+                            <span class="progressCard__lineValue">89%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="progressCard card">
+                    <div class="card-body">
+                        <div class="progressCard__head">
+                            <div class="porgressCard__name">
+                                <h2 class="progressCard__title">New Orders</h2>
+                                <p class="progressCard__note">Orders progress</p>
+                            </div>
+                            <div class="progressCard__value text-danger">
+                                <span class="progressCard__valueText">160</span>
+                            </div>
+                        </div>
+                        <div class="progressCard__line progress">
+                            <div class="progress-bar bg-danger" role="progressbar" style="width: 55%" aria-valuenow="55"
+                                 aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                        <div class="progressCard__lineDescr">
+                            <span class="progressCard__lineDescrTitle">Change</span>
+                            <span class="progressCard__lineValue">55%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="progressCard card">
+                    <div class="card-body">
+                        <div class="progressCard__head">
+                            <div class="porgressCard__name">
+                                <h2 class="progressCard__title">New Users</h2>
+                                <p class="progressCard__note">Joined Users</p>
+                            </div>
+                            <div class="progressCard__value text-default">
+                                <span class="progressCard__valueText">382</span>
+                            </div>
+                        </div>
+                        <div class="progressCard__line progress">
+                            <div class="progress-bar bg-default" role="progressbar" style="width: 77%"
+                                 aria-valuenow="77" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                        <div class="progressCard__lineDescr">
+                            <span class="progressCard__lineDescrTitle">Change</span>
+                            <span class="progressCard__lineValue">77%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xl-4">
+        <div class="card card--fullHeight">
+            <div class="card-header">
+                <div class="utils__title utils__title--flat">
+                    <span class="text-uppercase font-size-16">New Users</span>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="shortItemInfo">
+                    <div class="shortItemInfo__img">
+                        <img src="../../components/dummy-assets/common/img/avatars/5.jpg"
+                             alt="Alternative text to the image"/>
+                    </div>
+                    <div class="shortItemInfo__description">
+                        <h2 class="shortItemInfo__name">Anna Strong</h2>
+                        <p class="shortItemInfo__note">Visual Designer, Google Inc</p>
+                    </div>
+                    <div class="shortItemInfo__actionData">
+                        <a href="javascript: void(0);" class="btn btn-sm btn-outline-default">Follow</a>
+                    </div>
+                </div>
+                <div class="shortItemInfo">
+                    <div class="shortItemInfo__img">
+                        <img src="../../components/dummy-assets/common/img/avatars/1.jpg"
+                             alt="Alternative text to the image"/>
+                    </div>
+                    <div class="shortItemInfo__description">
+                        <h2 class="shortItemInfo__name">William Vargas</h2>
+                        <p class="shortItemInfo__note">Visual Designer, Mediatec</p>
+                    </div>
+                    <div class="shortItemInfo__actionData">
+                        <a href="javascript: void(0);" class="btn btn-sm btn-outline-default">Follow</a>
+                    </div>
+                </div>
+                <div class="shortItemInfo">
+                    <div class="shortItemInfo__img">
+                        <img src="../../components/dummy-assets/common/img/avatars/4.jpg"
+                             alt="Alternative text to the image"/>
+                    </div>
+                    <div class="shortItemInfo__description">
+                        <h2 class="shortItemInfo__name">John Faries</h2>
+                        <p class="shortItemInfo__note">Project Manager, Google Inc</p>
+                    </div>
+                    <div class="shortItemInfo__actionData">
+                        <a href="javascript: void(0);" class="btn btn-sm btn-outline-default">Follow</a>
+                    </div>
+                </div>
+                <div class="shortItemInfo">
+                    <div class="shortItemInfo__img">
+                        <img src="../../components/dummy-assets/common/img/avatars/2.jpg"
+                             alt="Alternative text to the image"/>
+                    </div>
+                    <div class="shortItemInfo__description">
+                        <h2 class="shortItemInfo__name">Dana Porter</h2>
+                        <p class="shortItemInfo__note">Developer, Twitter Inc</p>
+                    </div>
+                    <div class="shortItemInfo__actionData">
+                        <a href="javascript: void(0);" class="btn btn-sm btn-outline-default">Follow</a>
+                    </div>
+                </div>
+                <div class="shortItemInfo">
+                    <div class="shortItemInfo__img">
+                        <img src="../../components/dummy-assets/common/img/avatars/3.jpg"
+                             alt="Alternative text to the image"/>
+                    </div>
+                    <div class="shortItemInfo__description">
+                        <h2 class="shortItemInfo__name">Cesara Lawson</h2>
+                        <p class="shortItemInfo__note">Developer, Facebook Inc</p>
+                    </div>
+                    <div class="shortItemInfo__actionData">
+                        <a href="javascript: void(0);" class="btn btn-sm btn-outline-default">Follow</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-4">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="graphCard card">
+                    <div class="card-header">
+                        <div class="utils__title utils__title--flat mb-3">
+                            <span class="text-uppercase font-size-16">Inbound Bandwidth</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <span class="graphCard__lonelyValue text-primary">
+                            246
+                        </span>
+                    </div>
+                    <div class="graphCard__chartist graphCard__chartist--primary">
+                        <div class="graphCard__chartistArea-1 chartist"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-12">
+                <div class="graphCard card">
+                    <div class="card-header">
+                        <div class="utils__title utils__title--flat mb-3">
+                            <span class="text-uppercase font-size-16">Outbound Bandwidth</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <span class="graphCard__lonelyValue text-success">
+                            52
+                        </span>
+                    </div>
+                    <div class="graphCard__chartist graphCard__chartist--success">
+                        <div class="graphCard__chartistArea-2 chartist"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-4">
+        <div class="card graphCard card--fullHeight">
+            <div class="card-header">
+                <div class="utils__title utils__title--flat">
+                    <span class="text-uppercase font-size-16">Top photos</span>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="shortItemInfo">
+                    <div class="shortItemInfo__img">
+                        <img src="../../components/dummy-assets/common/img/photos/1.jpeg"
+                             alt="Alternative text to the image"/>
+                    </div>
+                    <div class="shortItemInfo__description">
+                        <h2 class="shortItemInfo__name">Serene mountains</h2>
+                        <p class="shortItemInfo__note">Author: Anna Strong</p>
+                    </div>
+                    <div class="shortItemInfo__actionData">
+                        <span class="text-danger">+1000$</span>
+                    </div>
+                </div>
+                <div class="shortItemInfo">
+                    <div class="shortItemInfo__img">
+                        <img src="../../components/dummy-assets/common/img/photos/2.jpeg"
+                             alt="Alternative text to the image"/>
+                    </div>
+                    <div class="shortItemInfo__description">
+                        <h2 class="shortItemInfo__name">The beauty of the lilies</h2>
+                        <p class="shortItemInfo__note">Author: William Vargas</p>
+                    </div>
+                    <div class="shortItemInfo__actionData">
+                        <span class="text-warning">+7500</span>
+                    </div>
+                </div>
+                <div class="shortItemInfo">
+                    <div class="shortItemInfo__img">
+                        <img src="../../components/dummy-assets/common/img/photos/3.jpeg"
+                             alt="Alternative text to the image"/>
+                    </div>
+                    <div class="shortItemInfo__description">
+                        <h2 class="shortItemInfo__name">At full power</h2>
+                        <p class="shortItemInfo__note">Author: John Faries</p>
+                    </div>
+                    <div class="shortItemInfo__actionData">
+                        <span class="text-default">+500$</span>
+                    </div>
+                </div>
+            </div>
+            <div class="graphCard__chartist graphCard__chartist--danger">
+                <div class="graphCard__chartistArea-3 chartist"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-6">
+        <div class="card card--fullHeight">
+            <div class="card-header">
+                <div class="utils__title utils__title--flat">
+                    <span class="text-uppercase font-size-16">Support Cases</span>
+                </div>
+            </div>
+            <div class="card-body graphCard">
+                <div class="row">
+                    <div class="col-xl-6">
+                        <table class="table graphCard__table">
+                            <thead>
+                            <tr>
+                                <th>Type</th>
+                                <th class="font-weight-bold text-right">Amount</th>
+                            </tr>
+                            </thead>
+                            <tr>
+                                <td>EPS</td>
+                                <td class="text-primary font-weight-bold text-right">+12,42%</td>
+                            </tr>
+                            <tr>
+                                <td>PDO</td>
+                                <td class="text-primary font-weight-bold text-right">21,700</td>
+                            </tr>
+                            <tr>
+                                <td>OPL Status</td>
+                                <td class="text-danger font-weight-bold text-right">Negative</td>
+                            </tr>
+                            <tr>
+                                <td>Priority</td>
+                                <td class="text-primary font-weight-bold text-right">+235,200</td>
+                            </tr>
+                            <tr>
+                                <td>Net Prifit</td>
+                                <td class="text-primary font-weight-bold text-right">$19,235,516</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="col-xl-6">
+                        <div class="graphCard__donutChartist graphCard__donutChartist--example h-100 graphCard__donutChartist--widthCenterData graphCard__chartist--centered">
+                            <div class="graphCard__donutChartistArea-1 ct-chart-pie mb-3"></div>
+                            <div class="graphCard__donuts text-center">
+                            <span class="text-nowrap mr-2 mb-2">
+                                <span class="utils__donut utils__donut--success"></span>
+                                Ready
+                            </span>
+                                <span class="text-nowrap mr-2 mb-2">
+                                <span class="utils__donut utils__donut--primary"></span>
+                                In progress
+                            </span>
+                                <span class="text-nowrap mr-2 mb-2">
+                                <span class="utils__donut utils__donut--danger"></span>
+                                Defected
+                            </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="card card--fullHeight">
+            <div class="card-header">
+                <div class="utils__title utils__title--flat">
+                    <span class="text-uppercase font-size-16">Finance Stats</span>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="shortItemInfo shortItemInfo--large">
+                    <div class="shortItemInfo__description">
+                        <h2 class="shortItemInfo__name">IPO Margin</h2>
+                        <p class="shortItemInfo__note">Awerage IPO Margin</p>
+                    </div>
+                    <div class="shortItemInfo__actionData">
+                        <span class="text-success">+36%</span>
+                    </div>
+                </div>
+                <div class="shortItemInfo shortItemInfo--large">
+                    <div class="shortItemInfo__description">
+                        <h2 class="shortItemInfo__name">Payments</h2>
+                        <p class="shortItemInfo__note">Yearly Expenses</p>
+                    </div>
+                    <div class="shortItemInfo__actionData">
+                        <span class="text-danger">-235$</span>
+                    </div>
+                </div>
+                <div class="shortItemInfo shortItemInfo--large">
+                    <div class="shortItemInfo__description">
+                        <h2 class="shortItemInfo__name">Logistics</h2>
+                        <p class="shortItemInfo__note">Overall Regional Logistics</p>
+                    </div>
+                    <div class="shortItemInfo__actionData">
+                        <span class="text-warning">+37%</span>
+                    </div>
+                </div>
+                <div class="shortItemInfo shortItemInfo--large">
+                    <div class="shortItemInfo__description">
+                        <h2 class="shortItemInfo__name">Expenses</h2>
+                        <p class="shortItemInfo__note">Balance</p>
+                    </div>
+                    <div class="shortItemInfo__actionData">
+                        <span class="text-primary">+1623$</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END: dashboard gamma -->
+
+<!-- START: page scripts -->
+<script>
+  (function($) {
+    "use strict";
+    var chart = new Chartist.Pie('.graphCard__donutChartistArea-1', {
+      labels: ["Ready", "In Progress", "Defected"],
+      series: [90, 35, 18]
+    }, {
+      donut: true,
+      donutWidth: 25,
+      labelInterpolationFnc: function (value, index) {
+        var total = chart.data.series.reduce(function (pv, cv) {
+          return pv + cv;
+        }, 0);
+        return Math.round(chart.data.series[index] / total * 100) + "%"
+      }
+    });
+    chart.on('draw', function (ctx) {
+      if (ctx.type === 'label') {
+        ctx.element.addClass("ct-label-pie");
+        ctx.element.attr({
+          dx: ctx.element.root().width() / 2,
+          dy: ctx.element.root().height() / 2,
+          "id": "ct-label-pie-" + ctx.index
+        });
+      } else if (ctx.type === 'slice') {
+        ctx.element.attr({
+          'id': "ct-slice-pie-" + ctx.index
+        });
+
+      }
+    });
+
+    $(document).on('mouseenter', '.ct-slice-donut', function () {
+      $(this).css({
+        'opacity': '0.8'
+      });
+      var index = $(this).attr('id').slice(-1);
+      $(".ct-label-pie").css({
+        'display': 'none'
+      });
+      $("#ct-label-pie-" + index).css({
+        'display': 'block'
+      });
+    });
+
+    $(document).on('mouseleave', '.ct-slice-donut', function () {
+      $(this).css({
+        'opacity': '1'
+      });
+    });
+
+
+    new Chartist.Line(".graphCard__chartistArea-1", {
+      series: [
+        [232, 111, 138, 144, 118, 210, 236]
+      ]
+    }, {
+
+      lineSmooth: Chartist.Interpolation.none({
+        fillHoles: false
+      }),
+      height: "150px",
+
+      showPoint: true,
+      showLine: true,
+      showArea: true,
+      fullWidth: true,
+      showLabel: false,
+      axisX: {
+        showGrid: false,
+        showLabel: false,
+        offset: 0
+      },
+      axisY: {
+        showGrid: false,
+        showLabel: false,
+        offset: 0
+      },
+      chartPadding: 0,
+      low: 0,
+      plugins: [
+        Chartist.plugins.tooltip()
+      ]
+    });
+
+    new Chartist.Line(".graphCard__chartistArea-2", {
+      series: [
+        [3, 14, 37, 26, 48, 8, 63, 21, 24, 52]
+      ]
+    }, {
+
+      lineSmooth: Chartist.Interpolation.none({
+        fillHoles: false
+      }),
+      height: "150px",
+
+      showPoint: true,
+      showLine: true,
+      showArea: true,
+      fullWidth: true,
+      showLabel: false,
+      axisX: {
+        showGrid: false,
+        showLabel: false,
+        offset: 0
+      },
+      axisY: {
+        showGrid: false,
+        showLabel: false,
+        offset: 0
+      },
+      chartPadding: 0,
+      low: 0,
+      plugins: [
+        Chartist.plugins.tooltip()
+      ]
+    });
+    new Chartist.Line(".graphCard__chartistArea-3", {
+      series: [
+        [51, 8, 50, 45, 95, 90, 43, 13, 37, 52]
+      ]
+    }, {
+
+      height: "250px",
+
+      showPoint: true,
+      showLine: true,
+      showArea: true,
+      fullWidth: true,
+      showLabel: false,
+      axisX: {
+        showGrid: false,
+        showLabel: false,
+        offset: 0
+      },
+      axisY: {
+        showGrid: false,
+        showLabel: false,
+        offset: 0
+      },
+      chartPadding: 0,
+      low: 0,
+      plugins: [
+        Chartist.plugins.tooltip()
+      ]
+    });
+  })(jQuery)
+</script>
+<!-- END: page scripts -->
+<div class="footer">
+  <div class="footer__top">
+    <div class="row">
+      <div class="col-lg-9 mb-3">
+        <div class="mb-3">
+          <strong>Clean UI HTML - HTML Bootstrap Admin Template - Best Solution for Your App!</strong>
+        </div>
+        <div class="footer__description">
+          <p>Clean UI HTML – a modern professional admin template, based on Bootstrap 4
+            framework. Clean UI HTML is a powerful and super flexible tool, which suits best for any
+            kind of web application: Web Applications; CRM; CMS; Admin Panels; Dashboards; etc.
+            Clean UI HTML is fully responsive, which means that it looks perfect on mobiles and
+            tablets</p>
+
+          <p>Clean UI HTML is fully based on SASS pre-processor, includes 50+ commented SASS files.
+            Each file corresponds to a single component, layout, page, plugin or extension –
+            so you can easily find necessary piece of code and edit it for your needs.
+            The package includes both normal and minified CSS files, compiled from SASS</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer__bottom">
+    <div class="row">
+      <div class="col-md-4">
+        <a
+          href="https://themeforest.net/item/clean-ui-admin-template-modular-trendy-design-modules-market-bem-angular-2-visual-builder/19597589?s_rank=4&ref=mediatec_software"
+          target="_blank"
+          class="btn btn-primary btn-sm">
+          Buy Now 24$
+        </a>
+      </div>
+      <div class="col-md-8">
+        <div class="footer__company">
+          <img class="footer__company-logo" src="../../components/dummy-assets/common/img/mediatec.png"
+               title="Mediatec Software">
+          <span>
+            © 2018 <a href="http://mediatec.org/" target="_blank">Mediatec Software</a>
+            <br>
+            All rights reserved
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <a href="javascript: void(0);" class="utils__scroll-top" onclick="$('body, html').animate({'scrollTop': 0}, 500)"><i
+    class="icmn-arrow-up"></i></a>
+</div>
+</div>
+</body>
+</html>

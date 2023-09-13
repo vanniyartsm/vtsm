@@ -1,0 +1,58 @@
+
+<div class="utils__content">
+    <!-- START: pages/login-beta -->
+    <div class="login">
+        
+        <div class="login__block login__block--extended">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="login__block__inner">
+                        <div class="login__block__form">
+                            <a href="/"><img src="/site/assets/images/logo.png" width="120" height="45"></a>
+                            <h4 class="text-uppercase">
+                                <strong>Forgot Password</strong>
+                            </h4>
+                            <br />
+                            <%- include('../common/message') %>
+                            <form method="post" action="/web/auth/forgot" id="login-form">
+                                <div class="form-group">
+                                    <label class="form-label">Email Address</label>
+                                    <input id="email-address"
+                                           class="form-control"
+                                           placeholder="Email Address"
+                                           name="emailAddress"
+                                           type="email"
+                                           maxlength="50" required>
+                                </div>
+                                <div class="form-actions">
+                                    <button type="submit" class="btn btn-primary mr-3" data-destination=".site-wrapper">Forgot Password</button>
+                                    <span class="register-link">
+                                        <a href="/web/auth/login"class="pull-right utils__link--blue utils__link--underlined">Login</a>
+                                    </span>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="login__block__sidebar">
+                            <h4 class="login__block__sidebar__title">
+                                <strong>Quberos</strong>
+                            </h4>
+                            <div class="login__block__sidebar__item">
+                                Quberos is one of the most transformative technologies since the invention of the Internet. Quberos stands firmly in support of financial freedom and the liberty that Bitcoin provides globally for anyone to voluntarily participate in a permissionless and decentralized network.
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="login__footer text-center">
+            <ul class="list-unstyled list-inline">
+                
+            </ul>
+        </div>
+    </div>
+    <!-- END: pages/login-beta -->
+    
+    </div>
+    
+    

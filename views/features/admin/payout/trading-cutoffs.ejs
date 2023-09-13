@@ -1,0 +1,77 @@
+<% 
+var DATE_FORMAT = 'YYYY-MM-DD hh:mm:ss A'
+var moment = moment; %>
+<div class="utils__content">
+    <!-- START: components/mail-templates -->
+    <section class="card">
+        <div class="card-header">
+            <span class="utils__title">
+                <strong>Trading Cutoffs</strong>
+            </span>
+        </div>
+        <div class="card-header">
+            <div class="pull-right mt-2">
+                <span class="mr-3">
+            &nbsp;							
+                </span>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-xl-12">
+                   <!-- Left Tables -->
+                          <div class="tab-pane show active" id="b1">
+                              <div class="cui-ecommerce-dashboard-info">
+                                  <div class="cui-ecommerce-dashboard-info-block">
+                                      <div id="users" class="dataTables_wrapper dt-bootstrap4">
+                                          <div class="row">
+                                              <div class="col-sm-12">
+                                                  <table class="table table-hover nowrap dataTable dtr-inline"
+                                                      id="usersTbl" role="grid"
+                                                      aria-describedby="users">
+                                                      <thead class="thead-default">
+                                                          <tr role="row">
+                                                              <th>S. No.</th>
+                                                              <th>Id</th>
+                                                              <th>Date</th>
+                                                              <th>Time Taken</th>
+                                                              <th>PAYOUTS</th>
+                                                          </tr>
+                                                      </thead>
+                                                      <tbody>
+                                                          <% 
+                                                          if (tradingCutoffs) {
+                                                          for(var i=0; i < tradingCutoffs.length; i++) {
+                                                            var binaryCutoff = tradingCutoffs[i];
+                                                        %>
+
+                                                          <tr role="row" class="odd">
+                                                              <td tabindex="0" class="sorting_1"><%= (i + 1) %></td>
+                                                              <td><%= binaryCutoff._id %></td>
+                                                              <td><%= binaryCutoff.cutoffTo %></td>
+                                                              <td><%= binaryCutoff.timeTaken %></td>
+                                                              <td><a href="javascript: void(0);"
+                                                                data-url="/web/admin/payouts/cutoff/<%= binaryCutoff._id %>"
+                                                                data-title="Payout Details" data-method="GET"
+                                                                class="link-underlined side-panel-trigger slide-btn text-success">PAYOUT</a>
+                                                              </td>
+                                                          </tr>
+                                                          <% } 
+                                                        }%>
+                                                      </tbody>
+                                                  </table>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                  </div>
+
+                </div>
+            </div>
+            
+            
+        </div>
+    </section>
+   
+    </div>

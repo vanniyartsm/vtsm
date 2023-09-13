@@ -1,0 +1,231 @@
+<%  var DATE_FORMAT = 'YYYY-MM-DD hh:mm:ss A' 
+    var requestedWithdraw = result.requestedWithdraw;
+
+    var cashWalletAvailable = 0;
+    if (result.cashWallet) {
+        cashWalletAvailable = result.cashWallet.available;
+    }
+    var lotWalletAvailable = 0;
+
+    if (result.lotWallet) {
+        lotWalletAvailable = result.lotWallet.available
+    }
+
+    if (requestedWithdraw) {
+        if (result.cashWallet && (result.cashWallet._id.toString() == requestedWithdraw.wallet._id.toString())) {
+            cashWalletAvailable = (cashWalletAvailable - requestedWithdraw.points);
+        }
+
+        if (result.lotWallet && (result.lotWallet._id.toString() == requestedWithdraw.wallet._id.toString())) {
+            lotWalletAvailable = (lotWalletAvailable - requestedWithdraw.points);
+        }
+    }
+%>
+<div class="utils__content">
+        <!-- START: components/mail-templates -->
+        <section class="card">
+            <div class="card-header">
+                <span class="utils__title">
+                    <strong>Withdraw Transactions</strong>
+                </span>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-xl-7 col-lg-12">
+                            <%- include('../common/message') %>
+                            <form id="withdraw-wallet-form" class="form form-horizontal form-bordered bb-form"
+							data-url="/web/wallet/internal/transfer" data-title="Deposit Bitcoin"
+							data-method="POST" data-form="true" name="buy-elc-form" data-message="true">
+						<div class="form-body">
+							<input type="hidden" id="btcFinalBalance" name="btcFinalBalance"/>
+                            <input type="hidden" id="hash" name="hash"/>
+                            <input type="hidden" id="userStatus" name="userStatus" value="<%= user.status %>"/>
+                            <input type="hidden" id="requestedWithdraw" name="requestedWithdraw" value="<%= (requestedWithdraw) ? "true" : "false" %>"/>
+
+							<div class="row">
+								<div class="col-md-10 col-xs-12">
+                                    <div class="userCard px-3 py-3">
+                                        <div class="utils__title utils__title--flat mb-3">
+                                            <strong>Withdraw Points from Cash or Lot Wallet</strong>
+                                        </div>
+                                        <input type="hidden" id="walletId" value="<%= result._id %>" />
+                                        <input type="hidden" class="form-control required" id="availablePoints" name="availablePoints" value="<%= result.available %>">
+                                            <div class="form-group row">
+                                                <label class="col-md-4 col-form-label" for="l0">Wallets</label>
+                                                <div class="col-md-8">
+                                                    <% if (result && ((cashWalletAvailable > 0) || (lotWalletAvailable > 0))) { %>
+                                                        <select class="form-control" id="withdraw-wallet-from" name="walletFrom">
+                                                            <% if (cashWalletAvailable > 0) { %>
+                                                                <option value="5a3c8bf65a12076ff0cc0003" data-available="<%= cashWalletAvailable %>">Cash Wallet - $<%= cashWalletAvailable %></option>
+                                                            <% } %>
+
+                                                            <% if (lotWalletAvailable > 0) { %>
+                                                                <option value="5a6c8bf65a12076ff0cc0006" data-available="<%= lotWalletAvailable %>">Lot Wallet - $<%= lotWalletAvailable %></option>
+                                                            <% } %>
+                                                        </select>
+                                                    <% } else { %>
+                                                        <label class="col-form-label">No points earned yet</label>
+                                                    <% } %>
+                                                </div>
+                                            </div>
+
+                                        <div class="form-group row">
+                                            <label class="col-md-4 col-form-label" for="l0">Points</label>
+                                            <div class="col-md-8">
+                                                <div class="input-group">
+                                                    <input type="number" class="form-control" id="withdrawPoints" placeholder="Number of Points" name="withdrawPoints" aria-required="true" required>
+                                                    <div class="input-group-append">
+                                                        <a href="javascript: void(0);" class="btn btn-success btn-sm" id="calculate-bitcoin">
+                                                            Calculate Bitcoin
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label class="col-md-4 col-form-label" for="l0">Bitcoin Address</label>
+                                            <div class="col-md-8">
+                                                <input type="text" class="form-control required" id="bitcoinAddress" placeholder="Bitcoin Address" name="bitcoinAddress" aria-required="true" required>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label class="col-md-4 col-form-label" for="l0">You Will Get:</label>
+                                            <div class="col-md-8">
+                                                <input type="hidden" class="form-control required" id="btcValue" name="btcValue" aria-required="true" required>
+                                                <label class="col-form-label text-success" id="receive-btc"></label>
+                                            </div>
+                                        </div>
+
+                                    </div>
+								</div>
+							</div>
+						</div>
+                        
+                        
+						<div class="form-actions">
+                            <div class="form-group row">
+                                <div class="col-md-9 offset-md-3" id="request-withdraw-holder">
+
+                                    <% if (user && user.status == constants.USER_REG_STATUS) {  %>
+                                        <div class="infoCard infoCard--whiteFont bg-danger">You have not upgraded or referred any trader so far.</div>
+                                    <% } else if (user && user.status == constants.USER_TRADER_STATUS) {  %>
+                                        <% if (requestedWithdraw) { %>
+                                            <div class="infoCard infoCard--whiteFont bg-danger">Requested withdraw is already in process.</div>
+                                        <% } else if (cashWalletAvailable > 0) { %>
+                                            <div class="infoCard infoCard--whiteFont bg-danger">You have not upgraded or referred any trader so far.</div>
+                                        <% } else if (lotWalletAvailable > 0) { %>
+                                            <button type="button" id="withdraw-points-btn" style="margin-left: 12px;" class="btn btn-primary" disabled="true">Request Withdraw</button>
+                                        <% } %>            
+                                    <% } else if (user && (user.status != constants.USER_TRADER_STATUS && user.status != constants.USER_REG_STATUS)) {  %>
+                                        <% if (requestedWithdraw) { %>
+                                            <div class="infoCard infoCard--whiteFont bg-danger">Requested withdraw is already in process.</div>
+                                        <% } else { %>
+                                            <button type="button" id="withdraw-points-btn" style="margin-left: 12px;" class="btn btn-primary" disabled="true">Request Withdraw</button>
+                                        <% } %>
+                                    <% } %>
+                                </div>
+                            </div>
+                        </div>
+					</form>
+                    </div>
+
+                    <div class="col-xl-5 col-lg-12">
+                        <div style="width: 100%; background: #eceff4; padding: 25px 10px; color: #514d6a;">
+                          <div style="max-width: 700px; margin: 0px auto; font-size: 14px">
+                            <div style="padding: 10px 10px 5px 10px; background: #fff;">
+                              <table style="border-collapse: collapse; border: 0; width: 100%;">
+                                <tbody>
+                                  <tr>
+                                    <td colspan="2">
+                                      <h5 style="margin-bottom: 5px; color: #24222f; font-weight: 600">Tips :</h5>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td colspan="2">
+                                      <p>Please do not withdraw to ICO or crowd funding address.</p>
+                                      <p>To ensure the safety of your funds, your withdrawal request will be manually reviewed and the settled.</p>
+                                      <p>Please make sure you provide correct bitcoin withdraw address.</p>
+                                      <p>Exchange fee 10%.</p>
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                </div>
+
+                <div class="col-xl-12">
+                        <!-- Left Tables -->
+                        <div class="nav-tabs-horizontal mb-5">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <table class="table table-hover nowrap dataTable dtr-inline"
+                                        id="viewTbl" role="grid"
+                                        aria-describedby="example1_info">
+                                        <thead class="thead-default">
+                                            <tr role="row">
+                                                <th>S. No.</th>
+                                                <th>Date</th>
+                                                <th>Address</th>
+                                                <th>Butcoin Value</th>
+                                                <th>Points</th>
+                                                <th>Wallet</th>
+                                                <th>Comments</th>
+                                                <th>Status</th>
+                                            </tr>
+                                        </thead>
+                                        
+                                        <tbody>
+                                            <% 
+                                            if (result.withdraws) {
+                                            for(var i=0; i < result.withdraws.length; i++) {
+                                                var withdraw = result.withdraws[i];
+                                            %>
+
+                                            <tr role="row" class="odd">
+                                                <td tabindex="0" class="sorting_1"><%= (i + 1) %></td>
+                                                <td><a href="javascript: void(0);"
+                                                        class="link-underlined"><%= moment(withdraw.created).format(DATE_FORMAT) %></a>
+                                                </td>
+                                                <td><%= withdraw.address %></td>
+                                                <td><%= withdraw.value.value %></td>
+                                                <td>
+                                                    <%= withdraw.points.value %>
+                                                </td>
+                                                <td>
+                                                    <%= withdraw.wallet.walletName %>
+                                                </td>
+                                                <td>
+                                                    <%= withdraw.comments %>
+                                                </td>
+                                                <td>
+                                                    <% var btnStatus = 'warning';
+                                                        if (withdraw.deposited) {
+                                                            btnStatus = 'success';
+                                                        } else if (withdraw.rejected) {
+                                                            btnStatus = 'danger';
+                                                        } else if (withdraw.approved) {
+                                                            btnStatus = 'primary';
+                                                        } 
+                                                    %>
+                                                    <a href="javascript:void(0);" class="btn btn-<%= btnStatus %> btn-sm">
+                                                        <%= withdraw.status %>
+                                                      </a>
+                                                </td>
+                                            </tr>
+                                            <% } 
+                                            }%>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                       </div>
+                </div></div>
+            </div>
+        </section>
+       
+        </div>

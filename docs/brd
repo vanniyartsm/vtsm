@@ -1,0 +1,240 @@
+User Registration and Placement flow
+
+1. User Registration with referal code and choose either left or right position. User gets mail / sms notification.
+2. User will be in REGISTRATION status once registered
+3. User purchases USD using BTC then transaction should be captured in BTC wallet
+4. USD will be credited in to his trade wallet
+5. If User purchases 1 or more lots using USD from his trade wallet then he moves to TRADER status
+6. 1 lot is equal to 360 Qubero Tokens
+7. User can purchase maximum of 100 lots totally
+8. If User purchases 1 lot which is equal to 360 quero coins then 360 Qubero Tokens will be credited to his Quberos wallet
+9. Another User Registers using referalCode of any previously registered user
+
+
+Payouts
+1. Binary Matching Payout - Daily at US PST time 12:00AM
+
+	a. Binary Bonus
+
+		Condition : If User downline has 1-1 first lot pair then the referal would get 10 USD in to his Cash wallet
+		25 lot pairs is a maximum limit per day for a user to get ceiling which is of 250 USD is max and minimum of 1 pair
+e
+		Scenarios :- 
+			1. If user downline has left side 25 and right side 25 lots which is 25 pairs then user gets 250 USD 
+			2. If user downline has left side 35 and right side 30 lots which is of 25 pairs then user gets 250 USD and user left side left over of 5 will be carry forwarded to next day.
+			3. If user downline has left side 35 and right side 25 lots which is of 25 pairs then user gets 200 USD and user left side left over of 15 will be carry forwarded to next day.
+			4. If user downline has left side 35 and right side 0 lots which is of 0 pairs then user doesn't gets any USD and user left side left over of 35 will be carry forwarded to next day.
+
+
+	b. Super Binary Bonus
+
+		Condition : If User downline has 1-1 first lot pair then the referal will not get any USD
+		Count will be shown in the opening balance and 1-1 will be carry forwarded
+
+		256 pairs is a maximum limit per day for a user to get ceiling which is of 2560 USD is max
+
+		Scenarios :- 
+			1. If user downline has left side 2 and right side 2 lots which is 2 pairs slab 1 then user will get 20 USD on that day
+			2. If user downline has left side 4 and right side 4 lots which is 4 pairs slab 2 then user will get 40 USD on that day
+			3. If user downline has left side 8 and right side 8 lots which is 8 pairs slab 3 then user will get 80 USD on that day
+			4. If user downline has left side 16 and right side 16 lots which is 16 pairs slab 3 then user will get 160 USD on that day
+			5. If user downline has left side 32 and right side 32 lots which is 32 pairs slab 3 then user will get 320 USD on that day
+			6. If user downline has left side 64 and right side 64 lots which is 64 pairs slab 3 then user will get 640 USD on that day
+			7. If user downline has left side 128 and right side 128 lots which is 128 pairs slab 3 then user will get 1280 USD on that day
+			8. If user downline has left side 256 and right side 256 lots which is 256 pairs slab 3 then user will get 2560 USD on that day
+			 Ex:- 
+			 1. If user downline has left side 42 and right side 32 which is of 32 pairs then user will get 320 USD and left side carry forwarded will be 10 to next day
+			 2. If user downline has left side 42 and right side 41 which is of 32 pairs then user will get 320 USD and left side carry forward will be 1 to next day
+			 2. If user downline has left side 42 and right side 0 which is of 0 pairs then user will not get any USD and left side carry forward will be 42 to next day
+
+
+2. Trading Payout - Weekly Sunday US PST 12:00 AM
+	Condition : total of 6QC every week until 60 weeks which comes around 360QCs for a single lot. Total of 60 QCs for referer if the lot is not cancelled. 
+	
+	Cancellation : 
+	a. Lot can be cancelled at any given point in time
+	b. Once lot got cancelled then there wont be further QC allocation on weekly basis for that particular lot.
+	c. Rest of the QCs 25% value will be settled back to the user using BTC. This will be achieved through request, approval flow
+
+
+	a. Payout filter will be based on 7 days calculation
+	b. Every week 6 Quberos Coin will be deducted from his Qubero Token wallet to Coin wallet
+	c. 1 Qubero Token will assigned to referer's Cash wallet 
+	d. Referer will be moved to SILVER TRADE status once atleat any 1 week of Quberos coin deducted from any one of his downline and only if referer is in TRADER status
+	e. Referer will not recieve silver trade bonus if he is not in TRADER status and once he becomes to TRADER status then referer will start recieving the silver trade bonus and he will not recieve any of the previous silver trade bonus for the particulr lot.
+
+
+	GOLD TRADER.
+		1. To become a GOLD TRADER status user must have atleat one 200 lot counts from any of his referees for that week trading payout then the GOLD TRADER status never changes until two GOLD TRADERs anywhere from his immediate different direct or immediate different direct's downline.
+		2. If immediate direct reaches 200+ lot counts for that particular week then the referer will get the GOLD TRADE bonus of 0.50 USD in Cash Wallet based on his immediate referee's particular week QCs lot count. 
+		3. If referer and referee shares the same status then there won't be any commission based on his referee's lot count
+		4. If any of his immediate directs or immediate direct's downline are part of TRADER or SILVER TRADER then the referer will get 0.50 USD in Cash Wallet based on his immediate referee's particular week QCs lot count
+
+	PEARL TRADER.
+		1. To become a PEARL TRADER status user must have atleat two GOLD TRADERS from any of his referees for that week trading payout then the PEARL TRADER status never changes until two DIAMOND TRADERs anywhere from his immediate different direct or immediate different direct's downline.
+		2. If immediate two direct or two direct downline reaches each 1 GOLD TRADERS for that particular week then the referer will get the PEARL TRADE bonus of 0.25 USD based on his immediate referee's particular week QCs lot count.
+		3. If referer and referee shares the same status then there won't be any commission based on his referee's lot count
+		4. If any of his immediate directs or immediate direct's downline or immediate direct's downline are part of TRADER or SILVER TRADER then the referer will get 0.75 USD in Cash Wallet based on his immediate referee's particular week QCs lot count
+
+	DIAMOND TRADER.
+		1. To become a DIAMOND TRADER status user must have atleat two PEARL TRADERS from any of his referees for that week trading payout then the DIAMOND TRADER status never changes until two PLATINUM TRADERs anywhere from his immediate different direct or immediate different direct's downline.
+		2. If immediate two direct or two direct downline reaches each 1 PEARL TRADERS for that particular week then the referer will get the DIAMOND TRADE bonus of 0.25 USD based on his immediate referee's particular week QCs lot count.
+		3. If referer and referee shares the same status then there won't be any commission based on his referee's lot count
+		4. If any of his immediate directs or immediate direct's downline are part of TRADER or SILVER TRADER then the referer will get 1.00 USD in Cash Wallet based on his immediate referee's particular week QCs lot count
+
+	PLATINUM TRADER.
+		1. To become a PLATINUM TRADER status user must have atleat two DIAMOND TRADERS from any of his referees for that week trading payout then the PLATINUM TRADER status never changes.
+		2. If immediate two direct or two direct downline reaches each 1 DIAMOND TRADERS for that particular week then the referer will get the PLATINUM TRADE bonus of 0.25 USD based on his immediate referee's particular week QCs lot count.
+		3. If referer and referee shares the same status then there won't be any commission based on his referee's lot count
+		4. If any of his immediate directs or immediate direct's downline are part of TRADER or SILVER TRADER then the referer will get 1.25 USD in Cash Wallet based on his immediate referee's particular week QCs lot count
+
+
+
+Transfer
+	Condition:
+		Trade Wallet --> External Trade Wallet
+			Min Transfer - 1
+			Max Transfer - No Condition
+
+		Cash Wallet --> Internal Trade Wallet
+			Min Transfer
+				1. 25 USDs are allowed so the cash wallet should contain of min 26.25 because fee charges. Fee charge is 1.25 USD
+				2. Transfer should happen in multiplication of 25 USDs
+			Max Transfer - No Condition
+
+		Coin Wallet --> Internal Trade Wallet
+			Min Transfer
+				1. 25 USDs are allowed so the cash wallet should contain of min 26.25 because fee charges. Fee charge is 1.25 USD
+				2. Transfer should happen in multiplication of 25 USDs
+			Max Transfer - No Condition
+
+		Only USDs are allowed in all three wallets so transfer is also allowed only in USDs
+
+		All transfer are allowed only the user's transaction password is valid
+
+Withdraw
+	Condition
+		1. Manual or auto withdraw request should go through approval process and should be approved by admin
+		2. All withdraws are allowed only the user's transaction password is valid
+		3. User should provide / save withdraw BTC address before requesting withdraw
+
+	Trade Wallet
+		Widthdraw - Not allowed
+
+	Cash Wallet
+		Min Widthdraw
+			1. Min. of 50 + 5 USDs(10% Fee) is possible to withdraw
+		Max Withdraw
+			No Limit
+		Manual Withdraw
+			Once user or auto requested a withraw cannot make another withdraw until the first one gets approved
+		Automatic Withdraw
+			1. Weekly once
+			2. Once user requested a withdraw auto withdraw is not eligible until the manual request is approved.
+	Coin Wallet
+		Min Widthdraw
+			1. Min. of 25 + 2.5 USDs(10% Fee) is possible to withdraw
+		Max Withdraw
+			No Limit
+		Manual Withdraw
+			Once user or auto requested a withraw cannot make another withdraw until the first one gets approved
+		Automatic Withdraw
+			1. Weekly once
+			2. Once user requested a withdraw auto withdraw is not eligible until the manual request is approved.
+
+Wallets
+
+	Crypto Wallet - Company Level
+		Any BTC to USD transactions will be captured
+
+	Trade Wallet - User Level
+		Crypto conversion or Transfer from another user or internal wallets (Cash wallet and Coin Wallet)
+
+	Cash Wallet
+		All earnings will come in to this wallet
+		1. SILVER TRADER bonus of 1 USD
+		2. Binary PAYOUT
+		3. Super Binary PAYOUT
+		4. GOLD TRADER bonus
+		5. PEARL TRADER bonus
+		6. DIAMOND TRADER bonus
+		7. PLATINUM TRADER bonus
+
+	Coin Wallet
+		Weekly 6 QCs
+		Total Lots
+		Each lot status
+		Each lot deduction details
+
+	Admin Wallet - Company Level
+		Max of 2.5 USDs for Trading Commission
+
+
+Dashboard
+	Current Status
+	Referral Code & Link
+	Total Numbers Availability
+		Quberos Token
+		Cash Wallet
+		Trade Wallet
+		Coin Wallet
+	Total so far credited
+		Lot Bonus (How much so far credited)
+	Total Earnings So far credited
+		1. SILVER TRADER bonus of 1 USD
+		2. Binary PAYOUT
+		3. Super Binary PAYOUT
+		4. GOLD TRADER bonus
+		5. PEARL TRADER bonus
+		6. DIAMOND TRADER bonus
+		7. PLATINUM TRADER bonus
+	Direct Referrals so far total count
+	Direct Referrals so far total lots
+	Binary Count so far total count left right
+	Binary Count current day count left right
+	Super Binary Count so far total count left right
+	Super Binary Count current day count left right
+
+
+Direct Referrals
+	Tree View
+		Sponsor Name
+		User Name
+		Purchased Lots
+		Status
+		Team Total Lot Count
+		Team View
+
+
+Genealogy
+	Binary Tree
+		Tree View
+			Sponsor Name
+			User Name
+			Purchased Lots
+			Status
+			Binary Total Lot left / right Count
+			Super Binary Total Lot left / right Count
+			Team View
+	Cutoff statement
+		Daily report
+			Binary count match
+			Super Binary count match
+			Carry forward
+
+
+Support
+Downloads
+FAQ
+Profile
+	My Details
+	Proof number (If needed upload) - Not changable
+	Login Password
+	Transaction Password
+
+
+
+Register New User
+
+
+

@@ -1,0 +1,575 @@
+<%  var _ = lodash;
+    var result = result;
+    var walletAvailable = (result && result.walletInfo);
+    var accountAvailable = (result && result.accountInfo);
+    var user = user
+%>
+
+<div class="utils__content">
+    <!-- START: dashboard alpha -->
+    <div class="infoCard infoCard--whiteFont bg-primary blink"><strong>Hi Quberoians, Our new company presenation is ready! You can download it from Downloads section below.</strong></div>
+    <div class="card-header">
+        <span class="utils__title">
+            <span class="font-size-18 d-block">
+                <!-- <span class="text-muted">Home ·</span> -->
+                <strong>Welcome, <%= user.firstName %> <%= user.lastName %></strong>
+                <input type="hidden" id="current-user-id" name="current-user-id" value="<%= user._id %>"/>
+                <input type="hidden" id="current-user-sponsorid" name="current-user-sponsorid" value="<%= user.referralCode %>"/>
+                <small class="text-muted">Position : <span class="text-danger"><%= user.status %></span></small>
+
+              <!-- <div class="row">
+                <div class="col-xl-8 offset-xl-4">
+                    <div class="width-100 text-center pull-right hidden-md-down">
+                        <h2>154</h2>
+                        <p class="mb-0">Followers</p>
+                    </div>
+                    <div class="width-100 text-center pull-right hidden-md-down">
+                        <h2>17</h2>
+                        <p class="mb-0">Posts</p>
+                    </div>
+                </div>
+              </div> -->
+            </span>
+        </span>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="utils__title utils__title--flat mb-3">
+            </div>
+            <div class="row">
+                <div class="col-xl-4">
+                    <div class="card chartCard">
+                        <div class="chartCard__chart">
+                            <div class="chart-area-1 chartist"></div>
+                        </div>
+                        <div class="chartCard__amount" id="cash-wallet">$0</div>
+                        <div class="chartCard__title">Cash Wallet</div>
+                    </div>
+                </div>
+                <div class="col-xl-4">
+                    <div class="card chartCard">
+                        <div class="chartCard__chart">
+                            <div class="chart-area-2 chartist"></div>
+                        </div>
+                        <div class="chartCard__amount" id="trade-wallet">$0</div>
+                        <div class="chartCard__title">Trade Wallet</div>
+                    </div>
+                </div>
+                <div class="col-xl-4">
+                    <div class="card chartCard">
+                        <div class="chartCard__chart">
+                            <div class="chart-area-3 chartist"></div>
+                        </div>
+                        <div class="chartCard__amount" id="coin-wallet">$0</div>
+                        <div class="chartCard__title">Lot Wallet</div>
+                    </div>
+                </div>
+                <!--<div class="col-xl-3">
+                    <div class="card chartCard">
+                        <div class="chartCard__chart">
+                            <div class="chart-area-3 chartist"></div>
+                        </div>
+                        <div class="chartCard__amount" id="quberos-token">$0</div>
+                        <div class="chartCard__title">Quberos Token Wallet <span class="text-danger font-weight-bold text-right" id="q-token-wallet"></span></div>
+                    </div>
+                </div>-->
+            </div>
+        </div>
+    </div>
+
+    <!-- Earnings starts -->
+    <div class="row">
+        <div class="col-lg-3">
+            <div class="card" data-order-id="card-7">
+                <div class="card-header">
+                    <div class="utils__title"><strong>Earnings</strong></div>
+                    <div class="utils__titleDescription">Lot Bonus, Binary Commission, Super Binary Commission, Silver
+                        Bonus, Gold Bonus, Pearl Bonus, Diamond Bonus, Platinum Bonus</div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="infoCard infoCard--whiteFont bg-success">
+                                <span class="infoCard__digit">
+                                    <i class="icmn-coin-dollar"></i>
+                                </span>
+                                <div class="infoCard__desc">
+                                    <span class="infoCard__title">Total Earnings</span>
+                                    <p id="total-earnings">$0</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-12">
+                            <div class="infoCard infoCard--whiteFont bg-primary">
+                                <span class="infoCard__digit">
+                                    <i class="icmn-coin-dollar"></i>
+                                </span>
+                                <div class="infoCard__desc">
+                                    <span class="infoCard__title">Lot Bonus</span>
+                                    <p id="lot-bonus-earnings">$0</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="utils__margin-fix">
+                        <!-- -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Earnings ends -->
+
+        <!-- Binary starts -->
+        <div class="col-lg-6">
+            <div class="card" data-order-id="card-6">
+                <div class="card-header">
+                    <div class="utils__title"><strong>Genealogy</strong><label id="payout-countdown" class="date-time"></label></div>
+                    <div class="utils__titleDescription">Total and Today count </div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="row">
+                                <div class="col-xl-12">
+                                    <div class="userCard px-3 py-3">
+                                        <div class="utils__title utils__title--flat mb-3">
+                                            <strong>Binary Lot</strong>
+                                        </div>
+                                        <a href="javascript: void(0);" class="crypto__listItem crypto__listItem--current">
+                                                <span class="crypto__listPercents">
+                                                    <span><%= user.puLeftBCount %></span>
+                                                    <span><%= user.puRightBCount %></span>
+                                                </span>
+                                            <span class="crypto__listCurrency">
+                                                <span>Total Left</span>
+                                                <span>Total Right</span>
+                                                </span>
+                                        </a>
+
+                                        <a href="javascript: void(0);" class="crypto__listItem crypto__listItem--current">
+                                            <span class="crypto__listPercents">
+                                            <span id="today-left-blot">0</span>
+                                            <span id="today-right-blot">0</span>
+                                            </span>
+                                        <span class="crypto__listCurrency">
+                                            <span>Today Left</span>
+                                            <span>Today Right</span>
+                                            </span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="utils__margin-fix">
+                            <!-- -->
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="row">
+                                <div class="col-xl-12">
+                                    <div class="userCard px-3 py-3">
+                                        <div class="utils__title utils__title--flat mb-3">
+                                            <strong>Super Binary Lot</strong>
+                                        </div>
+                                        <a href="javascript: void(0);" class="crypto__listItem crypto__listItem--current">
+                                                <span class="crypto__listPercents">
+                                                    <span><%= user.puLeftSBCount %></span>
+                                                    <span><%= user.puRightSBCount %></span>
+                                                </span>
+                                            <span class="crypto__listCurrency">
+                                                <span>Total Left</span>
+                                                <span>Total Right</span>
+                                                </span>
+                                        </a>
+
+                                        <a href="javascript: void(0);" class="crypto__listItem crypto__listItem--current">
+                                            <span class="crypto__listPercents">
+                                            <span id="today-left-sblot">0</span>
+                                            <span id="today-right-sblot">0</span>
+                                            </span>
+                                        <span class="crypto__listCurrency">
+                                            <span>Today Left</span>
+                                            <span>Today Right</span>
+                                            </span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="utils__margin-fix">
+                            <!-- -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Binary ends -->
+            
+
+            <!-- My Directs starts -->
+            
+
+            <!-- My Directs ends -->
+        </div>
+
+        <!-- Binary ends -->
+
+        <!-- My Direct starts -->
+        <div class="col-lg-3">
+            <div class="card" data-order-id="card-7">
+                <div class="card-header">
+                    <div class="utils__title"><strong>My Directs</strong></div>
+                    <div class="utils__titleDescription">Direct Referrals</div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="infoCard infoCard--whiteFont bg-success">
+                                <span class="infoCard__digit">
+                                    <i class="icmn-tree"></i>
+                                </span>
+                                <div class="infoCard__desc">
+                                    <span class="infoCard__title">Total Directs by Count</span>
+                                    <p id="total-directs-count">0</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-12">
+                            <div class="infoCard infoCard--whiteFont bg-primary">
+                                <span class="infoCard__digit">
+                                    <i class="icmn-stack"></i>
+                                </span>
+                                <div class="infoCard__desc">
+                                    <span class="infoCard__title">Total Directs by Lots</span>
+                                    <p id="total-directs-lots">0</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="utils__margin-fix">
+                        <!-- -->
+                    </div>
+                </div>
+                
+            </div>
+
+            <div class="card" data-order-id="card-10">
+                <div class="card-header">
+                    <div class="utils__title utils__title--flat">
+                        <span class="text-uppercase font-size-16">Lots</span>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="infoCard infoCard--whiteFont bg-danger">
+                                <span class="infoCard__digit">
+                                    <i class="icmn-stack"></i>
+                                </span>
+                                <div class="infoCard__desc">
+                                    <span class="infoCard__title">Purchased Lots</span>
+                                    <p id="purchased-lots">0</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- My Direct ends -->
+    </div>
+
+    <div class="row">
+        <div class="col-xl-9">
+            <div class="card card--fullHeight">
+                <div class="card-header">
+                    <div class="utils__title utils__title--flat">
+                        <span class="text-uppercase font-size-16">Referral</span>
+                    </div>
+                </div>
+                <div class="card-body bg-grey">
+                    <div class="shortItemInfo">
+                        <div class="shortItemInfo__img">
+                            <img src="/inner/assets/images/user.jpg"
+                                 alt="Alternative text to the image"/>
+                        </div>
+                        <div class="shortItemInfo__description">
+                            <h2 class="shortItemInfo__name">Referral Link</h2>
+                            <p class="shortItemInfo__note"><a href="http://www.quberos.com/web/auth/referral/<%= user.referralCode %>" target="_blank">http://www.quberos.com/referral/<%= user.referralCode %></a></p>
+                        </div>
+                        <div class="shortItemInfo__actionData">
+                            &nbsp;
+                        </div>
+                    </div>
+                    <!-- <div class="shortItemInfo">
+                        <div class="shortItemInfo__description">
+                            <div class="sharethis-inline-share-buttons"></div>
+                            <script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=5e4f3b3b6c05e9001274f3f3&cms=website' async='async'></script>
+                        </div>
+                        <div class="shortItemInfo__actionData">
+                            &nbsp;
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-3">
+            <div class="card" data-order-id="card-10">
+                <div class="card-header">
+                    <div class="utils__title utils__title--flat">
+                        <span class="text-uppercase font-size-16">Downloads</span>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="infoCard infoCard--whiteFont bg-info">
+                                <span class="infoCard__digit">
+                                    <i class="icmn-download"></i>
+                                </span>
+                                <a href="https://res.cloudinary.com/dradavcfw/image/upload/v1602825066/quberos/pdf/Quberos.pdf" target="_blank">
+                                    <div class="infoCard__desc" style="color: #e4e9f0;">
+                                        <span class="infoCard__title">Company Presentation</span>
+                                        <p>Download</p>
+                                    </div>
+                                </a>    
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+<script type="text/javascript">
+    //Both userId and sponsorId is defined in nav.ejs
+    var userId = document.getElementById("current-user-id").value;
+    var sponsorId = document.getElementById("current-user-sponsorid").value;
+    //$(document).ready(function() {
+        function loadDashboardDetails() {
+            $('.content-holder').LoadingOverlay("show");
+            loadWalletDetails();
+            loadLotDetails();
+            loadTotalDirects();
+            loadTodayLots();
+            loadEarnings();
+            $('.content-holder').LoadingOverlay("hide");
+        }
+
+        function loadWalletDetails() {
+            var cashWallet = 0, tradeWallet = 0, coinWallet = 0, quberosToken = 0;
+            var url = '/rest/api/v1/dashboard/wallet/user/' + userId;
+            $.ajax({
+                url: url,
+                processData: false,
+                type: 'GET',
+                error: function (err) {
+                    console.info('err');
+                },
+                success: function (result) {
+                    if (result && result.data) {
+                        var walletInfo = result.data.walletInfo;
+                        console.info('walletInfo = ', walletInfo);
+                        walletInfo.forEach(element => {
+                            if (element._id == '5a3c8bf65a12076ff0cc0003') {
+                                $('#cash-wallet').html('$' + element.available)
+                            } else if (element._id == '5a1c8bf65a12076ff0cc0001') {
+                                $('#trade-wallet').html('$' + element.available)
+                            } else if (element._id == '5a6c8bf65a12076ff0cc0006') {
+                                $('#coin-wallet').html('$' + element.available)
+                            } else if (element._id == '5a2c8bf65a12076ff0cc0002') {
+                                //$('#quberos-token').html('$' + (element.available / 4))
+                                //$('#q-token-wallet').html(element.available + ' Tokens');
+                            }
+                        });
+                    }
+                }
+            });
+        }
+
+        function loadLotDetails() {
+            var url = '/rest/api/v1/dashboard/lots/user/' + userId;
+            $.ajax({
+                url: url,
+                processData: false,
+                type: 'GET',
+                error: function (err) {
+                    console.info('err');
+                },
+                success: function (result) {
+                    if (result && result.data) {
+                        var lotInfo = result.data.lotInfo;
+
+                        if(lotInfo && lotInfo.numberOfUnits) {
+                            $('#purchased-lots').html(lotInfo.numberOfUnits);
+                        }
+                    }
+                }
+            });
+        }
+
+        function loadTotalDirects() {
+            var url = '/rest/api/v1/dashboard/lots/sponsor/' + sponsorId;
+            $.ajax({
+                url: url,
+                processData: false,
+                type: 'GET',
+                error: function (err) {
+                    console.info('err');
+                },
+                success: function (result) {
+                    if (result && result.data) {
+                        var directsInfo = result.data;
+                        $('#total-directs-count').html(directsInfo.count);
+                        $('#total-directs-lots').html((directsInfo.bCount + directsInfo.sbCount));
+                    }
+                }
+            });
+        }
+
+        function loadTodayLots() {
+            var url = '/rest/api/v1/dashboard/downline/user/' + userId;
+            $.ajax({
+                url: url,
+                processData: false,
+                type: 'GET',
+                error: function (err) {
+                    console.info('err');
+                },
+                success: function (result) {
+                    if (result && result.data) {
+                        var todayLot = result.data;
+                        console.info('todayLot = ', todayLot);
+                        $('#today-left-blot').html(todayLot.puLeftBCount);
+                        $('#today-right-blot').html(todayLot.puRightBCount);
+
+                        $('#today-left-sblot').html(todayLot.puLeftSBCount);
+                        $('#today-right-sblot').html(todayLot.puRightSBCount);
+                    }
+                }
+            });
+        }
+
+        function loadEarnings() {
+            var url = '/rest/api/v1/dashboard/earnings/user/' + userId;
+            $.ajax({
+                url: url,
+                processData: false,
+                type: 'GET',
+                error: function (err) {
+                    console.info('err');
+                },
+                success: function (result) {
+                    if (result && result.data) {
+                        var earning = result.data.earnings;
+                        var lotBonus = result.data.lotBonus;
+                        console.info('result.data = ', result.data);
+
+                        if (earning.credit) {
+                            $('#total-earnings').html('$' + earning.credit);
+                        }
+
+                        if (lotBonus.credit) {
+                            $('#lot-bonus-earnings').html('$' + lotBonus.credit);
+                        }
+
+                        //console.info('result = ', result);
+                        loadTimer(result.data);
+                        //$('#lot-bonus').html(todayLot.puRightBCount);
+                    }
+                }
+            });
+        }
+
+        function loadTimer(data) {
+                        // Set the date we're counting down to
+            console.info('data.date.from = ', data.date.from);
+            
+            var countDownDate = new Date(data.date.from).getTime();
+            console.info('countDownDate = ', countDownDate);
+            var currentDate = new Date(data.date.currentDate).toLocaleString('en-US', { timeZone: 'America/New_York' });
+            //console.info('currentDate = ', currentDate);
+            //currentDate = new Date(currentDate);
+            //console.info('data.date.here = ', here);
+            //var here = changeTimezone(currentDate, "America/Chicago");
+            // var year = currentDate.getFullYear();
+            // var month = currentDate.getMonth();
+            // var day = currentDate.getDate();
+            // var hour = currentDate.getHours();
+            // var minutes = currentDate.getMinutes();
+            // var seconds = currentDate.getSeconds();
+            // var milliseconds = currentDate.getMilliseconds();
+            // var here = new Date(year, month, day, hours, minutes, seconds, milliseconds);
+            // console.info('data.date.here = ', data.date.here);
+            // Update the count down every 1 second
+            //var here = new Date(currentDate);
+             // Time calculations for days, hours, minutes and seconds
+            var hours = Math.floor((currentDate % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((currentDate % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((currentDate % (1000 * 60)) / 1000);
+                
+            // Output the result in an element with id="demo"
+            document.getElementById("payout-countdown").innerHTML = "DATE : " + currentDate;
+            /*var counter = 0;
+            var x = setInterval(function() {
+                // Get today's date and time
+                //currentDate.setSeconds( currentDate.getSeconds() + 1);
+                // Find the distance between now and the count down date
+                //console.info('data.date.currentDate 1 = ', currentDate);
+                counter = counter + 1;
+                console.info('here = ', here);
+                here.setSeconds( here.getSeconds() + counter);
+                var distance = countDownDate - here;
+                console.info('distance = ', distance);
+                
+                    
+                // Time calculations for days, hours, minutes and seconds
+                var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                    
+                // Output the result in an element with id="demo"
+                document.getElementById("payout-countdown").innerHTML = "CUTOFF COUNTDOWN : " + hours + "h "
+                + minutes + "m " + seconds + "s ";
+                    
+                // If the count down is over, write some text 
+                // if (distance < 0) {
+                //     clearInterval(x);
+                //     document.getElementById("payout-countdown").innerHTML = "EXPIRED";
+                // }
+            }, 1000);*/
+
+            function changeTimezone(date, ianatz) {
+                // suppose the date is 12:00 UTC
+                var invdate = new Date(date.toLocaleString('en-US', {
+                timeZone: ianatz
+                }));
+                console.info('invdate = ', invdate);
+                // then invdate will be 07:00 in Toronto
+                // and the diff is 5 hours
+                var diff = date.getTime() - invdate.getTime();
+                console.info('diff = ', diff);
+
+                // so 12:00 in Toronto is 17:00 UTC
+                return new Date(date.getTime() + diff);
+
+                }
+            // $('#payout-countdown').countdown(countDownDate).on('update.countdown', function (event) {
+            //     var $this = $(this).html(event.strftime('' + '<span>%H</span> hr ' + '<span>%M</span> min ' + '<span>%S</span> sec'));
+            // });
+        }
+    loadDashboardDetails();
+
+    function blink_text() {
+        $('.blink').fadeOut(500);
+        $('.blink').fadeIn(500);
+    }
+    setInterval(blink_text, 1000);
+</script>

@@ -1,0 +1,73 @@
+<% 
+    var user = locals.user 
+    var DATE_FORMAT = 'YYYY-MM-DD hh:mm:ss A'
+%>
+<div class="utils__content">
+        <!-- START: apps/profile -->
+        <nav class="utils__top-sidebar utils__top-sidebar--bg py-5">
+            <div class="row">
+                <div class="col-xl-8 offset-xl-4">
+                    <div class="width-100 text-center pull-right hidden-md-down">
+                        <!-- <a href="javascript: void(0);" class="pull-right btn btn-sm btn-primary cd-btn" data-url="${context}/account/profile/update" data-title="Profile Update" data-method="GET" data-toggle="modal" data-target="#dynamic-modal">EDIR PROFILE</a> -->
+                        <a href="/web/profile/update/index" class="pull-right btn btn-sm btn-primary">EDIT PROFILE</a>
+                    </div>
+                    <h2>
+                        <span class="text-black">
+                            <strong><%= user.firstName %> <%= user.lastName %></strong>
+                        </span>
+                    </h2>
+                    <!-- <p class="mb-1">Founder / CEO</p> -->
+                </div>
+            </div>
+        </nav>
+        <div class="row">
+            <div class="col-xl-4">
+                <div class="card apps__profile__card">
+                    <div class="card-body text-center">
+                        <a class="utils__avatar utils__avatar--border-white utils__avatar--110" href="javascript:void(0);">
+                            <img src="/assets/images/user.png" alt="Profile Picture">
+                        </a>
+                        <br />
+                        <br />
+                        <p class="text-white">
+                            <span class="utils__donut utils__donut--success"></span>
+                            Online
+                        </p>
+                    </div>
+                </div>
+        
+                <div class="card">
+                    <div class="card-body">
+                        <div class="example-calendar-block"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-8">
+                 <div class="card">
+                    <div class="card-body">
+                        <h5 class="mb-3 text-black">
+                            <strong>Information</strong>
+                        </h5>
+                        <dl class="row">
+                            <dt class="col-xl-3">User Name</dt>
+                            <dd class="col-xl-9"><strong><%= user.userName %></strong></dd>
+                            <dt class="col-xl-3">First Name</dt>
+                            <dd class="col-xl-9"><%= user.firstName %></dd>
+                            <dt class="col-xl-3">Last Name</dt>
+                            <dd class="col-xl-9"><%= user.lastName %></dd>
+                            <dt class="col-xl-3">Email</dt>
+                            <dd class="col-xl-9"><%= user.emailAddress %></dd>
+                            <dt class="col-xl-3">Mobile</dt>
+                            <dd class="col-xl-9"><%= user.phoneNo %></dd>
+                            <dt class="col-xl-3">Registration Date</dt>
+                            <dd class="col-xl-9"><%= moment(user.created).format(DATE_FORMAT) %></dd>
+                            <dt class="col-xl-3">Country</dt>
+                            <dd class="col-xl-9"><%= user.address.country %></dd>
+                        </dl>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        <!-- END: apps/profile -->
+    </div>

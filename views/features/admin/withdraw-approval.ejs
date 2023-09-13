@@ -1,0 +1,112 @@
+<% 
+var DATE_FORMAT = 'YYYY-MM-DD hh:mm:ss A'
+var moment = locals.moment; %>
+<div class="card utils__card-with-sidebar utils__card-with-sidebar--right">
+    <div class="card-body">
+        <div class="model-form-wrapper">
+             <div class="crypto__form">
+                 <form id="withdraw-form" data-url="/account/profile/update" data-title="Update Profile" data-method="POST" data-form="true" data-message="true">
+                     <div class="form-group">
+                         <label for="orderType" class="crypto__formLabel">User Name</label>
+                         <input type="text" id="userId" class="form-control" name="userId" readonly value="<%= withdraw.user.userName %>">
+						 <input type="hidden" id="withdrawId" class="form-control square" name="withdrawId" value="<%= withdraw._id %>">
+						 <input type="hidden" id="approvalStatus" class="form-control square" name="approvalStatus" value="APPROVED">
+                     </div>
+                     <div class="form-group">
+                         <label for="orderQuantity" class="crypto__formLabel">Points</label>
+                         <input type="text" class="form-control" id="withdrawPoints" placeholder="Points" name="withdrawPoints" value="<%= withdraw.points.value %>" readonly>
+                     </div>
+                     <div class="form-group">
+                         <label for="orderBid" class="crypto__formLabel">Bitcoin</label>
+                         <input type="text" class="form-control" id="btcValue" placeholder="Bitcoin" name="btcValue" readonly value="<%= withdraw.value.value %>">
+                     </div>
+                     <div class="form-group">
+                         <label for="orderBid" class="crypto__formLabel">Requested Date</label>
+                         <input type="text" id="requestedDate" class="form-control square" name="requestedDate" readonly value="<%= moment(withdraw.requestedDate).format(DATE_FORMAT) %>">
+					 </div>
+					 <div class="form-group">
+						<label for="orderBid" class="crypto__formLabel">Requested Wallet</label>
+						<input type="text" id="requestedWallet" class="form-control square" name="requestedWallet" readonly value="<%= withdraw.wallet.walletName %>">
+					</div>
+                     <div class="form-group">
+                         <label for="orderBid" class="crypto__formLabel">Comments</label>
+                         <textarea class="form-control" rows="5" name="reason"></textarea>
+					 </div>
+					 <% if (withdraw.status == 'REQUESTED') { %>
+						<div class="form-group">
+							<button class="btn btn-primary danger" id="deposit-rejected">
+								<i class="icmn-compass"></i> Reject
+							</button>
+							<button type="submit" class="btn btn-primary" id="deposit-approval">
+								<i class="icmn-compass"></i> Approve
+							</button>
+						</div>
+					 <% } %>
+                 </form>
+             </div>
+             <!-- <div class="my-3 text-center">
+                 <div>
+                     <strong>Available Points</strong>
+                 </div>
+                 <div>0</div>
+             </div> -->
+         </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		var context = '${context}';
+
+		$('#generate-password').on('click', function(e) {
+			var url = 'url';
+			 $.ajax({
+		            url: url,
+		            type: 'GET',
+		            dataType: "json",
+		            contentType:"application/json",
+		            error: function (err) {
+		                console.info('err = ', err);
+		            },
+		            success: function (data) {
+		            	swal("Success!", "Successfully generated password. Please check your mail!", "success");
+		            }
+			 });
+		});
+		
+		$('#deposit-rejected').on('click', function(e) {
+			$('#approvalStatus').val('REJECTED');
+			$('#withdraw-form').submit();	
+		});
+
+		$('#withdraw-form').submit(function(e){
+			e.preventDefault();
+			e.stopPropagation();
+			$('#withdraw-form').LoadingOverlay("show");
+			$("#deposit-approval").attr("disabled", true);
+			var lwUrl = '/web/admin/withdraw/approval';
+			var formElement = $('#withdraw-form');
+            var data = $(formElement).serialize();
+
+			 $.ajax({
+	            url: lwUrl,
+	            type: 'POST',
+	            data : data,
+	            processData: false,
+	            error: function (err) {
+	                console.info('err = ', err);
+	                $("#deposit-approval").attr("disabled", false);
+	                $('#withdraw-form').LoadingOverlay("hide");
+	            },
+	            success: function (results) {
+            		console.info('results = ', results);
+            		$('#modal-container').html(results);
+	            	$("#deposit-approval").attr("disabled", false);
+	            	$('#withdraw-form').LoadingOverlay("hide");
+	            	swal("Success!", "You have approved successfully", "success");
+	            	setTimeout(function(){ location.href = location.href; }, 1000);
+	            }
+			 });
+		});		
+	});
+</script>

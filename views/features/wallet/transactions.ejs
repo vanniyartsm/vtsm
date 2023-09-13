@@ -1,0 +1,86 @@
+<% var DATE_FORMAT = 'YYYY-MM-DD hh:mm:ss A' %>
+<% var moment = locals.moment; %>
+<div class="utils__content">
+    <!-- START: components/mail-templates -->
+    <section class="card">
+        <div class="card-header">
+            <span class="utils__title">
+                <strong>CASH WALLET </strong>
+            </span>
+        </div>
+        
+        <div class="card-body">
+            <div class="row">
+
+                <div class="col-xl-12">
+                   <!-- Left Tables -->
+                   <div class="nav-tabs-horizontal mb-5">
+                      <ul class="nav nav-tabs mb-3" role="tablist">
+                          <li class="nav-item">
+                              <a class="nav-link font-size-16 text-black show active" href="javascript: void(0);"
+                                  data-toggle="tab" data-target="#b1" role="tab"
+                                  aria-selected="false"><strong>Transactions</strong></a>
+                          </li>
+                      </ul>
+                      <div class="tab-content padding-top-20">
+                          <div class="tab-pane show active" id="b1">
+                              <div class="cui-ecommerce-dashboard-info">
+                                  <div class="cui-ecommerce-dashboard-info-block">
+                                      <div id="blockchainIntiated" class="dataTables_wrapper dt-bootstrap4">
+                                          <div class="row">
+                                              <div class="col-sm-12">
+                                                  <table class="table table-hover nowrap dataTable dtr-inline"
+                                                      id="blockchainIntiatedTbl" role="grid"
+                                                      aria-describedby="example1_info">
+                                                      <thead class="thead-default">
+                                                          <tr role="row">
+                                                              <th>S. No.</th>
+                                                              <th>Date</th>
+                                                              <th>Binary Pair</th>
+                                                              <th>Binary Payout</th>
+                                                              <th>Super Binary Pair</th>
+                                                              <th>Super Binary Payout</th>
+                                                              <th>Amount</th>
+                                                          </tr>
+                                                      </thead>
+                                                      <tbody>
+                                                          <% 
+                                                          if (locals.transactions) {
+                                                          for(var i=0; i < locals.transactions.length; i++) {
+                                                            var transaction = locals.transactions[i];
+                                                            if (transaction.binaryPair > 0 || transaction.superBinaryPayout > 0) {
+                                                        %>
+
+                                                          <tr role="row" class="odd">
+                                                              <td tabindex="0" class="sorting_1"><%= (i + 1) %></td>
+                                                              <td><a href="javascript: void(0);"
+                                                                      class="link-underlined"><%= moment(transaction.created).format(DATE_FORMAT) %></a>
+                                                              </td>
+                                                              <td><%= transaction.binaryPair %></td>
+                                                              <td><%= JSON.stringify(transaction.binaryPayout) %></td>
+                                                              <td><%= transaction.superBinaryPair %></td>
+                                                              <td><%= JSON.stringify(transaction.superBinaryPayout) %></td>
+                                                              <td><%= JSON.stringify(transaction.binaryPayout.value + transaction.superBinaryPayout.value) %></td>
+                                                          </tr>
+                                                          <% }
+                                                            } 
+                                                        }%>
+                                                      </tbody>
+                                                  </table>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+
+                </div>
+            </div>
+            
+            
+        </div>
+    </section>
+   
+    </div>

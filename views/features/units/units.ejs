@@ -1,0 +1,124 @@
+<% var DATE_FORMAT = 'YYYY-MM-DD hh:mm:ss A' %>
+<div class="utils__content">
+        <!-- START: components/mail-templates -->
+        <section class="card">
+            <div class="card-header">
+                <span class="utils__title">
+                    <strong>BUY LOTS</strong>
+                </span>
+            </div>
+            <div class="card-header">
+                <div class="pull-right mt-2">
+                    <span class="mr-3">
+                &nbsp;							
+                    </span>
+                </div>
+                <span class="utils__title">
+                    Available Points : <a href="javascript: void(0);" class="utils__link--blue utils__link--underlined text-success" id="available"><%= locals.balance.available %></a>
+                </span>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-xl-6 col-lg-12">
+                            <%- include('../common/message') %>
+                            <form id="purchase-elc-form" class="form form-horizontal form-bordered bb-form"
+							data-url="${context}/miner/buy/coin" data-title="Deposit Bitcoin"
+							data-method="POST" data-form="true" name="buy-elc-form" data-message="true">
+						<div class="form-body">
+							<input type="hidden" id="btcFinalBalance" name="btcFinalBalance"/>
+							<input type="hidden" id="hash" name="hash"/>
+							<div class="row">
+								<div class="col-md-10 col-xs-12">
+                                    <input type="hidden" id="userId" value="<%= req.session.user._id %>" />
+									<input type="hidden" class="form-control required" id="availablePoints" name="availablePoints" value="<%= balance.available %>">
+									<div class="form-group row">
+			                            <label class="col-md-3 col-form-label" for="l0">Required Lot(s)</label>
+			                            <div class="col-md-9">
+			                                <input type="number" class="form-control required" id="noOfUnits" placeholder="Number of Lots" name="noOfUnits" aria-required="true" maxlength="3">
+			                            </div>
+			                        </div>
+			                        <div class="form-group row">
+			                            <label class="col-md-3 col-form-label" for="l0">Required Points</label>
+			                            <div class="col-md-9">
+			                                <input type="text" class="form-control required" id="required-points" placeholder="Required Points" name="required-points" aria-required="true" readonly>
+			                            </div>
+			                        </div>
+								</div>
+							</div>
+						</div>
+						
+						<div class="form-actions">
+                            <div class="form-group row">
+                                <div class="col-md-9 offset-md-3">
+                                    <button type="button" id="buy-units-btn" style="margin-left: 12px;"
+								class="btn btn-primary">BUY</button>
+                                </div>
+                            </div>
+                        </div>
+					</form>
+                    </div>
+                </div>
+
+                <div class="col-xl-12">
+                        <!-- Left Tables -->
+                        <div class="nav-tabs-horizontal mb-5">
+                           <ul class="nav nav-tabs mb-3" role="tablist">
+                               <li class="nav-item">
+                                   <a class="nav-link font-size-16 text-black show active" href="javascript: void(0);"
+                                       data-toggle="tab" data-target="#b1" role="tab"
+                                       aria-selected="false"><strong>History</strong></a>
+                               </li>
+                           </ul>
+                           <div class="tab-content padding-top-20">
+                               <div class="tab-pane show active" id="b1">
+                                   <div class="cui-ecommerce-dashboard-info">
+                                       <div class="cui-ecommerce-dashboard-info-block">
+                                           <div id="purchaseUnits" class="dataTables_wrapper dt-bootstrap4">
+                                               <div class="row">
+                                                   <div class="col-sm-12">
+                                                       <table class="table table-hover nowrap dataTable dtr-inline"
+                                                           id="purchaseUnitsTbl" role="grid"
+                                                           aria-describedby="example1_info">
+                                                           <thead class="thead-default">
+                                                               <tr role="row">
+                                                                   <th>S. No.</th>
+                                                                   <th>Date</th>
+                                                                   <th>No of Lots</th>
+                                                                   <th>No of Points</th>
+                                                                   <th>Purchase Id</th>
+                                                               </tr>
+                                                           </thead>
+                                                           <tbody>
+                                                               <% 
+                                                               if (purchaseUnits) {
+                                                               
+                                                               for(var i=0; i < purchaseUnits.length; i++) {
+                                                                 var pu = purchaseUnits[i];
+                                                             %>
+     
+                                                               <tr role="row" class="odd">
+                                                                   <td tabindex="0" class="sorting_1"><%= (i + 1) %></td>
+                                                                   <td><a href="javascript: void(0);"
+                                                                           class="link-underlined"><%= moment(pu.created).format(DATE_FORMAT) %></a>
+                                                                   </td>
+                                                                   <td><%= pu.numberOfUnits %></td>
+                                                                   <td><%= pu.numberOfPoints %></td>
+                                                                   <td><%= pu.purchaseId %></td>
+                                                               </tr>
+                                                               <% } 
+                                                             }%>
+                                                           </tbody>
+                                                       </table>
+                                                   </div>
+                                               </div>
+                                           </div>
+                                       </div>
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
+                
+            </div>
+        </section>
+       
+        </div>

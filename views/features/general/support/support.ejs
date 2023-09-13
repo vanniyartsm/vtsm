@@ -1,0 +1,123 @@
+<% 
+var DATE_FORMAT = 'YYYY-MM-DD hh:mm:ss A'
+var A_USER = "596c8bf65a12076ff0cc74b1";
+var moment = moment; 
+var user = req.session.user;
+var admin = (user._id == A_USER);
+var lastResponse;
+%>
+<div>
+    <!-- START: components/mail-templates -->
+    <section class="card">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="card-header">
+                        <h4 class="mt-1 mb-1 text-black">
+                            <% if (support) { %>
+                                <h3>Subject : <%= support.subject %></h3>
+                                <h6>Ticket No : <%= support.ticketNo %></h6>
+                                <h6>Reason : <%= support.reason %></h6>
+                                <h6>Department : <%= support.department %></h6>
+                                <% if (support.closed) { %>
+                                    <a href="javascript:void(0);" class="btn btn-danger btn-sm">
+                                      CLOSED
+                                    </a>
+                                <% } else if (support.reinitiated) { %>
+                                    <a href="javascript:void(0);" class="btn btn-warning btn-sm">
+                                        RE-INITIATED
+                                    </a>
+                                <%  } else if (support.responded) { %>
+                                    <a href="javascript:void(0);" class="btn btn-success btn-sm">
+                                      RESPONDED
+                                    </a>
+                                <% } else if (support.initiated) { %>
+                                    <a href="javascript:void(0);" class="btn btn-info btn-sm">
+                                        INITIATED
+                                    </a>
+                                <% } %>
+                                <input type="hidden" id="update-subject" value="<%= support.subject %>">
+                                <input type="hidden" id="update-reason" value="<%= support.reason %>">
+                                <input type="hidden" id="update-department" value="<%= support.department %>">
+                                <input type="hidden" id="replyBy" value="<%= admin  %>">
+                                <input type="hidden" id="supportTicketId" value="<%= support._id %>">
+                                <input type="hidden" id="supportTicketNo" value="<%= support.ticketNo %>">
+                            <% } %>
+                        </h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="apps__messaging">
+                            <div class="height-500 custom-scroll utils__scrollable">
+                                <div class="apps__chat-block">
+                                    <% 
+                                    if (supports) {
+                                    var supportsLength = supports.length;
+                                    for(var i=0; i < supportsLength; i++) {
+                                      var support = supports[i];
+
+                                      if (i == (supportsLength - 1)) {
+                                        lastResponse = support;
+                                      }
+                                      if (A_USER != support.user._id) {
+                                  %>
+                                        <div class="apps__chat-block__item clearfix">
+                                            <div class="apps__chat-block__avatar">
+                                                <a class="utils__avatar utils__avatar--50" href="javascript:void(0);">
+                                                    <img src="/inner/assets/images/user.jpg" alt="Alternative text to the image">
+                                                </a>
+                                            </div>
+                                            <div class="apps__chat-block__content">
+                                                <!-- <strong><%= support.subject %></strong> -->
+                                                <div class="text-primary font-weight-bold"><%= support.user.userName %> : <span class="text-danger font-weight-bold text-right"><%= moment(support.created).format(DATE_FORMAT) %></span> </div>
+                                                <p><%= support.description %></p>
+                                            </div>
+                                        </div>
+                                    <% } else { %>
+
+                                        <div class="apps__chat-block__item apps__chat-block__item--right clearfix">
+                                            <div class="apps__chat-block__avatar">
+                                                <a class="utils__avatar utils__avatar--50" href="javascript:void(0);">
+                                                    <img src="/inner/assets/images/user.png" alt="Admin Reply">
+                                                </a>
+                                            </div>
+                                            <div class="apps__chat-block__content text-right">
+                                                <div class="text-primary font-weight-bold text-right">Admin : <span class="text-danger font-weight-bold text-right"><%= moment(support.created).format(DATE_FORMAT) %></span> </div>
+                                                <p><%= support.description %></p>
+                                            </div>
+                                        </div>
+
+                                    <%  } 
+                                      } 
+                                    }%>
+                                </div>
+                            </div>
+                                <% if (support && support.responded && !support.closed || admin) {
+                                    if (!support.closed) { %>
+                                    <div class="form-group mt-4 mb-0">
+                                        <input type="hidden" class="form-control required" id="subject" placeholder="Subject" name="subject" aria-required="true" maxlength="255" required>
+                                        <textarea class="form-control adjustable-textarea" placeholder="Description" id="update-description" rows="5" maxlength="500"></textarea>
+                                        <div class="mt-3">            
+                                        <button class="btn btn-primary width-200" id="update-support-btn">
+                                            <i class="fa fa-send mr-2"></i>
+                                            Update Request
+                                        </button>
+                                        <% if (admin) { %> 
+                                            <button class="btn btn-primary width-200" id="close-support-btn">
+                                                <i class="fa fa-send mr-2"></i>
+                                                Close Request
+                                            </button>
+                                        <% } %>
+                                    </div>
+                                <% } 
+                                } %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            
+        </div>
+    </section>
+   
+    </div>

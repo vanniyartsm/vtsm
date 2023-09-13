@@ -1,0 +1,556 @@
+/**
+ * Created by senthil on 04/04/17.
+ */
+
+module.exports = Object.freeze({
+
+    GLOBAL_DATE_FORMAT : 'YYYY-MM-DDTHH:mm:SSSZ',
+
+    FATAL_ERROR : "FATAL_ERROR",
+    FATAL_ERROR_MSG : "Fatal Error",
+
+    LOGOUT_INFO : "LOGOUT_INFO",
+    LOGOUT_INFO_MSG : "Logged out successfully",
+
+    PROFILE_UPDATE_INFO : "PROFILE_UPDATE_INFO",
+    PROFILE_UPDATE_INFO_MSG : "Profile updated successfully",
+
+    FORGOT_PASSWORD_ERR_MSG: 'Mail Not Found',
+    FORGOT_PASSWORD_MSG: 'We have sent a password reset link to your email address.',
+
+    RESET_PASSWORD_MSG: 'Your password has been reset!',
+    RESET_PASSWORD_EXPIRES_MSG: 'Your reset link expires try again!',
+
+
+    //User Code and Messages
+    USER_OBJ_EMPTY: "USER_OBJ_EMPTY",
+    USER_OBJ_EMPTY_MSG : "User Object is Empty",
+
+    PURCHASE_UNIT_OBJ_EMPTY: "PURCHASE_UNIT_OBJ_EMPTY",
+    PURCHASE_UNIT_OBJ_EMPTY_MSG : "Purchase Unit Object is Empty",
+
+    LEDGER_OBJ_EMPTY: "LEDGER_OBJ_EMPTY",
+    LEDGER_OBJ_EMPTY_MSG : "Ledger Object is Empty",
+
+    POINTS_OBJ_EMPTY: "POINTS_OBJ_EMPTY",
+    POINTS_OBJ_EMPTY_MSG : "Points Object is Empty",
+
+    VALUE_OBJ_EMPTY: "VALUE_OBJ_EMPTY",
+    VALUE_OBJ_EMPTY_MSG : "Value is Empty",
+
+    TRANSFER_OBJ_EMPTY: "TRANSFER_OBJ_EMPTY",
+    TRANSFER_OBJ_EMPTY_MSG : "Transfer Object is Empty",
+
+    WITHDRAW_OBJ_EMPTY: "WITHDRAW_OBJ_EMPTY",
+    WITHDRAW_OBJ_EMPTY_MSG : "Withdraw Object is Empty",
+
+    USER_NAME_NOT_FOUND: "USER_NAME_NOT_FOUND",
+    USER_NAME_NOT_FOUND_MSG : "User Name not found",
+
+    USER_EMAIL_NOT_FOUND: "USER_EMAIL_NOT_FOUND",
+    USER_EMAIL_NOT_FOUND_MSG : "User Email Address not found",
+
+    USER_EMAIL_ALREADY_EXISTS: "USER_EMAIL_ALREADY_EXISTS",
+    USER_EMAIL_ALREADY_EXISTS_MSG : "User Email Address already exists",
+
+    USERS_NOT_FOUND: "USERS_NOT_FOUND",
+    USERS_NOT_FOUND_MSG : "Users not found",
+
+    SPONSOR_NOT_FOUND: "SPONSOR_NOT_FOUND",
+    SPONSOR_NOT_FOUND_MSG : "Referral Code Invalid",
+
+    USER_DUPLICATE : "USER_DUPLICATE",
+    USER_DUPLICATE_MSG : "Username already in use",
+
+    USER_REGISTERED : "USER_REGISTERED",
+    USER_REGISTERED_MSG : "Successfully Registered!!!",
+
+    USER_FORGOT_PASSWORD : "USER_FORGOT_PASSWORD",
+    USER_FORGOT_PASSWORD_MSG : "Forgot password initiated succesfully!!!",
+
+    PURCHASE_UNIT_VALIDATION : "PURCHASE_UNIT_VALIDATION",
+    PURCHASE_UNIT_VALIDATION_MSG : "Purchase Unit is invalid",
+
+    PURCHASE_UNIT_PURCHASE : "PURCHASE_UNIT_PURCHASE",
+    PURCHASE_UNIT_PURCHASE_MSG : "Purchase Lot(s) added successfully!",
+    PURCHASE_UNIT_REACHED_MAX_MSG : "Maximum of 100 Purchase Lots(s) are allowed!",
+
+    LEDGER_VALIDATION : "LEDGER_VALIDATION",
+    LEDGER_VALIDATION_MSG : "Ledger is invalid",
+
+    POINTS_VALIDATION : "POINTS_VALIDATION",
+    POINTS_VALIDATION_MSG : "Points is invalid",
+
+    SUPPORT_VALIDATION : "SUPPORT_VALIDATION",
+    SUPPORT_VALIDATION_MSG : "Invalid support request",
+
+    TRANSACTIONS_VALIDATION : "TRANSACTIONS_VALIDATION",
+    TRANSACTIONS_VALIDATION_MSG : "Transaction is invalid",
+
+    LOTS_VALIDATION : "LOTS_VALIDATION",
+    LOTS_VALIDATION_MSG : "Lots not available",
+
+    TRANSFER_WALLET_VALIDATION : "TRANSFER_WALLET_VALIDATION",
+    TRANSFER_WALLET_VALIDATION_MSG : "Only trade wallet to trade wallet is allowed",
+
+    WITHDRAW_WALLET_VALIDATION : "WITHDRAW_WALLET_VALIDATION",
+    WITHDRAW_WALLET_VALIDATION_MSG : "Only cash wallet or lot wallet withdraw are allowed",
+
+    USER_PASSWORD_NOT_MATCH : "USER_PASSWORD_NOT_MATCH",
+    USER_PASSWORD_NOT_MATCH_MSG : "Password Invalid!",
+
+    USER_OLD_PASSWORD_NOT_MATCH : "USER_OLD_PASSWORD_NOT_MATCH",
+    USER_OLD_PASSWORD_NOT_MATCH_MSG : "Old password doesn't match",
+
+    USER_OLD_NEW_PASSWORD_NOT_MATCH : "USER_OLD_NEW_PASSWORD_NOT_MATCH",
+    USER_OLD_NEW_PASSWORD_NOT_MATCH_MSG : "New and confirm password doesn't match",
+
+    USER_PASSWORD_UPDATED : "USER_PASSWORD_UPDATED",
+    USER_PASSWORD_UPDATED_MSG : "Password updated successfully!",
+
+    USER_INVALID_CREDENTIALS : "USER_INVALID_CREDENTIALS",
+    USER_INVALID_CREDENTIALS_MSG : "Invalid Credentials!",
+
+    USER_NOT_AVAILABLE : "USER_NOT_AVAILABLE",
+    USER_NOT_AVAILABLE_MSG : "User not available!",
+
+    REQUEST_POINTS_FAILED : "REQUEST_POINTS_FAILED",
+    REQUEST_POINTS_FAILED_MSG : "Requested points initiation failed!",
+
+    USER_MAIL_NOT_AVAILABLE : "USER_MAIL_NOT_AVAILABLE",
+    USER_MAIL_NOT_AVAILABLE_MSG : "Invalid Email Addres!",
+
+    SUPPORT_CREATED : "SUPPORT_CREATED",
+    SUPPORT_CREATED_MSG : "Successfully Submitted!!!",
+
+    SUPPORT_UPDATED : "SUPPORT_UPDATED",
+    SUPPORT_UPDATED_MSG : "Successfully Updated!!!",
+
+    SUBSCRIPTION_NOT_FOUND: "SUBSCRIPTION_NOT_FOUND",
+    SUBSCRIPTION_NOT_FOUND_MSG : "Subscription not found",
+
+    SUBSCRIPTION_NOT_AVAILABLE : "SUBSCRIPTION_NOT_AVAILABLE",
+    SUBSCRIPTION_NOT_AVAILABLE_MSG : "Subscription not available!",
+
+    SUBSCRIPTION_OBJ_EMPTY: "SUBSCRIPTION_OBJ_EMPTY",
+    SUBSCRIPTION_OBJ_EMPTY_MSG : "Subscription Object is Empty",
+
+    SUBSCRIPTION_DUPLICATE : "SUBSCRIPTION_DUPLICATE",
+    SUBSCRIPTION_DUPLICATE_MSG : "Subscription already in use",
+
+    SUBSCRIPTION_EXPIRED : "SUBSCRIPTION_EXPIRED",
+    SUBSCRIPTION_EXPIRED_MSG : "Your subscription is expired. Please upgrade to proceed further.",
+
+    //Component Code and Messages
+    COMPONENT_TYPE_OBJ_EMPTY: "COMPONENT_TYPE_OBJ_EMPTY",
+    COMPONENT_TYPE_OBJ_EMPTY_MSG : "Component Type Object is Empty",
+
+    COMPONENT_TYPE_DUPLICATE : "COMPONENT_TYPE_DUPLICATE",
+    COMPONENT_TYPE_DUPLICATE_MSG : "Duplicate Component Type",
+
+    COMPONENT_TYPE_NOT_AVAILABLE : "COMPONENT_TYPE_NOT_AVAILABLE",
+    COMPONENT_TYPE_NOT_AVAILABLE_MSG : "Component Type not available",
+
+
+    //Component Messages
+    COMPONENT_OBJ_EMPTY: "COMPONENT_OBJ_EMPTY",
+    COMPONENT_OBJ_EMPTY_MSG : "Component Object is Empty",
+
+    COMPONENT_DUPLICATE : "COMPONENT_DUPLICATE",
+    COMPONENT_DUPLICATE_MSG : "Duplicate Component",
+
+    COMPONENT_NOT_AVAILABLE : "COMPONENT_NOT_AVAILABLE",
+    COMPONENT_NOT_AVAILABLE_MSG : "Component not available",
+
+    COMPONENT_CREATION_FAILED : "COMPONENT_CREATION_FAILED",
+    COMPONENT_CREATION_FAILED_MSG : "Component creation failed",
+    COMPONENT_CREATED_MSG : "Component created successfully",
+    COMPONENT_UPDATED_MSG : "Component updated successfully",
+
+
+    //Graph Type Messages
+    GRAPH_TYPE_OBJ_EMPTY: "GRAPH_TYPE_OBJ_EMPTY",
+    GRAPH_TYPE_OBJ_EMPTY_MSG : "Grap Type Object is Empty",
+
+    GRAPH_TYPE_DUPLICATE : "GRAPH_TYPE_DUPLICATE",
+    GRAPH_TYPE_DUPLICATE_MSG : "Duplicate Graph Type",
+
+    GRAPH_TYPE_NOT_AVAILABLE : "GRAPH_TYPE_NOT_AVAILABLE",
+    GRAPH_TYPE_NOT_AVAILABLE_MSG : "Graph Type not available",
+
+
+    //Graph Messages
+    GRAPH_OBJ_EMPTY: "GRAPH_OBJ_EMPTY",
+    GRAPH_OBJ_EMPTY_MSG : "Graph Object is Empty",
+
+    GRAPH_DUPLICATE : "GRAPH_DUPLICATE",
+    GRAPH_DUPLICATE_MSG : "Duplicate Graph",
+
+    GRAPH_NOT_AVAILABLE : "GRAPH_NOT_AVAILABLE",
+    GRAPH_NOT_AVAILABLE_MSG : "Graph not available",
+
+
+    //Graph Instance Messages
+    GRAPH_INSTANCE_OBJ_EMPTY: "GRAPH_INSTANCE_OBJ_EMPTY",
+    GRAPH_INSTANCE_OBJ_EMPTY_MSG : "Grap Instance Object is Empty",
+
+    GRAPH_INSTANCE_DUPLICATE : "GRAPH_INSTANCE_DUPLICATE",
+    GRAPH_INSTANCE_DUPLICATE_MSG : "Duplicate Graph Instance",
+
+    GRAPH_INSTANCE_NOT_AVAILABLE : "GRAPH_INSTANCE_NOT_AVAILABLE",
+    GRAPH_INSTANCE_NOT_AVAILABLE_MSG : "Graph Instance not available",
+
+    //Environment Messages
+    ENVIRONMENT_OBJ_EMPTY: "ENVIRONMENT_OBJ_EMPTY",
+    ENVIRONMENT_OBJ_EMPTY_MSG : "Environment Object is Empty",
+
+    ENVIRONMENT_DUPLICATE : "ENVIRONMENT_DUPLICATE",
+    ENVIRONMENT_DUPLICATE_MSG : "Duplicate Environment",
+
+    ENVIRONMENT_NOT_AVAILABLE : "ENVIRONMENT_NOT_AVAILABLE",
+    ENVIRONMENT_NOT_AVAILABLE_MSG : "Environment not available",
+
+    ENVIRONMENT_CREATED_MSG : "Environment created successfully",
+    ENVIRONMENT_UPDATED_MSG : "Environment updated successfully",
+
+    //Group Messages
+    GROUP_OBJ_EMPTY: "GROUP_OBJ_EMPTY",
+    GROUP_OBJ_EMPTY_MSG : "Group Object is Empty",
+
+    GROUP_DUPLICATE : "GROUP_DUPLICATE",
+    GROUP_DUPLICATE_MSG : "Duplicate Group",
+
+    GROUP_NOT_AVAILABLE : "GROUP_NOT_AVAILABLE",
+    GROUP_NOT_AVAILABLE_MSG : "Group not available",
+
+
+    //Group Messages
+    PROJECT_OBJ_EMPTY: "PROJECT_OBJ_EMPTY",
+    PROJECT_OBJ_EMPTY_MSG : "Project Object is Empty",
+
+    PROJECT_DUPLICATE : "PROJECT_DUPLICATE",
+    PROJECT_DUPLICATE_MSG : "Duplicate Project",
+
+    PROJECT_NOT_AVAILABLE : "PROJECT_NOT_AVAILABLE",
+    PROJECT_NOT_AVAILABLE_MSG : "Project not available",
+
+    PROJECT_CREATED_MSG : "Project created successfully",
+    PROJECT_UPDATED_MSG : "Project updated successfully",
+
+    //Dashboard Type Code and Messages
+    DASHBOARD_TYPE_OBJ_EMPTY: "DASHBOARD_TYPE_OBJ_EMPTY",
+    DASHBOARD_TYPE_OBJ_EMPTY_MSG : "Dashboard Type Object is Empty",
+
+    DASHBOARD_TYPE_DUPLICATE : "DASHBOARD_TYPE_DUPLICATE",
+    DASHBOARD_TYPE_DUPLICATE_MSG : "Duplicate Dashboard Type",
+
+    DASHBOARD_TYPE_NOT_AVAILABLE : "DASHBOARD_TYPE_NOT_AVAILABLE",
+    DASHBOARD_TYPE_NOT_AVAILABLE_MSG : "Dashboard Type not available",
+
+
+    //Dashboard Code and Messages
+    DASHBOARD_OBJ_EMPTY: "DASHBOARD_OBJ_EMPTY",
+    DASHBOARD_OBJ_EMPTY_MSG : "Dashboard Object is Empty",
+
+    DASHBOARD_DUPLICATE : "DASHBOARD_DUPLICATE",
+    DASHBOARD_DUPLICATE_MSG : "Duplicate Dashboard",
+
+    DASHBOARD_NOT_AVAILABLE : "DASHBOARD_NOT_AVAILABLE",
+    DASHBOARD_NOT_AVAILABLE_MSG : "Dashboard not available",
+
+
+    //Test Execution Code and Messages
+    TEST_EXECUTION_OBJ_EMPTY: "TEST_EXECUTION_OBJ_EMPTY",
+    TEST_EXECUTION_OBJ_EMPTY_MSG : "Test Execution Object is Empty",
+
+    TEST_EXECUTION_DUPLICATE : "TEST_EXECUTION_DUPLICATE",
+    TEST_EXECUTION_DUPLICATE_MSG : "Duplicate Test Execution",
+
+    TEST_EXECUTION_NOT_AVAILABLE : "TEST_EXECUTION_NOT_AVAILABLE",
+    TEST_EXECUTION_NOT_AVAILABLE_MSG : "Test Execution not available",
+
+    SCHEDULE_OBJ_EMPTY_MSG : "Test Execution Object is Empty",
+    SCHEDULE_NOT_AVAILABLE : "SCHEDULE_NOT_AVAILABLE",
+    SCHEDULE_NOT_AVAILABLE_MSG : "Schedule not available",
+
+
+    //Test Code and Messages
+    TEST : "TEST",
+    TEST_OBJ_EMPTY: "TEST_OBJ_EMPTY",
+    TEST_OBJ_EMPTY_MSG : "Test Object is Empty",
+
+    TEST_DUPLICATE : "TEST_DUPLICATE",
+    TEST_DUPLICATE_MSG : "Duplicate Dashboard",
+
+    TEST_NOT_AVAILABLE : "TEST_NOT_AVAILABLE",
+    TEST_NOT_AVAILABLE_MSG : "Test not available",
+    TEST_ALREADY_AVAILABLE : "TEST_ALREADY_AVAILABLE",
+    TEST_ALREADY_AVAILABLE_MSG : "Test is already available",
+
+    TEST_CREATED: "TEST_CREATED",
+    TEST_CREATED_MSG : "Test created successfully",
+    TEST_UPDATED_MSG : "Test updated successfully",
+    TEST_DELETED_MSG : "Test deleted successfully",
+
+    //Test Result Code and Messages
+    TEST_RESULT_OBJ_EMPTY: "TEST_RESULT_OBJ_EMPTY",
+    TEST_RESULT__OBJ_EMPTY_MSG : "Test Result Object is Empty",
+
+    TEST_RESULT_DUPLICATE : "TEST_RESULT_DUPLICATE",
+    TEST_RESULT_DUPLICATE_MSG : "Duplicate Test Result",
+
+    TEST_RESULT_NOT_AVAILABLE : "TEST_RESULT_NOT_AVAILABLE",
+    TEST_RESULT_NOT_AVAILABLE_MSG : "Test Result not available",
+
+    //Role Code
+    ROLE_NOT_AVAILABLE : "ROLE_NOT_AVAILABLE",
+    ROLE_NOT_AVAILABLE_MSG : "Role not available",
+    ROLE_ALREADY_AVAILABLE : "ROLE_ALREADY_AVAILABLE",
+    ROLE_ALREADY_AVAILABLE_MSG : "Role is already available",
+
+    ROLE_CREATED: "ROLE_CREATED",
+    ROLE_CREATED_MSG : "Role created successfully",
+    ROLE_UPDATED_MSG : "Role updated successfully",
+    ROLE_DELETED_MSG : "Role deleted successfully",
+    ROLE_EXECUTION_ERR_MSG : "Role Creation Failure",
+
+    ROLE_ASSIGN_MSG : "Role assigned successfully",
+
+    //Accessbility Code
+
+    ACCESBILITY_TEST_EXECUTION_CREATED: "ACCESBILITY_TEST_EXECUTION_CREATED",
+    ACCESBILITY_CREATED_MSG : "Accessbility created successfully",
+    ACCESBILITY_UPDATED_MSG : "Accessbility updated successfully",
+    ACCESBILITY_DELETED_MSG : "Accessbility deleted successfully",
+
+    SCHEDULER_CREATED_MSG : "Test has been scheduled",
+
+    ACCESBILITY_TEST_EXECUTION_ERR_MSG : "Accessbility Creation Failure",
+
+    /* Db And Es Connections */
+    DB_ES_CONNECTION_ERR: "Please Connect Db And es",
+
+    /* HTTP Response Codes */
+    HTTP_OK: 200,
+    HTTP_CREATED: 201,
+    HTTP_ACCEPTED: 202,
+    HTTP_NON_AUThORITATIVE: 203,
+    HTTP_NO_CONTENT: 202,
+
+    HTTP_BAD_REQUEST: 400,
+    HTTP_UNAUTHORIZED: 401,
+    HTTP_PAYMENT_REQUIRED: 402,
+    HTTP_FORBIDDEN: 403,
+    HTTP_NOT_FOUND: 404,
+
+    HTTP_FAILED: 500,
+
+    /* SMS */
+    SMS_URL: '' ,
+    SMS_USER_NAME: '',
+    SMS_SENDER: '',
+    SMS_SEC_KEY: '',
+
+    CONTENT_TYPE: 'application/json',
+    METHOD_POST : 'POST',
+    UPDATED_DATE: 'updated_date',
+
+    /* JMeter Constants
+     */
+
+    JMETER_TARGET_RESULT_PATH : '/target/jmeter/results',
+
+    /* Schema model Field */
+    GROUP_FIELD : 'group',
+    GROUP_TYPE_FIELD : 'groupType',
+    COMPONENT_FIELD : 'component',
+    COMPONENT_TYPE_FIELD : 'componentType',
+    CREATED_BY_FIELD : 'createdBy',
+
+    DATE_FORMAT : 'MMM DD YYYY hh:mm:ss A',
+
+    SUBSCRIPTION_DAYS : 'DAYS',
+    SUBSCRIPTION_MONTH : 'MONTH',
+    SUBSCRIPTION_YEAR : 'YEAR',
+    CREATE: 'CREATE',
+    UPDATE: 'UPDATE',
+    READ: 'READ',
+    DELETE: 'DELETE',
+
+    ACT_DEPOSIT_ACCOUNT_TYPE_ID : 1,
+    ACT_DEPOSIT_ACCOUNT_TYPE : "196c8bf65a12076ff0cc1234",
+
+    ACT_WITHDRAW_ACCOUNT_TYPE_ID : 2,
+    ACT_WITHDRAW_ACCOUNT_TYPE : "296c8bf65a12076ff0cc1234",
+
+    ACT_TRANSFER_ACCOUNT_TYPE_ID : 3,
+    ACT_TRANSFER_ACCOUNT_TYPE : "396c8bf65a12076ff0cc1234",
+
+    AC_DEPOSIT_ACCOUNT_PURCHASE_POINTS_ID : 1,
+    AC_DEPOSIT_ACCOUNT_PURCHASE_POINTS : "1a1c8bf65a12076ff0cc5601",
+
+    AC_TRANSFER_POINTS_ID : 4,
+    AC_TRANSFER_POINTS : "1a4c8bf65a12076ff0cc5604",
+
+    AC_INTERNAL_TRANSFER_POINTS_ID : 5,
+    AC_INTERNAL_TRANSFER_POINTS : "1a5c8bf65a12076ff0cc5605",
+
+    AC_PURCHASE_UNITS_ID : 3,
+    AC_PURCHASE_UNITS : "1a3c8bf65a12076ff0cc5603",
+
+    AC_LEVEL_COMMISSION_ID : 10,
+    AC_LEVEL_COMMISSION : "1a8c8bf65a12076ff0cc5610",
+
+    AC_ACTIVE_BONUS_ID : 12,
+    AC_ACTIVE_BONUS : "1a108bf65a12076ff0cc5612",
+
+    DEPOSIT_ACCOUNT_NAME : "Deposit",
+
+    WT_TRADE_WALLET_ID : 1,
+    WT_TRADE_WALLET : "5a1c8bf65a12076ff0cc0001",
+
+    WT_PURCHASE_LOT_ID : 7,
+    WT_PURCHASE_LOT_WALLET : "5a7c8bf65a12076ff0cc0007",
+
+    WT_DEPOSIT_WALLET_ID : 2,
+    WT_DEPOSIT_WALLET : "5a2c8bf65a12076ff0cc0002",
+
+    WT_EARNED_WALLET_ID : 3,
+    WT_EARNED_WALLET : "5a3c8bf65a12076ff0cc0003",
+
+    WT_ADMIN_WALLET_ID : 5,
+    WT_ADMIN_WALLET : "5a5c8bf65a12076ff0cc0005",
+
+    WT_ACTIVE_BONUS_WALLET_ID : 6,
+    WT_ACTIVE_BONUS_WALLET :"5a6c8bf65a12076ff0cc0006",
+
+    BINARY_COMMISSION_ID : 3,
+    BINARY_COMMISSION_WALLET :"5a3c8bf65a12076ff0cc0003",
+
+    CASH_WALLET_ID : 3,
+    CASH_WALLET_WALLET :"5a3c8bf65a12076ff0cc0003",
+
+    LOT_WALLET_ID : 6,
+    LOT_WALLET_WALLET :"5a6c8bf65a12076ff0cc0006",
+
+    QUBEROS_TOKEN_WALLET_ID : 3,
+    QUBEROS_TOKEN_WALLET :"5a2c8bf65a12076ff0cc0002",
+
+    AC_BINARY_COMMISSION_ID : 10,
+    AC_BINARY_COMMISSION : "1a108bf65a12076ff0cc5610",
+
+    AC_SUPER_BINARY_COMMISSION_ID : 11,
+    AC_SUPER_BINARY_COMMISSION : "1a118bf65a12076ff0cc5611",
+
+    AC_LOT_BONUS_ID : 12,
+    AC_LOT_BONUS : "1a128bf65a12076ff0cc5612",
+
+    AC_SILVER_BONUS_ID : 13,
+    AC_SILVER_BONUS : "1a138bf65a12076ff0cc5613",
+
+    AC_LOT_WALLET_WITHDRAW_ID : 8,
+    AC_LOT_WALLET_WITHDRAW : "1a8c8bf65a12076ff0cc5608",
+
+    AC_CASH_WALLET_WITHDRAW_ID : 7,
+    AC_CASH_WALLET_WITHDRAW : "1a7c8bf65a12076ff0cc5607",
+
+    TRADE_WALLET_NAME : "Trade Wallet",
+    AUTH_SECRET :'quberosauthsecret',
+
+    ADMIN_USER_ID : "596c8bf65a12076ff0cc74b1",
+
+    TRADE_ACCOUNT_PURCHASE_POINTS : "1a1c8bf65a12076ff0cc5601",
+    DEPOSIT_ACCOUNT_TYPE : "196c8bf65a12076ff0cc1234",
+
+    ROOT_ANSCESTOR_PATH : "-1",
+
+    POSITION_LEFT : "L",
+    POSITION_RIGHT : "R",
+
+    USER_REG_STATUS : "REGISTRATION",
+    USER_TRADER_STATUS : "TRADER",
+    USER_SILVER_TRADER_STATUS : "SILVER_TRADER",
+    USER_GOLD_TRADER_STATUS : "GOLD_TRADER",
+    USER_PEARL_TRADER_STATUS : "PEARL_TRADER",
+    USER_DIAMOND_TRADER_STATUS : "DIAMOND_TRADER",
+    USER_PLATINUM_TRADER_STATUS : "PLATINUM_TRADER",
+
+    QUBEROS_TOKEN_PER_LOT : 360,
+    LOT_POINTS : 135,
+    MAXIMUM_LOTS_ALLOWED : 100,
+
+    BINARY_LOT : "BINARY",
+    SUPER_BINARY_LOT : "SUPPER_BINARY",
+
+    COUNTER_USER : "USER",
+    COUNTER_BINARY_PAYOUT : "BINARY_PAYOUT",
+    COUNTER_TRADING_PAYOUT : "TRADING_PAYOUT",
+
+    BINARY_PAYOUT : "BINARY_PAYOUT",
+    SUPER_BINARY_PAYOUT : "SUPER_BINARY_PAYOUT",
+    TRADING_PAYOUT : "TRADING_PAYOUT",
+
+    BINARY_MIN_LIMIT : 1,
+    BINARY_MAX_LIMIT : 25,
+    BINARY_PAYOUT_RATIO : 10,
+
+    SUPER_BINARY_MIN_LIMIT : 2,
+    SUPER_BINARY_MAX_LIMIT : 256,
+    SUPER_BINARY_PAYOUT_RATIO : 10,
+
+    SUPER_BINARY_SLAB_1_PAIR_2 : 2,
+    SUPER_BINARY_SLAB_2_PAIR_4 : 4,
+    SUPER_BINARY_SLAB_3_PAIR_8 : 8,
+    SUPER_BINARY_SLAB_4_PAIR_16 : 16,
+    SUPER_BINARY_SLAB_5_PAIR_32 : 32,
+    SUPER_BINARY_SLAB_6_PAIR_64 : 64,
+    SUPER_BINARY_SLAB_7_PAIR_128 : 128,
+    SUPER_BINARY_SLAB_8_PAIR_256 : 256,
+
+    TRADING_PAYOUT_LOT_BONUS : 6,
+    TRADING_PAYOUT_SILVER_BONUS : 1,
+
+    LOG_LEVEL_INFO : 'info',
+    LOG_LEVEL_DEBUG : 'debug',
+    LOG_LEVEL_ERROR : 'error',
+    LOG_LEVEL_FATAL : 'fatal',
+    LOG_LEVEL_TRACE : 'trace',
+
+    ALERT_MESSAGE_INFO : 'info',
+    ALERT_MESSAGE_SUCCESS : 'success',
+    ALERT_MESSAGE_PRIMARY : 'primary',
+    ALERT_MESSAGE_DANGER : 'danger',
+
+    ADMIN_GMAIL : global.config.system.email.adminEmail,
+    INFO_GMAIL : global.config.system.email.infoEmail,
+    FROM_EMAIL : global.config.system.email.fromEmail,
+
+    FORGOT_SEND_GRID_TEMPLATE_ID : 'd-1b2ed3319e964cc2a54df9f042169e77',
+    REGISTER_SEND_GRID_TEMPLATE_ID : 'd-d5dcbc76f6144438bd391d52d61ed8b2',
+
+    SEND_GRID_MAIL_API_KEY : "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",
+
+    CUTOFF_DATE_FORMAT: "YYYY-MM-DD",
+    PAYOUT_DATE_FORMAT : "YYYY-MM-DDTHH:mm:ss.sss",
+
+    REQUESTED_URL : "reqested-url",
+
+    WITHDRAW_STATUS_REQUESTED : 'REQUESTED',
+    WITHDRAW_STATUS_APPROVED : 'APPROVED',
+    WITHDRAW_STATUS_REJECTED : 'REJECTED',
+    WITHDRAW_STATUS_DEPOSITED : 'DEPOSITED',
+
+    STATUS_RAISED : 'RAISED',
+    STATUS_RESPONDED : 'RESPONDED',
+    STATUS_REINITIATED : 'REINITIATED',
+    STATUS_CLOSED : 'CLOSED',
+
+    STATUS_REQUESTED : 'REQUESTED',
+    STATUS_APPROVED : 'APPROVED',
+    STATUS_REJECTED : 'REJECTED',
+    STATUS_DEPOSITED : 'DEPOSITED',
+
+    INFO_EMAIL : "quberosinfo@gmail.com"
+
+});
+
