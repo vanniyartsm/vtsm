@@ -1,4 +1,7 @@
 .btn-phoenix-primary {
     --phoenix-btn-color: #000000;
     --phoenix-btn-bg: #ffbcca;
+    --phoenix-btn-hover-color: #000000;
+    --phoenix-btn-hover-bg: #f999ae;
+    --phoenix-btn-hover-border-color: #e95f7d;
 }
