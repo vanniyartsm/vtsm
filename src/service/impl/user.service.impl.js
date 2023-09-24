@@ -1041,13 +1041,13 @@ function bootstrapUserData(callback) {
 
     var user = new User({
         _id: '596c8bf65a12076ff0cc74b1',
-        userName: 'universal',
+        userName: 'vtsm',
         password: 'BlackPepper@2220',
         transactionPassword: 'TransBlackPepper@2220',
         //password: 'admin',
         firstName: 'Admin',
         lastName: 'User',
-        emailAddress: 'admin@quberos.io',
+        emailAddress: 'admin@vtsm.com',
         phoneNo: '+911231231234',
         referralCode: "2WEKAVNO",
         sponsorId: "-1",
