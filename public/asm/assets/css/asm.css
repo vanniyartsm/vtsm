@@ -5,3 +5,12 @@
     --phoenix-btn-hover-bg: #f999ae;
     --phoenix-btn-hover-border-color: #e95f7d;
 }
+
+.bg-pink {
+    --phoenix-bg-opacity: 1;
+    background-color: #f6c8d5;
+}
+
+.content {
+    background-color: #fff;
+}

@@ -14,6 +14,7 @@
         <div class="col-lg-6">
           <%- include('../common/message') %>
           <form method="post" action="/web/auth" id="login-form">
+            <div class="content">
             <div class="row flex-center h-100 g-0 px-4 px-sm-0">
                 <div class="col col-sm-6 col-lg-7 col-xl-6"><a class="d-flex flex-center text-decoration-none mb-4" href="../../../index.html">
                     <div class="d-flex align-items-center fw-bolder fs-5 d-inline-block"><img src="<%= locals.context %>/asm/assets/img/icons/logo.png" alt="phoenix" width="58" />
@@ -54,6 +55,7 @@
                 <div class="text-center"><a class="fs--1 fw-bold" href="../../../pages/authentication/split/sign-up.html">Create an account</a></div>
                 </div>
             </div>
+          </div>
             </form>
           </div>
         </div>
@@ -112,7 +114,6 @@
             </div>
           </div>
         </div>
-        <button class="btn p-0 border border-200 btn-support-chat"><span class="fs-0 btn-text text-primary text-nowrap">Chat demo</span><span class="fa-solid fa-circle text-success fs--1 ms-2"></span><span class="fa-solid fa-chevron-down text-primary fs-1"></span></button>
       </div>
     </main>
     <!-- ===============================================-->

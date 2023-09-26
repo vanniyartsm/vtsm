@@ -19,6 +19,7 @@
     <link rel="manifest" href="<%= locals.context %>/asm/assets/img/favicons/manifest.json">
     <meta name="msapplication-TileImage" content="<%= locals.context %>/asm/assets/img/favicons/mstile-150x150.png">
     <meta name="theme-color" content="#ffffff">
+    <meta name="csrf-token" content="{{<%= locals.csrfToken %>}}">
     <script src="<%= locals.context %>/asm/vendors/imagesloaded/imagesloaded.pkgd.min.js"></script>
     <script src="<%= locals.context %>/asm/vendors/simplebar/simplebar.min.js"></script>
     <script src="<%= locals.context %>/asm/assets/js/config.js"></script>
@@ -27,6 +28,8 @@
     <!-- ===============================================-->
     <!--    Stylesheets-->
     <!-- ===============================================-->
+    <link href="<%= locals.context %>/asm/vendors/flatpickr/flatpickr.min.css" rel="stylesheet">
+    <link href="<%= locals.context %>/asm/vendors/prism/prism-okaidia.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800;900&amp;display=swap" rel="stylesheet">
