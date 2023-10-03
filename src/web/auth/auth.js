@@ -21,11 +21,16 @@ var express = require('express')
     , dashboardService = require('../../service/dashboard.service')
     , baseService = require('../../commons/base.service');
 var fs = require('fs');
+var csrf = require('csurf');
+const bodyParser = require('body-parser');
+var csrfProtect = csrf({ cookie: true })
+let parseForm = bodyParser.urlencoded({ extended: false });
+
 require('../../commons/passport')(passport);
 
 //Get Login Page
-router.get('/login', function(req, res, next) {
-    res.render(renderConstants.LOGIN_PAGE, { layout: renderConstants.LAYOUT_NO_HEADER, req: req});
+router.get('/login', csrfProtect, function(req, res, next) {
+    res.render(renderConstants.LOGIN_PAGE, { layout: renderConstants.LAYOUT_NO_HEADER, req: req, csrfToken: req.csrfToken()});
 });
 
 //Get Registration Page
@@ -244,7 +249,7 @@ router.post('/index', function(req, res, next) {
  * @return {Function}
  * @api public
  */
-router.post('/', function(req, res, next) {
+router.post('/', parseForm, csrfProtect, function(req, res, next) {
     //userServiceImpl.authenticate()
     var userJson = req.body;
     var locals = {
