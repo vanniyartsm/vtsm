@@ -20,6 +20,13 @@ const uuidv1 = require('uuid/v1');
 var Counter = require('../../model/Counter');
 var User = require('../../model/User');
 var PurchaseUnit = require('../../model/PurchaseUnit');
+var Member = require('../../model/vtsm/Member');
+var { PersonalInfo } = require('../../model/vtsm/PersonalInfo');
+var { FamilyReligionInfo }  = require('../../model/vtsm/FamilyReligionInfo');
+var { ProfessionInfo } = require('../../model/vtsm/ProfessionInfo');
+var { ProfileInfo } = require('../../model/vtsm/ProfileInfo');
+
+
 var Ledger = require('../../model/Ledger');
 //var MailProviders = require('../../model/MailProvider');
 //var UserSubscription = require('../../model/UserSubscription');
@@ -1036,6 +1043,72 @@ function getUsersByIds(ids, callback) {
     })
 }
 exports.getUsersByIds = getUsersByIds;
+
+function bootstrapMemberData(callback) {
+
+    var familyReligionInfoSchema = new FamilyReligionInfo({
+        _id: '596c8bf65a12076ee0cc7590',
+        fatherName: 'Father',
+        motherName: 'Mother',
+        sisters: 0,
+        brothers: 0,
+        rasi: 'Leo',
+        natchathram: 'Aswini',
+        lagnam: 'Leo',
+        gothram: 'g',
+        dosham: 'd'
+    });
+
+    var personalInfoSchema = new PersonalInfo({
+        _id: '596c8bf65a12076ee0cc7591',
+        maritalStatus: 'NeverMarried',
+        education: 'MCA',
+        height: 5.7,
+        weight: 70,
+        address: '1st Main Road',
+        city: 'Tiruvannamalai',
+        pincode: '606606',
+        country: 'IN'
+    });
+
+    var professionInfoSchema = new ProfessionInfo({
+        _id: '596c8bf65a12076ee0cc7592',
+        occupation: 'IT',
+        employer: 'Business',
+        annualIncome: 10000,
+        workLocation: 'Chennai'
+    });
+
+    var profileInfoSchema = new ProfileInfo({
+        _id: '596c8bf65a12076ee0cc7593',
+        description: '',
+        isDisable: false
+    });
+
+    var member = new Member({
+        _id: '596c8bf65a12076ff0cc7589',
+        firstName: 'Admin User',
+        emailAddress: 'admin@vtsm.com',
+        password: 'MindBlowing@2030',
+        transactionPassword: 'MindBlowing@2030',
+        dob: '1990-10-10',
+        primaryMobile: '1231231232',
+        primaryMobile: '1231231233',
+        active: true,
+        familyReligionInfo: familyReligionInfoSchema,
+        personalInfo: personalInfoSchema,
+        professionInfo: professionInfoSchema,
+        profileInfo: profileInfoSchema,
+        status: constants.USER_ACTIVATE_STATUS
+    });
+
+    member.save(function (err) {
+        console.info('user error = ', err);
+        callback(err, member);
+    });
+}
+exports.bootstrapMemberData = bootstrapMemberData;
+
 
 function bootstrapUserData(callback) {
 

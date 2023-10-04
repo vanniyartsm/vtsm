@@ -3,7 +3,7 @@
     "mongodb":{
       "host":"localhost",
       "port":27017,
-      "dbName" : "vmsc-asm-01-db",
+      "dbName" : "vmsc-asm-02-db",
       "debug": true,
       "connection": true
     },

@@ -23,6 +23,7 @@ exports.bootstrapInit = function() {
         //_initPopulateStatus,
         //_initDownlineStatus,
         //_bootstrapRirectReferals,
+        _initMembers,
         _initUsers,
         _initAccountTypes,
         _initAccounts,
@@ -715,6 +716,20 @@ function _initUsers(params, callback) {
         params.usersCount = count;
         if (count == 0) {
             userServiceImpl.bootstrapUserData(function(err, results) {
+                params.setup = true;
+                callback(null, params);
+            });
+        } else {
+            callback(null, params);
+        }
+    });
+}
+
+function _initMembers(params, callback) {
+    userServiceImpl.getUsersCount(function (err, count) {
+        params.usersCount = count;
+        if (count == 0) {
+            userServiceImpl.bootstrapMemberData(function(err, results) {
                 params.setup = true;
                 callback(null, params);
             });
