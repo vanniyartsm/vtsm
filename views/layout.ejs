@@ -70,41 +70,15 @@
             <div class="d-flex align-items-center"><img src="<%= locals.context %>/asm/assets/img/icons/logo.png" alt="vtsm" width="125" />
             </div>
           </a>
-          <div class="d-lg-none">
-            <div class="theme-control-toggle fa-icon-wait px-2">
-              <input class="form-check-input ms-0 theme-control-toggle-input" type="checkbox" data-theme-control="phoenixTheme" value="dark" id="themeControlToggleSm" />
-              <label class="mb-0 theme-control-toggle-label theme-control-toggle-light" for="themeControlToggleSm" data-bs-toggle="tooltip" data-bs-placement="left" title="Switch theme"><span class="icon" data-feather="moon"></span></label>
-              <label class="mb-0 theme-control-toggle-label theme-control-toggle-dark" for="themeControlToggleSm" data-bs-toggle="tooltip" data-bs-placement="left" title="Switch theme"><span class="icon" data-feather="sun"></span></label>
-            </div>
-          </div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <div class="border-bottom border-bottom-lg-0 mb-2">
-              <div class="search-box d-inline d-lg-none">
-                <form class="position-relative" data-bs-toggle="search" data-bs-display="static">
-                  <input class="form-control search-input search rounded-pill my-4" type="search" placeholder="Search" aria-label="Search" />
-                  <span class="fas fa-search search-box-icon"></span>
-
-                </form>
-              </div>
-            </div>
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item border-bottom border-bottom-lg-0"><a class="nav-link lh-1 py-0 fs--1 fw-bold py-3 active" aria-current="page" href="#">Home</a></li>
-              <li class="nav-item border-bottom border-bottom-lg-0"><a class="nav-link lh-1 py-0 fs--1 fw-bold py-3" href="#feature">Features</a></li>
-              <li class="nav-item border-bottom border-bottom-lg-0"><a class="nav-link lh-1 py-0 fs--1 fw-bold py-3" href="#blog">Blog</a></li>
-              <li class="nav-item"><a class="nav-link lh-1 py-0 fs--1 fw-bold py-3" href="#team">Team</a></li>
+              <li class="nav-item border-bottom border-bottom-lg-0"><a class="nav-link lh-1 py-0 fs--1 fw-bold py-3" href="#gallery">Gallery</a></li>
+              <li class="nav-item border-bottom border-bottom-lg-0"><a class="nav-link lh-1 py-0 fs--1 fw-bold py-3" href="#testimonial">Testimonial</a></li>
+              <li class="nav-item"><a class="nav-link lh-1 py-0 fs--1 fw-bold py-3" href="#subscribe">Subscribe</a></li>
             </ul>
             <div class="d-grid d-lg-flex align-items-center">
-              <div class="nav-item d-flex align-items-center d-none d-lg-block pe-2">
-                <div class="theme-control-toggle fa-icon-wait px-2">
-                  <input class="form-check-input ms-0 theme-control-toggle-input" type="checkbox" data-theme-control="phoenixTheme" value="dark" id="themeControlToggle" />
-                  <label class="mb-0 theme-control-toggle-label theme-control-toggle-light" for="themeControlToggle" data-bs-toggle="tooltip" data-bs-placement="left" title="Switch theme"><span class="icon" data-feather="moon"></span></label>
-                  <label class="mb-0 theme-control-toggle-label theme-control-toggle-dark" for="themeControlToggle" data-bs-toggle="tooltip" data-bs-placement="left" title="Switch theme"><span class="icon" data-feather="sun"></span></label>
-                </div>
-              </div>
-              <a class="text-700 hover-text-1100 px-2 d-none d-lg-inline lh-sm" href="#" data-bs-toggle="modal" data-bs-target="#searchBoxModal">
-                <span data-feather="search" style="height: 20px; width: 20px;"></span>
-              </a>
               <a class="btn btn-link text-900 order-1 order-lg-0 ps-4 me-lg-2" href="/web/auth/login">Sign in</a>
               <a class="btn btn-phoenix-primary order-0" href="web/auth/signup"><span class="fw-bold">Sign Up</span></a>
             </div>
@@ -289,10 +263,10 @@
         <div class="position-relative px-lg-7 px-xxl-3">
           <div class="text-center mb-7">
             <h5 class="text-info mb-3">Gallery</h5>
-            <h2 class="mb-2">Our best works</h2>
+            <h2 class="mb-2">Our best matches</h2>
           </div>
           <ul class="nav font-sans-serif mb-6 w-max-content mx-auto" data-filter-nav="data-filter-nav">
-            <li class="nav-item"><a class="isotope-nav cursor-pointer active" data-filter="*">First</a></li>
+            <li class="nav-item"><a class="isotope-nav cursor-pointer active" data-filter="*">All</a></li>
             <li class="nav-item"><a class="isotope-nav cursor-pointer" data-filter=".second">Second</a></li>
             <li class="nav-item"><a class="isotope-nav cursor-pointer" data-filter=".third">Third</a></li>
             <li class="nav-item"> <a class="isotope-nav cursor-pointer" data-filter=".fourth">Fourth</a></li>
@@ -321,7 +295,7 @@
 
       <!-- ============================================-->
       <!-- <section> begin ============================-->
-      <section class="pb-14 overflow-x-hidden">
+      <section class="pb-14 overflow-x-hidden" id="testimonial">
 
         <div class="px-lg-7 px-xxl-3">
           <div class="text-center mb-5 position-relative">
@@ -412,202 +386,9 @@
         </div>
       </section>
 
-
       <!-- ============================================-->
       <!-- <section> begin ============================-->
-      <section class="position-static pt-15 pt-md-5 pt-lg-2">
-
-        <div class="px-lg-7 px-xxl-3">
-          <div class="text-center mb-3 mb-lg-7">
-            <h5 class="text-info mb-3">Pricing</h5>
-            <h2 class="mb-2">Choose the best deal for you</h2>
-          </div>
-          <div class="row g-3 mb-7 mb-lg-11">
-            <div class="col-lg-4">
-              <div class="pricing-card">
-                <div class="card bg-transparent border-0">
-                  <div class="card-body p-7">
-                    <h3 class="mb-5">Starter</h3>
-                    <h1 class="fs-5 d-flex align-items-center gap-1 mb-3">$15<span class="fs-0 fw-normal">/ month</span></h1>
-                    <button class="btn btn-lg w-100 mb-7 btn-outline-primary">Buy</button>
-                    <h5 class="mb-4">What’s included</h5>
-                    <ul class="fa-ul ps-4 m-0 pricing">
-                      <li class="d-flex align-items-center mb-3"><span class="fa-li"><span class="fas fa-check text-primary"></span></span>
-                        <p class="mb-0">Timeline</p>
-                      </li>
-                      <li class="d-flex align-items-center mb-3"><span class="fa-li"><span></span></span>
-                        <p class="mb-0">Advanced Search</p>
-                      </li>
-                      <li class="d-flex align-items-center mb-3"><span class="fa-li"><span></span></span>
-                        <p class="mb-0">Custom fields</p>
-                      </li>
-                      <li class="d-flex align-items-center mb-3"><span class="fa-li"><span></span></span>
-                        <p class="mb-0">Task dependencies</p>
-                      </li>
-                      <li class="d-flex align-items-center mb-0"><span class="fa-li"><span></span></span>
-                        <p class="mb-0">Private teams &amp; projects</p>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4">
-              <div class="pricing-card">
-                <div class="card bg-transparent border border-2 border-info rounded-4">
-                  <div class="card-body p-7">
-                    <h3 class="mb-5">Business</h3>
-                    <h1 class="fs-5 d-flex align-items-center gap-1 mb-3">$23<span class="fs-0 fw-normal">/ month</span></h1>
-                    <button class="btn btn-lg w-100 mb-7 btn-primary">Buy</button>
-                    <h5 class="mb-4">What’s included</h5>
-                    <ul class="fa-ul ps-4 m-0 pricing">
-                      <li class="d-flex align-items-center mb-3"><span class="fa-li"><span class="fas fa-check text-primary"></span></span>
-                        <p class="mb-0">Timeline</p>
-                      </li>
-                      <li class="d-flex align-items-center mb-3"><span class="fa-li"><span class="fas fa-check text-primary"></span></span>
-                        <p class="mb-0">Advanced Search</p>
-                      </li>
-                      <li class="d-flex align-items-center mb-3"><span class="fa-li"><span class="fas fa-check text-primary"></span></span>
-                        <p class="mb-0">Custom fields</p><span class="badge badge-phoenix badge-phoenix-info ms-2 fs--2">Info</span>
-                      </li>
-                      <li class="d-flex align-items-center mb-3"><span class="fa-li"><span></span></span>
-                        <p class="mb-0">Task dependencies</p>
-                      </li>
-                      <li class="d-flex align-items-center mb-0"><span class="fa-li"><span></span></span>
-                        <p class="mb-0">Private teams &amp; projects</p>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4">
-              <div class="pricing-card">
-                <div class="card bg-transparent border-0">
-                  <div class="card-body p-7">
-                    <h3 class="mb-5">Enterprise</h3>
-                    <h1 class="fs-5 d-flex align-items-center gap-1 mb-3">$40<span class="fs-0 fw-normal">/ month</span></h1>
-                    <button class="btn btn-lg w-100 mb-7 btn-outline-primary">Buy</button>
-                    <h5 class="mb-4">What’s included</h5>
-                    <ul class="fa-ul ps-4 m-0 pricing">
-                      <li class="d-flex align-items-center mb-3"><span class="fa-li"><span class="fas fa-check text-primary"></span></span>
-                        <p class="mb-0">Timeline</p>
-                      </li>
-                      <li class="d-flex align-items-center mb-3"><span class="fa-li"><span class="fas fa-check text-primary"></span></span>
-                        <p class="mb-0">Advanced Search</p>
-                      </li>
-                      <li class="d-flex align-items-center mb-3"><span class="fa-li"><span class="fas fa-check text-primary"></span></span>
-                        <p class="mb-0">Custom fields</p>
-                      </li>
-                      <li class="d-flex align-items-center mb-3"><span class="fa-li"><span class="fas fa-check text-primary"></span></span>
-                        <p class="mb-0">Task dependencies</p>
-                      </li>
-                      <li class="d-flex align-items-center mb-0"><span class="fa-li"><span class="fas fa-check text-primary"></span></span>
-                        <p class="mb-0">Private teams &amp; projects</p>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="card rounded-4 border-0 offer-card">
-            <div class="card-body d-md-flex align-items-center gap-4 py-5"><img class="mb-4 mb-md-0 d-dark-none" src="<%= locals.context %>/asm/assets/img/spot-illustrations/air-plane.png" width="155" alt="" /><img class="mb-4 mb-md-0 d-light-none" src="<%= locals.context %>/asm/assets/img/spot-illustrations/air-plane-dark.png" width="155" alt="" />
-              <div>
-                <p>Business Starter, Business Standard, and Business Plus plans can be purchased for a maximum of 300 users. There is no minimum or maximum user limit for Enterprise plans.</p>
-                <p class="mb-6">Phoenix customers may have access to additional features for a limited promotional period</p><a class="btn btn-link me-2 p-0 fs--1" href="#!" role="button">Contact Support<i class="fa-solid fa-angle-right ms-2"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- end of .container-->
-
-      </section>
-      <!-- <section> close ============================-->
-      <!-- ============================================-->
-
-      <section class="alternate-landing-team" id="team">
-        <div class="position-absolute w-100 h-100 start-0 end-0 top-0 bg-soft-primary dark__bg-1000" style="transform: skewY(-6deg); transform-origin: right"></div>
-        <div class="bg-holder d-none d-xl-block" style="background-image:url(<%= locals.context %>/asm/assets/img/bg/bg-left-23.png);background-size:auto;background-position:left center;">
-        </div>
-        <!--/.bg-holder-->
-
-        <div class="bg-holder d-none d-xl-block" style="background-image:url(<%= locals.context %>/asm/assets/img/bg/bg-right-23.png);background-size:auto;background-position:right center;">
-        </div>
-        <!--/.bg-holder-->
-
-        <div class="text-center mb-11 position-relative">
-          <h5 class="text-info mb-3">Team</h5>
-          <h2 class="mb-2">Our small team behind <br class="d-sm-none" />our success</h2>
-        </div>
-        <div class="position-relative">
-          <div class="row justify-content-center">
-            <div class="col-lg-8 col-xl-6">
-              <div class="row gx-3 gy-6 justify-content-center">
-                <div class="col-sm-6 col-md-4">
-                  <div class="text-center"> <img class="w-70 w-sm-100 rounded-4 mb-3" src="<%= locals.context %>/asm/assets/img/team/70.webp" alt="" />
-                    <h4>Brett Bezos</h4>
-                    <h5 class="fw-semi-bold">CEO</h5>
-                  </div>
-                </div>
-                <div class="col-sm-6 col-md-4">
-                  <div class="text-center"> <img class="w-70 w-sm-100 rounded-4 mb-3" src="<%= locals.context %>/asm/assets/img/team/15.webp" alt="" />
-                    <h4>Lucas Murray</h4>
-                    <h5 class="fw-semi-bold">General Manager</h5>
-                  </div>
-                </div>
-                <div class="col-sm-6 col-md-4">
-                  <div class="text-center"> <img class="w-70 w-sm-100 rounded-4 mb-3" src="<%= locals.context %>/asm/assets/img/team/71.webp" alt="" />
-                    <h4>Casey Andrews</h4>
-                    <h5 class="fw-semi-bold">IT Specialist</h5>
-                  </div>
-                </div>
-                <div class="col-sm-6 col-md-4">
-                  <div class="text-center"> <img class="w-70 w-sm-100 rounded-4 mb-3" src="<%= locals.context %>/asm/assets/img/team/72.webp" alt="" />
-                    <h4>Poppy Russell</h4>
-                    <h5 class="fw-semi-bold">Frontend Dev</h5>
-                  </div>
-                </div>
-                <div class="col-sm-6 col-md-4">
-                  <div class="text-center"> <img class="w-70 w-sm-100 rounded-4 mb-3" src="<%= locals.context %>/asm/assets/img/team/73.webp" alt="" />
-                    <h4>Emma Knowles</h4>
-                    <h5 class="fw-semi-bold">Backend Dev</h5>
-                  </div>
-                </div>
-                <div class="col-sm-6 col-md-4">
-                  <div class="text-center"> <img class="w-70 w-sm-100 rounded-4 mb-3" src="<%= locals.context %>/asm/assets/img/team/74.webp" alt="" />
-                    <h4>Megan Holmes</h4>
-                    <h5 class="fw-semi-bold">HR</h5>
-                  </div>
-                </div>
-                <div class="col-sm-6 col-md-4">
-                  <div class="text-center"> <img class="w-70 w-sm-100 rounded-4 mb-3" src="<%= locals.context %>/asm/assets/img/team/75.webp" alt="" />
-                    <h4>Cameron Fletcher</h4>
-                    <h5 class="fw-semi-bold">UX/UI Designer</h5>
-                  </div>
-                </div>
-                <div class="col-sm-6 col-md-4">
-                  <div class="text-center"> <img class="w-70 w-sm-100 rounded-4 mb-3" src="<%= locals.context %>/asm/assets/img/team/20.webp" alt="" />
-                    <h4>Amber Norris</h4>
-                    <h5 class="fw-semi-bold">Consultant</h5>
-                  </div>
-                </div>
-                <div class="col-sm-6 col-md-4">
-                  <div class="text-center"> <img class="w-70 w-sm-100 rounded-4 mb-3" src="<%= locals.context %>/asm/assets/img/team/76.webp" alt="" />
-                    <h4>Scooby</h4>
-                    <h5 class="fw-semi-bold">Dog</h5>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-
-      <!-- ============================================-->
-      <!-- <section> begin ============================-->
-      <section class="bg-soft-primary dark__bg-1000 pb-10 overflow-hidden">
+      <section class="bg-soft-primary dark__bg-1000 pb-10 overflow-hidden" id="subscribe">
 
         <div class="px-lg-7 px-xxl-3">
           <div class="position-absolute w-100 h-100 start-0 end-0" style="bottom: -350px; transform: skewY(-8deg); background: linear-gradient(102.27deg, #ffbcca 4.69%, #640221 106.27%)"></div>
