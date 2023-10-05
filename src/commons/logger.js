@@ -21,7 +21,7 @@ var logger = new winston.createLogger({
     ),
     transports: [
         new winston.transports.File({
-            filename: '/Users/senthil/Downloads/work/pj/quberos/work/log/quberos/quberos.log',
+            filename: '../logs/vtsm.log',
             handleExceptions: true,
             json: true,
             maxsize: 5242880, //5MB
@@ -30,7 +30,7 @@ var logger = new winston.createLogger({
             showLevel:false
         }),
         new (require('winston-daily-rotate-file'))({
-            filename: '/Users/senthil/Downloads/work/pj/quberos/work/log/quberos/quberos-%DATE%.log',
+            filename: '../logs/vtsm-%DATE%.log',
             datePattern: 'YYYY-MM-DD',
             handleExceptions: true,
             zippedArchive: true,

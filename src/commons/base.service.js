@@ -863,6 +863,23 @@ exports.getTraceId = function() {
     return rTracer.id();
 }
 
+exports.sendForgotMailMessageToMember = function(member, memberJson) {
+    const msg = {
+        to: member.emailAddress,
+        bcc: constants.INFO_GMAIL,
+        from: constants.FROM_EMAIL,
+        templateId: constants.FORGOT_SEND_GRID_TEMPLATE_ID,
+        dynamic_template_data: {
+            fullName: member.fullName,
+            emailAddress: member.emailAddress,
+            password: memberJson.password,
+            transactionPassword: memberJson.transactionPassword
+        },
+    };
+    logger.info('Sending forgot mail to member');
+    _sendEmail(msg);
+}
+
 exports.sendForgotMailMessage = function(user, userJson) {
     const msg = {
         to: user.emailAddress,

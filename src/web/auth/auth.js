@@ -128,45 +128,46 @@ router.post('/register', function(req, res, next) {
     });
 });
 
-router.post('/forgot', function(req, res, next) {
-    logger.info('Forgot password submitted');
-    var userJson = req.body;
+router.post('/forgot', csrfProtect, function(req, res, next) {
+    logger.info('Forgot password submitted to member');
+    var memberJson = req.body;
     var password = uniqid.time().toLowerCase();
     var transactionPassword = uniqid.time().toLowerCase();
-    userJson.password = password;
-    userJson.transactionPassword = transactionPassword;
+    memberJson.password = password;
+    memberJson.transactionPassword = transactionPassword;
 
-    if (_.isEmpty(userJson)) {
+    if (_.isEmpty(memberJson)) {
         logger.debug(constants.USER_OBJ_EMPTY_MSG);
         var baseError = new BaseError(Utils.buildErrorResponse(constants.USER_OBJ_EMPTY, '', constants.USER_OBJ_EMPTY_MSG, err.message, 500));
-        res.render(renderConstants.FORGOT_PASSWORD_PAGE, { layout: renderConstants.LAYOUT_NO_HEADER, req: req, err: baseError});
+        res.render(renderConstants.FORGOT_PASSWORD_PAGE, { layout: renderConstants.LAYOUT_NO_HEADER, req: req, csrfToken: req.csrfToken(), err: baseError});
         //resEvents.emit('ErrorJsonResponse', req, res, baseError);
     }
-    logger.info('Forgot password getting user');
-    userServiceImpl.getUserByEmailAddress(userJson.emailAddress, function (err, user) {
+    logger.info('Forgot password getting member');
+    userServiceImpl.getMemberByEmailAddress(memberJson.emailAddress, function (err, member) {
         if (err) {
-            res.render(renderConstants.FORGOT_PASSWORD_PAGE, { layout: renderConstants.LAYOUT_NO_HEADER, req: req, err: err});
+            res.render(renderConstants.FORGOT_PASSWORD_PAGE, { layout: renderConstants.LAYOUT_NO_HEADER, req: req, csrfToken: req.csrfToken(), err: err});
+        } else {
+            member.password = password;
+            member.transactionPassword = transactionPassword;
+            logger.info('Forgot password getting member fetched : ' + member.emailAddress);
+            userServiceImpl.updateForgotMember(member, function(err, updatedMember) {
+                logger.info('Forgot password getting member updated : ' + member.emailAddress);
+                if (err) {
+                    res.render(renderConstants.FORGOT_PASSWORD_PAGE, { layout: renderConstants.LAYOUT_NO_HEADER, req: req, csrfToken: req.csrfToken(), err: err});
+                } else {
+                    logger.info('Forgot password mail initiated');
+                    baseService.sendForgotMailMessageToMember(member, memberJson);
+                    var baseMessage = new BaseError(Utils.buildErrorResponseWithType(constants.USER_FORGOT_PASSWORD, '', constants.USER_FORGOT_PASSWORD_MSG, constants.USER_FORGOT_PASSWORD_MSG, 200, constants.ALERT_MESSAGE_SUCCESS));
+                    logger.info('Forgot password render back : ' + JSON.stringify(baseMessage));
+                    res.render(renderConstants.FORGOT_PASSWORD_PAGE, { layout: renderConstants.LAYOUT_NO_HEADER, req: req, csrfToken: req.csrfToken(), err: baseMessage});
+                }
+            });
         }
-        user.password = password;
-        user.transactionPassword = transactionPassword;
-        logger.info('Forgot password getting user fetched : ' + user.userName);
-        userServiceImpl.updateForgotUser(user, function(err, updatedUser) {
-            logger.info('Forgot password getting user updated : ' + user.userName);
-            if (err) {
-                res.render(renderConstants.FORGOT_PASSWORD_PAGE, { layout: renderConstants.LAYOUT_NO_HEADER, req: req, err: err});
-            } else {
-                logger.info('Forgot password mail initiated');
-                baseService.sendForgotMailMessage(user, userJson);
-                var baseMessage = new BaseError(Utils.buildErrorResponseWithType(constants.USER_FORGOT_PASSWORD, '', constants.USER_FORGOT_PASSWORD_MSG, constants.USER_FORGOT_PASSWORD_MSG, 200, constants.ALERT_MESSAGE_SUCCESS));
-                logger.info('Forgot password render back : ' + JSON.stringify(baseMessage));
-                res.render(renderConstants.FORGOT_PASSWORD_PAGE, { layout: renderConstants.LAYOUT_NO_HEADER, req: req, err: baseMessage});
-            }
-        });
     });
 });
 
-router.get('/forgot', function(req, res, next) {
-    res.render(renderConstants.FORGOT_PASSWORD_PAGE, { layout: renderConstants.LAYOUT_NO_HEADER, req: req});
+router.get('/forgot', csrfProtect, function(req, res, next) {
+    res.render(renderConstants.FORGOT_PASSWORD_PAGE, { layout: renderConstants.LAYOUT_NO_HEADER, req: req, csrfToken: req.csrfToken()});
 });
 
 router.get('/index', function(req, res, next) {
@@ -223,8 +224,9 @@ router.get('/referral/:referralCode', function(req, res, next) {
  * @return {Function}
  * @api public
  */
-router.get('/logout', function(req, res, next) {
+router.get('/logout', csrfProtect, function(req, res, next) {
     //userServiceImpl.authenticate()
+    let csrfToken = req.csrfToken();
     logout();
     var status = {
         code: 200,
@@ -233,7 +235,7 @@ router.get('/logout', function(req, res, next) {
 
     req.session.destroy();
     var baseError = new BaseError(Utils.buildErrorResponseWithType(constants.LOGOUT_INFO, '', constants.LOGOUT_INFO_MSG, constants.LOGOUT_INFO_MSG, 500, renderConstants.MSG_INFO));
-    res.render(renderConstants.LOGIN_PAGE, { layout: renderConstants.LAYOUT_NO_HEADER, status : status, err : baseError });
+    res.render(renderConstants.LOGIN_PAGE, { layout: renderConstants.LAYOUT_NO_HEADER, status : status, csrfToken: csrfToken, err : baseError });
 });
 
 /**
@@ -321,7 +323,7 @@ router.post('/login', parseForm, csrfProtect, function(req, res, next) {
                 baseError = new BaseError(Utils.buildErrorResponseWithType(constants.USER_PASSWORD_NOT_MATCH, '', constants.USER_PASSWORD_NOT_MATCH_MSG, '', 500, renderConstants.MSG_ERROR));
             }
             params.error = baseError;
-            res.render(renderConstants.LOGIN_PAGE, {layout: renderConstants.LAYOUT_NO_HEADER, req: req, err: baseError, params: params});
+            res.render(renderConstants.LOGIN_PAGE, {layout: renderConstants.LAYOUT_NO_HEADER, req: req, err: baseError, params: params, csrfToken: req.csrfToken()});
         }
     });
 
@@ -341,7 +343,7 @@ function _verfifyMemberMatching(req, res, member, params, isMatch, err) {
             logger.debug(constants.USER_PASSWORD_NOT_MATCH_MSG);
             var baseError = new BaseError(Utils.buildErrorResponseWithType(constants.USER_PASSWORD_NOT_MATCH, '', constants.USER_PASSWORD_NOT_MATCH_MSG, '', 500, renderConstants.MSG_ERROR));
             params.error = baseError;
-            res.render(renderConstants.LOGIN_PAGE, {layout: renderConstants.LAYOUT_NO_HEADER, err: baseError, params: params});
+            res.render(renderConstants.LOGIN_PAGE, {layout: renderConstants.LAYOUT_NO_HEADER, err: baseError, params: params, csrfToken: req.csrfToken()});
         }
     }
 }

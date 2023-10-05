@@ -14,3 +14,17 @@
 .content {
     background-color: #fff;
 }
+
+@media (min-width: 1540px) {
+    .hero-header-container-alternate {
+      padding-top: 5rem;
+      padding-bottom: 5rem;
+    }
+}
+
+@media (min-width: 992px) {
+    section {
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+    }
+}

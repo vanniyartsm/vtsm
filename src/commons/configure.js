@@ -87,6 +87,7 @@ exports.init = function (app) {
 
     app.use(function (err, req, res, next) {
         //res.status(500).send({"Error": err.stack});
+        console.info('status : ', err);
         resEvents.emit('ErrorJsonResponse', req, res, {"status": err});
     });
 

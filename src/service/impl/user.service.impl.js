@@ -60,6 +60,19 @@ function getUserByUserName(userName, callback) {
 }
 exports.getUserByUserName = getUserByUserName;
 
+function getMemberByEmailAddress(emailAddress, callback) {
+    Member.findOne({ emailAddress: emailAddress })
+        .exec(function (err, member) {
+            if (_.isEmpty(member)) {
+                var baseError = new BaseError(Utils.buildErrorResponse(constants.USER_EMAIL_NOT_FOUND, '', constants.USER_EMAIL_NOT_FOUND_MSG, constants.USER_NAME_NOT_FOUND_MSG, 500));
+                callback(baseError, member);
+            } else {
+                callback(err, member);
+            }
+        });
+}
+exports.getMemberByEmailAddress = getMemberByEmailAddress;
+
 function getUserByEmailAddress(emailAddress, callback) {
     User.findOne({ emailAddress: emailAddress })
         .exec(function (err, user) {
@@ -846,6 +859,20 @@ function updateUserByPassword(user, callback) {
     }
 }
 exports.updateUserByPassword = updateUserByPassword;
+
+function updateForgotMember(member, callback) {
+    logger.info('Forgot password saving member');
+    member.save(function (err, member) {
+        if (err) {
+            logger.debug('Forgot password saving member Error : ' + JSON.stringify(err));
+            var baseError = new BaseError(Utils.buildErrorResponse(constants.FATAL_ERROR, '', constants.FATAL_ERROR_MSG, constants.FATAL_ERROR_MSG, 500));
+            callback(baseError, member);
+        } else {
+            callback(err, member)
+        }
+    });
+}
+exports.updateForgotMember = updateForgotMember;
 
 function updateForgotUser(user, callback) {
     logger.info('Forgot password saving user');
