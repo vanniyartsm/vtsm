@@ -13,7 +13,7 @@
         </div>
         <div class="col-lg-6">
           <%- include('../common/message') %>
-          <form method="post" action="/web/auth" id="login-form">
+          <form method="post" action="/web/auth/login" id="login-form">
             <div class="content">
             <div class="row flex-center h-100 g-0 px-4 px-sm-0">
                 <div class="col col-sm-6 col-lg-7 col-xl-6"><a class="d-flex flex-center text-decoration-none mb-4" href="../../../index.html">
@@ -33,7 +33,7 @@
                 <div class="mb-3 text-start">
                     <label class="form-label" for="email">Email address</label>
                     <div class="form-icon-container">
-                    <input class="form-control form-icon-input" id="email" type="text" placeholder="name@example.com" name="userName"/><span class="fas fa-user text-900 fs--1 form-icon"></span>
+                    <input class="form-control form-icon-input" id="email" type="text" placeholder="name@example.com" name="emailAddress"/><span class="fas fa-user text-900 fs--1 form-icon"></span>
                     <input type="hidden" name="_csrf" value="<%= csrfToken %>">
                     </div>
                 </div>

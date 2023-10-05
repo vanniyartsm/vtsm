@@ -73,6 +73,18 @@ function getUserByEmailAddress(emailAddress, callback) {
 }
 exports.getUserByEmailAddress = getUserByEmailAddress;
 
+function checkMemberByEmailAddress(emailAddress, callback) {
+    Member.findOne({ emailAddress: emailAddress })
+        .exec(function (err, user) {
+            if (_.isEmpty(user)) {
+                callback(null, false);
+            } else {
+                callback(null, true);
+            }
+        });
+}
+exports.checkMemberByEmailAddress = checkMemberByEmailAddress;
+
 function checkUserByEmailAddress(emailAddress, callback) {
     User.findOne({ emailAddress: emailAddress })
         .exec(function (err, user) {
@@ -218,6 +230,15 @@ function _syncFunction(arrayItem, callback) {
     });
 }
 
+function saveSingleMember(arrayItem, callback) {
+    async.waterfall([
+        async.apply(_constructMember, arrayItem),
+        _saveMember,
+    ], function (err, params) {
+        callback(err, params);
+    });
+}
+
 function saveSingleUser(arrayItem, callback) {
     async.waterfall([
         async.apply(_constructUser, arrayItem),
@@ -234,6 +255,67 @@ function saveSingleUser(arrayItem, callback) {
     ], function (err, params) {
         callback(err, params);
     });
+}
+
+function _constructMember(memberJson, callback) {
+    //console.info('----------- Saving User -----------', userJson);
+    var param = {};
+    param.memberJson = memberJson;
+
+    var familyReligionInfoSchema = new FamilyReligionInfo({
+        fatherName: memberJson.fatherName,
+        motherName: memberJson.motherName,
+        sisters: memberJson.sisters,
+        brothers: memberJson.brothers,
+        rasi: memberJson.rasi,
+        natchathram: memberJson.natchathram,
+        lagnam: memberJson.lagnam,
+        gothram: memberJson.gothram,
+        dosham: memberJson.dosham
+    });
+
+    var personalInfoSchema = new PersonalInfo({
+        maritalStatus: memberJson.maritalStatus,
+        education: memberJson.education,
+        height: memberJson.height,
+        weight: memberJson.weight,
+        address: memberJson.address,
+        city: memberJson.city,
+        state: memberJson.state,
+        pincode: memberJson.pincode,
+        country: memberJson.country
+    });
+
+    var professionInfoSchema = new ProfessionInfo({
+        occupation: memberJson.occupation,
+        employer: memberJson.employer,
+        annualIncome: memberJson.annualIncome,
+        workLocation: memberJson.workLocation
+    });
+
+    var profileInfoSchema = new ProfileInfo({
+        description: memberJson.description,
+        disabilityDesc: memberJson.disabilityDesc
+    });
+
+    var member = new Member({
+        fullName: memberJson.fullName,
+        emailAddress: memberJson.emailAddress,
+        password: memberJson.password,
+        transactionPassword: memberJson.transactionPassword,
+        dob: memberJson.dateOfBirth,
+        primaryMobile: memberJson.primaryMobile,
+        secondaryMobile: memberJson.secondaryMobile,
+        active: true,
+        familyReligionInfo: familyReligionInfoSchema,
+        personalInfo: personalInfoSchema,
+        professionInfo: professionInfoSchema,
+        profileInfo: profileInfoSchema,
+        status: constants.USER_ACTIVATE_STATUS
+    });
+
+    param.member = member;
+    callback(null, param);
 }
 
 function _constructUser(userJson, callback) {
@@ -307,6 +389,15 @@ function _findUser(param, callback) {
             var baseError = new BaseError(Utils.buildErrorResponse(constants.USER_DUPLICATE, '', constants.USER_DUPLICATE_MSG, constants.USER_DUPLICATE_MSG, 500));
             callback(baseError, param);
         }
+    });
+}
+
+function _saveMember(param, callback) {
+    var member = param.member;
+
+    member.save(function (err, sMember) {
+        param.newMember = sMember;
+        callback(err, param);
     });
 }
 
@@ -534,14 +625,22 @@ const _runAsyncParentTreeCount = async (id, users, counter) => {
 
     }
 
-    //return users;
-    //console.info('final');
-    //console.info('counter = ', counter);
-    //console.log(users);
     if (counter == 1) {
         return users;
     }
 }
+
+function saveMultipleMember(memberArray, callback) {
+    async.mapSeries(memberArray, function (memberJson) {
+        saveSingleMember(memberJson, function (err, res) {
+            //console.info('sending response');
+            callback(err, res);
+        })
+    }, function (err, results) {
+        callback(err, results);
+    });
+}
+exports.saveMultipleMember = saveMultipleMember;
 
 function saveMultipleUser(userArray, callback) {
     async.mapSeries(userArray, function (userJson) {
@@ -957,6 +1056,29 @@ function updateUserMailConfig(req, userJson, callback) {
 exports.updateUserMailConfig = updateUserMailConfig;
 
 
+function authenticateMember(memberJson, callback) {
+    Member.findOne({ emailAddress: memberJson.emailAddress, active: true })
+        .exec(function (err, member) {
+            if (err) {
+                logger.debug(err);
+                var baseError = new BaseError(Utils.buildErrorResponse(constants.USER_OBJ_EMPTY, '', constants.USER_OBJ_EMPTY_MSG, err.message, 500));
+                callback(baseError, false, member);
+            }
+
+            if (_.isEmpty(member)) {
+                var baseError = new BaseError(Utils.buildErrorResponse(constants.USER_NAME_NOT_FOUND, '', constants.USER_NAME_NOT_FOUND_MSG, constants.USER_NAME_NOT_FOUND_MSG, 500));
+                callback(baseError, false, member);
+            } else {
+                console.info('Comparing');
+                member.comparePassword(memberJson.password, function (err, isMatch) {
+                    console.info('isMatch compared = ', isMatch);
+                    callback(err, isMatch, member);
+                });
+            }
+        });
+}
+exports.authenticateMember = authenticateMember;
+
 function authenticate(userJson, callback) {
     User.findOne({ userName: userJson.userName, active: true })
         .exec(function (err, user) {
@@ -1082,18 +1204,18 @@ function bootstrapMemberData(callback) {
     var profileInfoSchema = new ProfileInfo({
         _id: '596c8bf65a12076ee0cc7593',
         description: '',
-        isDisable: false
+        isDisdisabilityDesc: ''
     });
 
     var member = new Member({
         _id: '596c8bf65a12076ff0cc7589',
-        firstName: 'Admin User',
+        fullName: 'Admin User',
         emailAddress: 'admin@vtsm.com',
         password: 'MindBlowing@2030',
         transactionPassword: 'MindBlowing@2030',
         dob: '1990-10-10',
         primaryMobile: '1231231232',
-        primaryMobile: '1231231233',
+        secondaryMobile: '1231231233',
         active: true,
         familyReligionInfo: familyReligionInfoSchema,
         personalInfo: personalInfoSchema,

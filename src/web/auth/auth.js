@@ -34,7 +34,7 @@ router.get('/login', csrfProtect, function(req, res, next) {
 });
 
 //Get Registration Page
-router.get('/register', function(req, res, next) {
+router.get('/signup', function(req, res, next) {
     var locals = {
         title: 'Page Title',
         description: 'Page Description',
@@ -43,6 +43,47 @@ router.get('/register', function(req, res, next) {
     
     res.render(renderConstants.REGISTER_PAGE, { layout: renderConstants.LAYOUT_NO_HEADER, req: req});
 
+});
+
+//Sign Up
+router.post('/signup', function(req, res, next) {
+
+    // create a new user
+    var memberJson = req.body;
+
+    var transactionPassword = uniqid.time().toLowerCase();
+    memberJson.transactionPassword = transactionPassword;
+
+    if (_.isEmpty(memberJson) && _isEmpty(memberJson.emailAddress)) {
+        logger.debug(constants.USER_OBJ_EMPTY_MSG);
+        var baseError = new BaseError(Utils.buildErrorResponse(constants.USER_OBJ_EMPTY, '', constants.USER_OBJ_EMPTY_MSG, err.message, 500));
+        //resEvents.emit('ErrorJsonResponse', req, res, baseError);
+    }
+    var memberArray = [memberJson];
+    //userServiceImpl.saveUser(memberJson, function (err, user) {
+    userServiceImpl.checkMemberByEmailAddress(memberJson.emailAddress, function(err, result) {
+
+        if (!result || (constants.INFO_EMAIL == memberJson.emailAddress)) {
+            userServiceImpl.saveMultipleMember(memberArray, function(err, result) {
+                var user = result.newUser;
+                //req.session.user = user;
+                if (err) {
+                    logger.debug(err);
+                    //var baseError = new BaseError(Utils.buildErrorResponseWithType(constants.USER_OBJ_EMPTY, '', constants.USER_OBJ_EMPTY_MSG, err.message, 500, renderConstants.MSG_ERROR));
+                    res.render(renderConstants.REGISTER_PAGE, { layout: renderConstants.LAYOUT_NO_HEADER, req: req, err: err});
+                } else {
+                    
+                    //baseService.sendRegistrationMailMessage(user, memberJson);
+                    var baseMessage = new BaseError(Utils.buildErrorResponseWithType(constants.USER_REGISTERED, '', constants.USER_REGISTERED_MSG, constants.USER_REGISTERED_MSG, 200, constants.ALERT_MESSAGE_SUCCESS));
+                    res.render(renderConstants.LOGIN_PAGE, { layout: renderConstants.LAYOUT_NO_HEADER, req: req, err: baseMessage});
+                    //res.redirect('/web/auth/index');
+                }
+            });
+        } else {
+            var baseError = new BaseError(Utils.buildErrorResponseWithType(constants.USER_EMAIL_ALREADY_EXISTS, '', constants.USER_EMAIL_ALREADY_EXISTS_MSG, constants.USER_EMAIL_ALREADY_EXISTS_MSG, 422, constants.ALERT_MESSAGE_DANGER));
+            res.render(renderConstants.REGISTER_PAGE, { layout: renderConstants.LAYOUT_NO_HEADER, req: req, err: baseError});
+        }
+    });
 });
 
 //Post Register
@@ -249,18 +290,18 @@ router.post('/index', function(req, res, next) {
  * @return {Function}
  * @api public
  */
-router.post('/', parseForm, csrfProtect, function(req, res, next) {
+router.post('/login', parseForm, csrfProtect, function(req, res, next) {
     //userServiceImpl.authenticate()
-    var userJson = req.body;
+    var memberJson = req.body;
     var locals = {
         title: 'Page Title',
         description: 'Page Description',
         header: 'Page Header',
         req : req,
-        username: userJson.username
+        emailAddress: memberJson.emailAddress
     };
 
-    userServiceImpl.authenticate(userJson, function(err, isMatch, user) {
+    userServiceImpl.authenticateMember(memberJson, function(err, isMatch, member) {
         var params = {};
         if (err) {
             logger.debug(err);
@@ -270,24 +311,40 @@ router.post('/', parseForm, csrfProtect, function(req, res, next) {
             //res.render(renderConstants.LOGIN_PAGE, { layout: 'home-layout', locals: locals });
         }
 
-        var isSubscriptionEnded = false;
-        var daysAvailable = 0;
-
-        if(user) {    
-            _verfifyMatching(req, res, user, params, isMatch, err);
+        if(member) {    
+            _verfifyMemberMatching(req, res, member, params, isMatch, err);
         } else {
             var baseError;
-            if (user == null) {
+            if (member == null) {
                 baseError = new BaseError(Utils.buildErrorResponseWithType(constants.USER_INVALID_CREDENTIALS, '', constants.USER_INVALID_CREDENTIALS_MSG, '', 500, renderConstants.MSG_ERROR));
             } else {
                 baseError = new BaseError(Utils.buildErrorResponseWithType(constants.USER_PASSWORD_NOT_MATCH, '', constants.USER_PASSWORD_NOT_MATCH_MSG, '', 500, renderConstants.MSG_ERROR));
             }
             params.error = baseError;
-            res.render(renderConstants.LOGIN_PAGE, {layout: renderConstants.LAYOUT_NO_HEADER, err: baseError, params: params});
+            res.render(renderConstants.LOGIN_PAGE, {layout: renderConstants.LAYOUT_NO_HEADER, req: req, err: baseError, params: params});
         }
     });
 
 });
+
+function _verfifyMemberMatching(req, res, member, params, isMatch, err) {
+    if (isMatch) {
+        req.session.user = member;
+        httpContext.set('user', member);
+        var requestedUrl = httpContext.get(constants.REQUESTED_URL);
+        console.info('requestedUrl = ', requestedUrl);
+        res.redirect('/web/auth/index');
+    } else {
+        if (err) {
+            res.render(renderConstants.LOGIN_PAGE, {layout: renderConstants.LAYOUT_NO_HEADER, user: member, params: params});
+        } else {
+            logger.debug(constants.USER_PASSWORD_NOT_MATCH_MSG);
+            var baseError = new BaseError(Utils.buildErrorResponseWithType(constants.USER_PASSWORD_NOT_MATCH, '', constants.USER_PASSWORD_NOT_MATCH_MSG, '', 500, renderConstants.MSG_ERROR));
+            params.error = baseError;
+            res.render(renderConstants.LOGIN_PAGE, {layout: renderConstants.LAYOUT_NO_HEADER, err: baseError, params: params});
+        }
+    }
+}
 
 function _verfifyMatching(req, res, user, params, isMatch, err) {
     if (isMatch) {

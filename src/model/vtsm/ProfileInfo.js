@@ -5,7 +5,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var ProfileInfoSchema = new Schema({
-    description: {type: String}, isDisable: {type: Boolean}
+    description: {type: String}, disabilityDesc: {type: String}
 });
 
 var ProfileInfo = mongoose.model('ProfileInfo', ProfileInfoSchema );

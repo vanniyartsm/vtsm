@@ -10,8 +10,7 @@
           </div>
         </div>
         <div class="col-lg-6">
-          <%- include('../common/message') %>
-          <form method="post" id="validate-form" action="/web/auth/register" class="needs-validation" novalidate="">
+          <form method="post" id="validate-form" action="/web/auth/signup" class="needs-validation" novalidate="">
             <div class="content">
               <div class="row flex-center h-100 g-0 px-4 px-sm-0"></div>
               <div class="col col-sm-12 col-lg-12 col-xl-12"><a class="d-flex flex-center text-decoration-none mb-4" href="/">
@@ -21,6 +20,7 @@
             <div class="text-center mb-3">
                 <h3 class="text-1000">Sign Up to find lifetime Companian!</h3>
                 <p class="text-700">Vanniyar Thirumana Sevai Maiyam</p>
+                <%- include('../common/message') %>
             </div>
               <div class="mt-4">
                 <div class="row g-4">
@@ -41,21 +41,35 @@
                             <div class="row mb-3">
                               <label class="col-sm-2 col-form-label col-form-label-sm" for="fullName">Full Name <code>*</code></label>
                               <div class="col-sm-10">
-                                <input class="form-control form-control-sm" id="fullName" name="fullName" type="text" required=""/>
+                                <input class="form-control form-control-sm" id="fullName" name="fullName" type="text" required="" value="test"/>
                                 <div class="invalid-feedback">Please provide full name.</div>
                               </div>
                             </div>
                             <div class="row mb-3">
                               <label class="col-sm-2 col-form-label col-form-label-sm" for="emailAddress">Email address <code>*</code></label>
                               <div class="col-sm-10">
-                                <input class="form-control" id="emailAddress" name="emailAddress" type="email" placeholder="name@example.com" required=""/>
+                                <input class="form-control" id="emailAddress" name="emailAddress" type="email" placeholder="name@example.com" required="" value="test@test.com"/>
                                 <div class="invalid-feedback">Please provide an email address.</div>
+                              </div>
+                            </div>
+                            <div class="row mb-3">
+                              <label class="col-sm-2 col-form-label col-form-label-sm" for="emailAddress">Password <code>*</code></label>
+                              <div class="col-sm-10">
+                                <input class="form-control" id="password" name="password" type="password" required="" value="test@123"/>
+                                <div class="invalid-feedback">Please provide password.</div>
+                              </div>
+                            </div>
+                            <div class="row mb-3">
+                              <label class="col-sm-2 col-form-label col-form-label-sm" for="confirmPassword">Confirm password <code>*</code></label>
+                              <div class="col-sm-10">
+                                <input class="form-control" id="confirmPassword" name="confirmPassword" type="password" required="" value="test@123"/>
+                                <div class="invalid-feedback">Password and confirm password should be same .</div>
                               </div>
                             </div>
                             <div class="row mb-3">
                               <label class="col-sm-2 col-form-label col-form-label-sm" for="dateOfBirth">Date of Birth <code>*</code></label>
                               <div class="col-sm-10">
-                                <input class="form-control datetimepicker" id="dateOfBirth" type="text" placeholder="dd/mm/yyyy" data-options='{"disableMobile":true,"dateFormat":"d/m/Y"}' required=""/>
+                                <input class="form-control datetimepicker" id="dateOfBirth" name="dateOfBirth" type="text" placeholder="dd/mm/yyyy" data-options='{"required":true,"disableMobile":true,"dateFormat":"d/m/Y"}' required="" value="01/01/1980"/>
                                 <div class="invalid-feedback">Please provide date of birth.</div>
                               </div>
                             </div>
@@ -64,7 +78,7 @@
                               <div class="col-sm-10">
                                 <select class="form-select" aria-label="Choose Gender" required="">
                                   <option selected="" disabled="" value="">Choose...</option>
-                                  <option value="M">Male</option>
+                                  <option selected value="M">Male</option>
                                   <option value="F">Female</option>
                                 </select>
                               </div>
@@ -73,7 +87,7 @@
                             <div class="row mb-3">
                               <label class="col-sm-2 col-form-label col-form-label-sm" for="primaryMobile">Primary Mobile <code>*</code></label>
                               <div class="col-sm-10">
-                                <input class="form-control" id="primaryMobile" name="primaryMobile" type="text" required=""/>
+                                <input class="form-control" id="primaryMobile" name="primaryMobile" type="text" required="" value="123123123"/>
                                 <div class="invalid-feedback">Please provide primary mobile number.</div>
                               </div>
                             </div>
@@ -81,7 +95,7 @@
                             <div class="row mb-3">
                               <label class="col-sm-2 col-form-label col-form-label-sm" for="secondaryMobile">Secondary Mobile <code>*</code></label>
                               <div class="col-sm-10">
-                                <input class="form-control" id="secondaryMobile" name="secondaryMobile" type="text" required=""/>
+                                <input class="form-control" id="secondaryMobile" name="secondaryMobile" type="text" required="" value="234234234"/>
                                 <div class="invalid-feedback">Please provide secondary mobile number.</div>
                               </div>
                             </div>
@@ -103,7 +117,7 @@
                             <div class="row mb-3">
                               <label class="col-sm-2 col-form-label col-form-label-sm" for="fatherName">Father Name <code>*</code></label>
                               <div class="col-sm-10">
-                                <input class="form-control" id="fatherName" name="fatherName" type="text" required=""/>
+                                <input class="form-control" id="fatherName" name="fatherName" type="text" required="" value="Father Name"/>
                                 <div class="invalid-feedback">Please provide father name.</div>
                               </div>
                             </div>
@@ -111,7 +125,7 @@
                             <div class="row mb-3">
                               <label class="col-sm-2 col-form-label col-form-label-sm" for="motherName">Mother Name <code>*</code></label>
                               <div class="col-sm-10">
-                                <input class="form-control" id="motherName" name="motherName" type="text" required=""/>
+                                <input class="form-control" id="motherName" name="motherName" type="text" required="" value="Mother Name"/>
                                 <div class="invalid-feedback">Please provide mother name.</div>
                               </div>
                             </div>
@@ -119,23 +133,23 @@
                             <div class="row mb-3">
                               <label class="col-sm-2 col-form-label col-form-label-sm" for="sisters">Sisters</label>
                               <div class="col-sm-10">
-                                <input class="form-control" id="sisters" name="sisters" type="text"/>
+                                <input class="form-control" id="sisters" name="sisters" type="text" value="0"/>
                               </div>
                             </div>
 
                             <div class="row mb-3">
                               <label class="col-sm-2 col-form-label col-form-label-sm" for="brothers">Brothers</label>
                               <div class="col-sm-10">
-                                <input class="form-control" id="brothers" name="brothers" type="text"/>
+                                <input class="form-control" id="brothers" name="brothers" type="text" value="0"/>
                               </div>
                             </div>
 
                             <div class="row mb-3">
                               <label class="col-sm-2 col-form-label col-form-label-sm" for="rasi">Rasi <code>*</code></label>
                               <div class="col-sm-10">
-                                <select class="form-select" aria-label="Default select example" required="">
+                                <select class="form-select" id="rasi" name="rasi" aria-label="Default select example" required="">
                                   <option selected="" disabled="" value="">Choose...</option>
-                                  <option value="Aries">Aries</option>
+                                  <option selected value="Aries">Aries</option>
                                   <option value="Taurus">Taurus</option>
                                   <option value="Gemini">Gemini</option>
                                   <option value="Cancer">Cancer</option>
@@ -155,9 +169,9 @@
                             <div class="row mb-3">
                               <label class="col-sm-2 col-form-label col-form-label-sm" for="natchathram">Natchathram <code>*</code></label>
                               <div class="col-sm-10">
-                                <select class="form-select" aria-label="Default select example" required="">
+                                <select class="form-select" id="natchathram" name="natchathram" aria-label="Default select example" required="">
                                   <option selected="" disabled="" value="">Choose...</option>
-                                  <option value="Aswini">Aswini</option>
+                                  <option selected value="Aswini">Aswini</option>
                                   <option value="Bharani">Bharani</option>
                                   <option value="Karthigai">Karthigai</option>
                                   <option value="Rohini">Rohini</option>
@@ -192,13 +206,13 @@
                             <div class="row mb-3">
                               <label class="col-sm-2 col-form-label col-form-label-sm" for="lagnam">Lagnam <code>*</code></label>
                               <div class="col-sm-10">
-                                <select class="form-select" aria-label="Default select example" required="">
+                                <select class="form-select" id="lagnam" name="lagnam" aria-label="Default select example" required="">
                                   <option selected="" disabled="" value="">Choose...</option>
                                   <option value="Aries">Aries</option>
                                   <option value="Taurus">Taurus</option>
                                   <option value="Gemini">Gemini</option>
                                   <option value="Cancer">Cancer</option>
-                                  <option value="Leo">Leo</option>
+                                  <option selected value="Leo">Leo</option>
                                   <option value="Virgo">Virgo</option>
                                   <option value="Libra">Libra</option>
                                   <option value="Scorpio">Scorpio</option>
@@ -214,14 +228,14 @@
                             <div class="row mb-3">
                               <label class="col-sm-2 col-form-label col-form-label-sm" for="gothram">Gothram</label>
                               <div class="col-sm-10">
-                                <input class="form-control" id="gothram" name="gothram" type="text" />
+                                <input class="form-control" id="gothram" name="gothram" type="text"  value="sdfsdf"/>
                               </div>
                             </div>
 
                             <div class="row mb-3">
                               <label class="col-sm-2 col-form-label col-form-label-sm" for="dosham">Dosham </label>
                               <div class="col-sm-10">
-                                <input class="form-control" id="dosham" name="dosham" type="text" />
+                                <input class="form-control" id="dosham" name="dosham" type="text" value="sdf"/>
                               </div>
                             </div>
                           </div>
@@ -244,7 +258,7 @@
                               <div class="col-sm-10">
                                 <select class="form-select" aria-label="Default select example" id="maritalStatus" name="maritalStatus" required="">
                                   <option selected="" disabled="" value="">Choose...</option>
-                                  <option value="NM">Never Married</option>
+                                  <option selected value="NM">Never Married</option>
                                   <option value="D">Divorced</option>
                                   <option value="W">Widowed</option>
                                   <option value="AD">Awaiting Divorce</option>
@@ -255,35 +269,35 @@
                             <div class="row mb-3">
                               <label class="col-sm-2 col-form-label col-form-label-sm" for="education">Education <code>*</code></label>
                               <div class="col-sm-10">
-                                <input class="form-control" id="education" name="education" type="text" required=""/>
+                                <input class="form-control" id="education" name="education" type="text" required="" value="MCA"/>
                                 <div class="invalid-feedback">Please provide education.</div>
                               </div>
                             </div>
                             <div class="row mb-3">
                               <label class="col-sm-2 col-form-label col-form-label-sm" for="height">Height <code>*</code></label>
                               <div class="col-sm-10">
-                                <input class="form-control" id="height" name="height" type="text" required=""/>
+                                <input class="form-control" id="height" name="height" type="text" required="" placeholder="5.8" value="5.8"/>
                                 <div class="invalid-feedback">Please provide height.</div>
                               </div>
                             </div>
                             <div class="row mb-3">
                               <label class="col-sm-2 col-form-label col-form-label-sm" for="weight">Weight <code>*</code></label>
                               <div class="col-sm-10">
-                                <input class="form-control" id="weight" name="weight" type="text" required=""/>
+                                <input class="form-control" id="weight" name="weight" type="text" required="" placeholder="kg" value="77"/>
                                 <div class="invalid-feedback">Please provide weight.</div>
                               </div>
                             </div>
                             <div class="row mb-3">
                               <label class="col-sm-2 col-form-label col-form-label-sm" for="address">Address <code>*</code></label>
                               <div class="col-sm-10">
-                                <input class="form-control" id="address" name="address" type="text" required=""/>
+                                <input class="form-control" id="address" name="address" type="text" required="" value="1st main st."/>
                                 <div class="invalid-feedback">Please provide address.</div>
                               </div>
                             </div>
                             <div class="row mb-3">
                               <label class="col-sm-2 col-form-label col-form-label-sm" for="city">City <code>*</code></label>
                               <div class="col-sm-10">
-                                <input class="form-control" id="city" name="city" type="text" required=""/>
+                                <input class="form-control" id="city" name="city" type="text" required="" value="Chennai"/>
                                 <div class="invalid-feedback">Please provide city.</div>
                               </div>
                             </div>
@@ -291,7 +305,7 @@
                             <div class="row mb-3">
                               <label class="col-sm-2 col-form-label col-form-label-sm" for="state">State <code>*</code></label>
                               <div class="col-sm-10">
-                                <input class="form-control" id="state" name="state" type="text" required=""/>
+                                <input class="form-control" id="state" name="state" type="text" required="" value="TN"/>
                                 <input class="form-control" id="country" name="country" type="hidden" value="IN"/>
                                 <div class="invalid-feedback">Please provide state.</div>
                               </div>
@@ -300,7 +314,7 @@
                             <div class="row mb-3">
                               <label class="col-sm-2 col-form-label col-form-label-sm" for="pincode">Pincode <code>*</code></label>
                               <div class="col-sm-10">
-                                <input class="form-control" id="pincode" name="pincode" type="text" required=""/>
+                                <input class="form-control" id="pincode" name="pincode" type="text" required="" value="606601"/>
                                 <div class="invalid-feedback">Please provide pincode.</div>
                               </div>
                             </div>
@@ -322,28 +336,28 @@
                             <div class="row mb-3">
                               <label class="col-sm-2 col-form-label col-form-label-sm" for="occupation">Occupation <code>*</code></label>
                               <div class="col-sm-10">
-                                <input class="form-control" id="occupation" name="occupation" type="text" placeholder="Business" required=""/>
+                                <input class="form-control" id="occupation" name="occupation" type="text" placeholder="Business" required="" value="IT"/>
                                 <div class="invalid-feedback">Please provide occupation.</div>
                               </div>
                             </div>
                             <div class="row mb-3">
                               <label class="col-sm-2 col-form-label col-form-label-sm" for="employer">Employer <code>*</code></label>
                               <div class="col-sm-10">
-                                <input class="form-control" id="employer" name="employer" type="text" placeholder="Work Company" required=""/>
+                                <input class="form-control" id="employer" name="employer" type="text" placeholder="Work Company" required="" value="SST"/>
                                 <div class="invalid-feedback">Please provide work company.</div>
                               </div>
                             </div>
                             <div class="row mb-3">
                               <label class="col-sm-2 col-form-label col-form-label-sm" for="annualIncome">Annual Income <code>*</code></label>
                               <div class="col-sm-10">
-                                <input class="form-control" id="annualIncome" name="annualIncome" type="text" required=""/>
+                                <input class="form-control" id="annualIncome" name="annualIncome" type="text" required="" placeholder="500000" value="500000"/>
                                 <div class="invalid-feedback">Please provide annual income.</div>
                               </div>
                             </div>
                             <div class="row mb-3">
                               <label class="col-sm-2 col-form-label col-form-label-sm" for="workLocation">Work Location <code>*</code></label>
                               <div class="col-sm-10">
-                                <input class="form-control" id="workLocation" name="workLocation" type="text" required=""/>
+                                <input class="form-control" id="workLocation" name="workLocation" type="text" required="" value="Chennai"/>
                                 <div class="invalid-feedback">Please provide work location.</div>
                               </div>
                             </div>
@@ -377,13 +391,13 @@
                             <div class="row mb-3">
                               <label class="col-sm-2 col-form-label col-form-label-sm" for="description">Profile Description</label>
                               <div class="col-sm-10">
-                                <textarea class="form-control" id="description" name="description" rows="3"> </textarea>
+                                <textarea class="form-control" id="description" name="description" rows="3"> some desc</textarea>
                               </div>
                             </div>
                             <div class="row mb-3">
                               <label class="col-sm-2 col-form-label col-form-label-sm" for="disabilityDescription">If any Disability? Add Description</label>
                               <div class="col-sm-10">
-                                <textarea class="form-control" id="disabilityDescription" name="disabilityDescription" rows="3"> </textarea>
+                                <textarea class="form-control" id="disabilityDescription" name="disabilityDescription" rows="3"> disability desc</textarea>
                               </div>
                             </div>
                             <div class="row mb-3">
