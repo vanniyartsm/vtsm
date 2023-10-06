@@ -28,3 +28,30 @@
         padding-bottom: 0.5rem;
     }
 }
+
+.btn-primary, .tox .tox-dialog__footer .tox-button:last-child, .tox .tox-button {
+    --phoenix-btn-color: #fff;
+    --phoenix-btn-bg: #c70f13;
+    --phoenix-btn-border-color: transparent;
+    --phoenix-btn-hover-color: #fff;
+    --phoenix-btn-hover-bg: #e1151b;
+    --phoenix-btn-hover-border-color: rgba(0, 0, 0, 0.2);
+    --phoenix-btn-focus-shadow-rgb: 255, 255, 255;
+    --phoenix-btn-active-color: #fff;
+    --phoenix-btn-active-bg: #c70f13;
+    --phoenix-btn-active-border-color: rgba(0, 0, 0, 0.25);
+    --phoenix-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0);
+    --phoenix-btn-disabled-color: #fff;
+    --phoenix-btn-disabled-bg: #c30e12;
+    --phoenix-btn-disabled-border-color: transparent;
+}
+
+a {
+    color: #87090b;
+    text-decoration: none;
+}
+
+a:hover{
+    color: #c20f12;
+    text-decoration: none;
+}
