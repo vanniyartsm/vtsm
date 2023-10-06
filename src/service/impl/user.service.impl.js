@@ -17,6 +17,7 @@ var mongoose = require('mongoose')
     , async = require("async");
 
 const uuidv1 = require('uuid/v1');
+const ULID = require('ulid')
 var Counter = require('../../model/Counter');
 var User = require('../../model/User');
 var PurchaseUnit = require('../../model/PurchaseUnit');
@@ -26,11 +27,223 @@ var { FamilyReligionInfo }  = require('../../model/vtsm/FamilyReligionInfo');
 var { ProfessionInfo } = require('../../model/vtsm/ProfessionInfo');
 var { ProfileInfo } = require('../../model/vtsm/ProfileInfo');
 
+var PartnerPreference = require('../../model/vtsm/preferences/PartnerPreference');
+var { BasicPreferenceInfo } = require('../../model/vtsm/preferences/BasicPreference');
+var { ReligiousPreferenceInfo } = require('../../model/vtsm/preferences/ReligiousPreference');
+var { ProfessionalPreferenceInfo } = require('../../model/vtsm/preferences/ProfessionalPreference');
+var { LocationPreferenceInfo } = require('../../model/vtsm/preferences/LocationPreference');
 
 var Ledger = require('../../model/Ledger');
 //var MailProviders = require('../../model/MailProvider');
 //var UserSubscription = require('../../model/UserSubscription');
 //shortid.characters('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-_');
+
+function saveMultipleMember(memberArray, callback) {
+    async.mapSeries(memberArray, function (memberJson) {
+        saveSingleMember(memberJson, function (err, res) {
+            //console.info('sending response');
+            callback(err, res);
+        })
+    }, function (err, results) {
+        callback(err, results);
+    });
+}
+exports.saveMultipleMember = saveMultipleMember;
+
+function saveSingleMember(arrayItem, callback) {
+    async.waterfall([
+        async.apply(_constructMember, arrayItem),
+        _constructPartnerPreference,
+        _saveMember,
+    ], function (err, params) {
+        callback(err, params);
+    });
+}
+
+function _saveMember(param, callback) {
+    var member = param.member;
+
+    member.save(function (err, sMember) {
+        param.newMember = sMember;
+        var partnerPreference = param.partnerPreference;
+        partnerPreference.member = mongoose.Types.ObjectId(sMember._id)
+        partnerPreference.save(function (err, pp) {
+            console.info('partnerPreference saved');
+            param.partnerPreference = pp
+            callback(err, param);
+        })
+    });
+}
+
+function _constructPartnerPreference(param, callback) {
+    console.info('_constructPartnerPreference');
+
+    let basicPreferenceSchema = new BasicPreferenceInfo({
+        ageFrom: 21,
+        ageTo: 28,
+        heightFeetFrom: 4,
+        heightInchFrom: 10,
+        heightFeetTo: 5,
+        heightInchTo: 10,
+        maritalStatus: 'Never Married',
+        physicalStatus: 'Normal',
+        eatingHabits: 'Doesnt Matter',
+        drinkingHabits: 'Doesnt Matter',
+        smokingHabits: 'Doesnt Matter'
+    });
+
+    var partnerPreference = new PartnerPreference({
+        ppId: ULID.ulid(),
+        basicPreference: basicPreferenceSchema
+    });
+
+    param.partnerPreference = partnerPreference;
+    callback(null, param);
+}
+
+function _constructMember(memberJson, callback) {
+    //console.info('----------- Saving User -----------', userJson);
+    var param = {};
+    param.memberJson = memberJson;
+
+    var familyReligionInfoSchema = new FamilyReligionInfo({
+        familyStatus: memberJson.familyStatus,
+        familyType: memberJson.familyType,
+        fatherName: memberJson.fatherName,
+        motherName: memberJson.motherName,
+        sisters: memberJson.sisters,
+        brothers: memberJson.brothers,
+        caste: memberJson.caste,
+        rasi: memberJson.rasi,
+        natchathram: memberJson.natchathram,
+        lagnam: memberJson.lagnam,
+        gothram: memberJson.gothram,
+        dosham: memberJson.dosham
+    });
+
+    var personalInfoSchema = new PersonalInfo({
+        maritalStatus: memberJson.maritalStatus,
+        education: memberJson.education,
+        height: memberJson.height,
+        weight: memberJson.weight,
+        eatingHabit: memberJson.eatingHabit,
+        address: memberJson.address,
+        city: memberJson.city,
+        state: memberJson.state,
+        pincode: memberJson.pincode,
+        country: memberJson.country
+    });
+
+    var professionInfoSchema = new ProfessionInfo({
+        occupation: memberJson.occupation,
+        employed: memberJson.employed,
+        annualIncome: memberJson.annualIncome,
+        workLocation: memberJson.workLocation,
+        workState: memberJson.workState,
+        workCity: memberJson.workCity,
+        residentStatus: memberJson.residentStatus
+    });
+
+    var profileInfoSchema = new ProfileInfo({
+        description: memberJson.description,
+        disabilityDesc: memberJson.disabilityDesc
+    });
+
+    var member = new Member({
+        userId: ULID.ulid(),
+        fullName: memberJson.fullName,
+        emailAddress: memberJson.emailAddress,
+        password: memberJson.password,
+        transactionPassword: memberJson.transactionPassword,
+        dob: memberJson.dateOfBirth,
+        primaryMobile: memberJson.primaryMobile,
+        secondaryMobile: memberJson.secondaryMobile,
+        active: true,
+        verified: false,
+        familyReligionInfo: familyReligionInfoSchema,
+        personalInfo: personalInfoSchema,
+        professionInfo: professionInfoSchema,
+        profileInfo: profileInfoSchema,
+        status: constants.USER_ACTIVATE_STATUS
+    });
+
+    param.member = member;
+    callback(null, param);
+}
+
+function bootstrapMemberData(callback) {
+
+    var familyReligionInfoSchema = new FamilyReligionInfo({
+        _id: '596c8bf65a12076ee0cc7590',
+        familyStatus: 'Middle Class',
+        familyType: 'Nuclear',
+        fatherName: 'Father',
+        motherName: 'Mother',
+        sisters: 0,
+        brothers: 0,
+        caste: 'Vanniya Kula Kshatriyar',
+        rasi: 'Leo',
+        natchathram: 'Aswini',
+        lagnam: 'Leo',
+        gothram: 'g',
+        dosham: 'd'
+    });
+
+    var personalInfoSchema = new PersonalInfo({
+        _id: '596c8bf65a12076ee0cc7591',
+        maritalStatus: 'NeverMarried',
+        education: 'MCA',
+        height: 5.7,
+        weight: 70,
+        eatingHabit: 'Vegetarian',
+        address: '1st Main Road',
+        city: 'Tiruvannamalai',
+        pincode: '606606',
+        country: 'IN'
+    });
+
+    var professionInfoSchema = new ProfessionInfo({
+        _id: '596c8bf65a12076ee0cc7592',
+        occupation: 'Administration',
+        employed: 'Business',
+        annualIncome: 10000,
+        workLocation: 'India',
+        workState: '',
+        workCity: '',
+        residentStatus: ''
+    });
+
+    var profileInfoSchema = new ProfileInfo({
+        _id: '596c8bf65a12076ee0cc7593',
+        description: '',
+        isDisdisabilityDesc: ''
+    });
+
+    var member = new Member({
+        _id: '596c8bf65a12076ff0cc7589',
+        userId: ULID.ulid(),
+        fullName: 'Admin User',
+        emailAddress: 'admin@vtsm.com',
+        password: 'MindBlowing@2030',
+        transactionPassword: 'MindBlowing@2030',
+        dob: '1990-10-10',
+        primaryMobile: '1231231232',
+        secondaryMobile: '1231231233',
+        active: true,
+        verified: true,
+        familyReligionInfo: familyReligionInfoSchema,
+        personalInfo: personalInfoSchema,
+        professionInfo: professionInfoSchema,
+        profileInfo: profileInfoSchema,
+        status: constants.USER_ACTIVATE_STATUS
+    });
+
+    member.save(function (err) {
+        console.info('user error = ', err);
+        callback(err, member);
+    });
+}
+exports.bootstrapMemberData = bootstrapMemberData;
 
 function getUserById(id, callback) {
     User.findOne({ _id: id })
@@ -243,15 +456,6 @@ function _syncFunction(arrayItem, callback) {
     });
 }
 
-function saveSingleMember(arrayItem, callback) {
-    async.waterfall([
-        async.apply(_constructMember, arrayItem),
-        _saveMember,
-    ], function (err, params) {
-        callback(err, params);
-    });
-}
-
 function saveSingleUser(arrayItem, callback) {
     async.waterfall([
         async.apply(_constructUser, arrayItem),
@@ -268,75 +472,6 @@ function saveSingleUser(arrayItem, callback) {
     ], function (err, params) {
         callback(err, params);
     });
-}
-
-function _constructMember(memberJson, callback) {
-    //console.info('----------- Saving User -----------', userJson);
-    var param = {};
-    param.memberJson = memberJson;
-
-    var familyReligionInfoSchema = new FamilyReligionInfo({
-        familyStatus: memberJson.familyStatus,
-        familyType: memberJson.familyType,
-        fatherName: memberJson.fatherName,
-        motherName: memberJson.motherName,
-        sisters: memberJson.sisters,
-        brothers: memberJson.brothers,
-        caste: memberJson.caste,
-        rasi: memberJson.rasi,
-        natchathram: memberJson.natchathram,
-        lagnam: memberJson.lagnam,
-        gothram: memberJson.gothram,
-        dosham: memberJson.dosham
-    });
-
-    var personalInfoSchema = new PersonalInfo({
-        maritalStatus: memberJson.maritalStatus,
-        education: memberJson.education,
-        height: memberJson.height,
-        weight: memberJson.weight,
-        eatingHabit: memberJson.eatingHabit,
-        address: memberJson.address,
-        city: memberJson.city,
-        state: memberJson.state,
-        pincode: memberJson.pincode,
-        country: memberJson.country
-    });
-
-    var professionInfoSchema = new ProfessionInfo({
-        occupation: memberJson.occupation,
-        employed: memberJson.employed,
-        annualIncome: memberJson.annualIncome,
-        workLocation: memberJson.workLocation,
-        workState: memberJson.workState,
-        workCity: memberJson.workCity,
-        residentStatus: memberJson.residentStatus
-    });
-
-    var profileInfoSchema = new ProfileInfo({
-        description: memberJson.description,
-        disabilityDesc: memberJson.disabilityDesc
-    });
-
-    var member = new Member({
-        fullName: memberJson.fullName,
-        emailAddress: memberJson.emailAddress,
-        password: memberJson.password,
-        transactionPassword: memberJson.transactionPassword,
-        dob: memberJson.dateOfBirth,
-        primaryMobile: memberJson.primaryMobile,
-        secondaryMobile: memberJson.secondaryMobile,
-        active: true,
-        verified: false,
-        familyReligionInfo: familyReligionInfoSchema,
-        personalInfo: personalInfoSchema,
-        professionInfo: professionInfoSchema,
-        profileInfo: profileInfoSchema,
-        status: constants.USER_ACTIVATE_STATUS
-    });
-
-    param.member = member;
-    callback(null, param);
 }
 
 function _constructUser(userJson, callback) {
@@ -410,15 +545,6 @@ function _findUser(param, callback) {
             var baseError = new BaseError(Utils.buildErrorResponse(constants.USER_DUPLICATE, '', constants.USER_DUPLICATE_MSG, constants.USER_DUPLICATE_MSG, 500));
             callback(baseError, param);
         }
-    });
-}
-
-function _saveMember(param, callback) {
-    var member = param.member;
-
-    member.save(function (err, sMember) {
-        param.newMember = sMember;
-        callback(err, param);
     });
 }
 
@@ -650,18 +776,6 @@ const _runAsyncParentTreeCount = async (id, users, counter) => {
         return users;
     }
 }
-
-function saveMultipleMember(memberArray, callback) {
-    async.mapSeries(memberArray, function (memberJson) {
-        saveSingleMember(memberJson, function (err, res) {
-            //console.info('sending response');
-            callback(err, res);
-        })
-    }, function (err, results) {
-        callback(err, results);
-    });
-}
-exports.saveMultipleMember = saveMultipleMember;
 
 function saveMultipleUser(userArray, callback) {
     async.mapSeries(userArray, function (userJson) {
@@ -1203,79 +1317,6 @@ function getUsersByIds(ids, callback) {
     })
 }
 exports.getUsersByIds = getUsersByIds;
-
-function bootstrapMemberData(callback) {
-
-    var familyReligionInfoSchema = new FamilyReligionInfo({
-        _id: '596c8bf65a12076ee0cc7590',
-        familyStatus: 'Middle Class',
-        familyType: 'Nuclear',
-        fatherName: 'Father',
-        motherName: 'Mother',
-        sisters: 0,
-        brothers: 0,
-        caste: 'Vanniya Kula Kshatriyar',
-        rasi: 'Leo',
-        natchathram: 'Aswini',
-        lagnam: 'Leo',
-        gothram: 'g',
-        dosham: 'd'
-    });
-
-    var personalInfoSchema = new PersonalInfo({
-        _id: '596c8bf65a12076ee0cc7591',
-        maritalStatus: 'NeverMarried',
-        education: 'MCA',
-        height: 5.7,
-        weight: 70,
-        eatingHabit: 'Vegetarian',
-        address: '1st Main Road',
-        city: 'Tiruvannamalai',
-        pincode: '606606',
-        country: 'IN'
-    });
-
-    var professionInfoSchema = new ProfessionInfo({
-        _id: '596c8bf65a12076ee0cc7592',
-        occupation: 'Administration',
-        employed: 'Business',
-        annualIncome: 10000,
-        workLocation: 'India',
-        workState: '',
-        workCity: '',
-        residentStatus: ''
-    });
-
-    var profileInfoSchema = new ProfileInfo({
-        _id: '596c8bf65a12076ee0cc7593',
-        description: '',
-        isDisdisabilityDesc: ''
-    });
-
-    var member = new Member({
-        _id: '596c8bf65a12076ff0cc7589',
-        fullName: 'Admin User',
-        emailAddress: 'admin@vtsm.com',
-        password: 'MindBlowing@2030',
-        transactionPassword: 'MindBlowing@2030',
-        dob: '1990-10-10',
-        primaryMobile: '1231231232',
-        secondaryMobile: '1231231233',
-        active: true,
-        verified: true,
-        familyReligionInfo: familyReligionInfoSchema,
-        personalInfo: personalInfoSchema,
-        professionInfo: professionInfoSchema,
-        profileInfo: profileInfoSchema,
-        status: constants.USER_ACTIVATE_STATUS
-    });
-
-    member.save(function (err) {
-        console.info('user error = ', err);
-        callback(err, member);
-    });
-}
-exports.bootstrapMemberData = bootstrapMemberData;
 
 
 function bootstrapUserData(callback) {

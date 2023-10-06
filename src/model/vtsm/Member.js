@@ -15,48 +15,19 @@ var { ProfessionInfoSchema } = require('./ProfessionInfo')
 var { ProfileInfoSchema } = require('./ProfileInfo')
 
 var memberSchema = new Schema({
-    seqId : {
-        type: Number,
-        unique: true
-    },
-    fullName: {
-        type: String
-    },
-    emailAddress: {
-        type: String
-    },
-    password: {
-        type: String,
-        required: true
-    },
-    transactionPassword: {
-        type: String,
-        required: true
-    },
-    dob: {
-        type: Date
-    },
-    primaryMobile: {
-        type: String
-    },
-    secondaryMobile: {
-        type: String
-    },
-    status : {
-        type: String
-    },
+    seqId : { type: Number, unique: true },
+    userId: { type: String, required: true },
+    fullName: { type: String }, emailAddress: { type: String },
+    password: { type: String, required: true },
+    transactionPassword: { type: String, required: true },
+    dob: { type: Date }, primaryMobile: { type: String },
+    secondaryMobile: { type: String }, status : { type: String },
     familyReligionInfo: FamilyReligionInfoSchema,
     personalInfo: PersonalInfoSchema,
     professionInfo: ProfessionInfoSchema,
     profileInfo: ProfileInfoSchema,
-    active : {
-        type: Boolean,
-        default: false
-    },
-    verified : {
-        type: Boolean,
-        default: false
-    }, 
+    active : { type: Boolean, default: false },
+    verified : { type: Boolean, default: false }, 
     lastLogin: { type: Date },
     created: { type: Date, default: Date.now }, 
     updated: { type: Date, default: Date.now }
