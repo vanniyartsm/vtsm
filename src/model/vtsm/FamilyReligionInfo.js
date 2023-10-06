@@ -5,8 +5,8 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var FamilyReligionInfoSchema = new Schema({
-    fatherName: {type: String}, motherName: {type: String}, sisters: { type: Number }, 
-    brothers: { type: Number }, rasi: {type: String}, natchathram : {type: String}, lagnam: {type: String}, 
+    familyStatus: {type: String}, familyType: {type: String}, fatherName: {type: String}, motherName: {type: String}, sisters: { type: Number }, 
+    brothers: { type: Number }, caste: { type: String }, rasi: {type: String}, natchathram : {type: String}, lagnam: {type: String}, 
     gothram: {type: String}, dosham: {type: String}
 });
 

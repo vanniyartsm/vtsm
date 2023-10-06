@@ -30,7 +30,7 @@
                         <div class="card-header p-3 border-bottom border-300 bg-soft">
                           <div class="row g-3 justify-content-between align-items-center">
                             <div class="col-12 col-md">
-                              <h4 class="text-900 mb-0" id="basicDetails">Basic Details</h4>
+                              <h4 class="text-900 mb-0" id="basicDetails">Basic Info</h4>
                             </div>
                           </div>
                         </div>
@@ -41,28 +41,28 @@
                             <div class="row mb-3">
                               <label class="col-sm-2 col-form-label col-form-label-sm" for="fullName">Full Name <code>*</code></label>
                               <div class="col-sm-10">
-                                <input class="form-control form-control-sm" id="fullName" name="fullName" type="text" required="" value="test"/>
+                                <input class="form-control form-control-sm" id="fullName" name="fullName" type="text" required="" value="test" maxlength="50"/>
                                 <div class="invalid-feedback">Please provide full name.</div>
                               </div>
                             </div>
                             <div class="row mb-3">
                               <label class="col-sm-2 col-form-label col-form-label-sm" for="emailAddress">Email address <code>*</code></label>
                               <div class="col-sm-10">
-                                <input class="form-control" id="emailAddress" name="emailAddress" type="email" placeholder="name@example.com" required="" value="test@test.com"/>
+                                <input class="form-control" id="emailAddress" name="emailAddress" type="email" placeholder="name@example.com" required="" value="test@test.com" maxlength="30"/>
                                 <div class="invalid-feedback">Please provide an email address.</div>
                               </div>
                             </div>
                             <div class="row mb-3">
                               <label class="col-sm-2 col-form-label col-form-label-sm" for="emailAddress">Password <code>*</code></label>
                               <div class="col-sm-10">
-                                <input class="form-control" id="password" name="password" type="password" required="" value="test@123"/>
+                                <input class="form-control" id="password" name="password" type="password" required="" value="test@123" maxlength="20"/>
                                 <div class="invalid-feedback">Please provide password.</div>
                               </div>
                             </div>
                             <div class="row mb-3">
                               <label class="col-sm-2 col-form-label col-form-label-sm" for="confirmPassword">Confirm password <code>*</code></label>
                               <div class="col-sm-10">
-                                <input class="form-control" id="confirmPassword" name="confirmPassword" type="password" required="" value="test@123"/>
+                                <input class="form-control" id="confirmPassword" name="confirmPassword" type="password" required="" value="test@123" maxlength="20"/>
                                 <div class="invalid-feedback">Password and confirm password should be same .</div>
                               </div>
                             </div>
@@ -87,7 +87,7 @@
                             <div class="row mb-3">
                               <label class="col-sm-2 col-form-label col-form-label-sm" for="primaryMobile">Primary Mobile <code>*</code></label>
                               <div class="col-sm-10">
-                                <input class="form-control" id="primaryMobile" name="primaryMobile" type="text" required="" value="123123123"/>
+                                <input class="form-control" id="primaryMobile" name="primaryMobile" type="text" required="" value="123123123" maxlength="15"/>
                                 <div class="invalid-feedback">Please provide primary mobile number.</div>
                               </div>
                             </div>
@@ -95,7 +95,7 @@
                             <div class="row mb-3">
                               <label class="col-sm-2 col-form-label col-form-label-sm" for="secondaryMobile">Secondary Mobile <code>*</code></label>
                               <div class="col-sm-10">
-                                <input class="form-control" id="secondaryMobile" name="secondaryMobile" type="text" required="" value="234234234"/>
+                                <input class="form-control" id="secondaryMobile" name="secondaryMobile" type="text" required="" value="234234234" maxlength="15"/>
                                 <div class="invalid-feedback">Please provide secondary mobile number.</div>
                               </div>
                             </div>
@@ -106,7 +106,7 @@
                         <div class="card-header p-3 border-bottom border-300 bg-soft">
                           <div class="row g-3 justify-content-between align-items-center">
                             <div class="col-12 col-md">
-                              <h4 class="text-900 mb-0" id="familyReligion">Family & Religion Details</h4>
+                              <h4 class="text-900 mb-0" id="familyReligion">Family & Religion Info</h4>
                             </div>
                           </div>
                         </div>
@@ -114,10 +114,37 @@
                           <div class="collapse code-collapse" id="example-code">
                           </div>
                           <div class="p-4 code-to-copy">
+                            
+                            <div class="row mb-3">
+                              <label class="col-sm-2 col-form-label col-form-label-sm" for="familyStatus">Family Status <code>*</code></label>
+                              <div class="col-sm-10">
+                                <select class="form-select" id="familyStatus" name="familyStatus" aria-label="Default select example" required="">
+                                  <option selected="" disabled="" value="">Choose...</option>
+                                  <option selected value="Middle Class">Middle Class</option>
+                                  <option value="Upper Middle Class">Upper Middle Class</option>
+                                  <option value="Rich">Rich</option>
+                                  <option value="Affluent">Affluent</option>
+                                </select>
+                                <div class="invalid-feedback">Please provide family status.</div>
+                              </div>
+                            </div>
+
+                            <div class="row mb-3">
+                              <label class="col-sm-2 col-form-label col-form-label-sm" for="familyType">Family Type <code>*</code></label>
+                              <div class="col-sm-10">
+                                <select class="form-select" id="familyType" name="familyType" aria-label="Default select example" required="">
+                                  <option selected="" disabled="" value="">Choose...</option>
+                                  <option value="Joint">Joint</option>
+                                  <option selected value="Nuclear">Nuclear</option>
+                                </select>
+                                <div class="invalid-feedback">Please provide family type.</div>
+                              </div>
+                            </div>
+
                             <div class="row mb-3">
                               <label class="col-sm-2 col-form-label col-form-label-sm" for="fatherName">Father Name <code>*</code></label>
                               <div class="col-sm-10">
-                                <input class="form-control" id="fatherName" name="fatherName" type="text" required="" value="Father Name"/>
+                                <input class="form-control" id="fatherName" name="fatherName" type="text" required="" value="Father Name"  maxlength="25"/>
                                 <div class="invalid-feedback">Please provide father name.</div>
                               </div>
                             </div>
@@ -125,7 +152,7 @@
                             <div class="row mb-3">
                               <label class="col-sm-2 col-form-label col-form-label-sm" for="motherName">Mother Name <code>*</code></label>
                               <div class="col-sm-10">
-                                <input class="form-control" id="motherName" name="motherName" type="text" required="" value="Mother Name"/>
+                                <input class="form-control" id="motherName" name="motherName" type="text" required="" value="Mother Name" maxlength="25"/>
                                 <div class="invalid-feedback">Please provide mother name.</div>
                               </div>
                             </div>
@@ -133,14 +160,44 @@
                             <div class="row mb-3">
                               <label class="col-sm-2 col-form-label col-form-label-sm" for="sisters">Sisters</label>
                               <div class="col-sm-10">
-                                <input class="form-control" id="sisters" name="sisters" type="text" value="0"/>
+                                <select class="form-select" id="sisters" name="sisters" aria-label="Default select example" required="">
+                                  <option selected="" disabled="" value="">Choose...</option>
+                                  <option selected value="0">0</option>
+                                  <option value="1">1</option>
+                                  <option value="2">2</option>
+                                  <option value="3">3</option>
+                                  <option value="4">4</option>
+                                  <option value="5">5</option>
+                                  </select>
                               </div>
                             </div>
 
                             <div class="row mb-3">
                               <label class="col-sm-2 col-form-label col-form-label-sm" for="brothers">Brothers</label>
                               <div class="col-sm-10">
-                                <input class="form-control" id="brothers" name="brothers" type="text" value="0"/>
+                                <select class="form-select" id="brothers" name="brothers" aria-label="Default select example" required="">
+                                    <option selected="" disabled="" value="">Choose...</option>
+                                    <option selected value="0">0</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                </select>
+                              </div>
+                            </div>
+
+                            <div class="row mb-3">
+                              <label class="col-sm-2 col-form-label col-form-label-sm" for="caste">Caste</label>
+                              <div class="col-sm-10">
+                                <select class="form-select" id="caste" name="caste" aria-label="Default select example" required="">
+                                    <option selected="" disabled="" value="">Choose...</option>
+                                    <option selected value="Vanniya Kula Kshatriyar">Vanniya Kula Kshatriyar</option>
+                                    <option value="Gounder">Gounder</option>
+                                    <option value="Vanniya">Vanniya</option>
+                                    <option value="Vannia Gounder">Vannia Gounder</option>
+                                  </select>
+                                  <div class="invalid-feedback">Please provide caste.</div>
                               </div>
                             </div>
 
@@ -162,7 +219,7 @@
                                   <option value="Aquarius">Aquarius</option>
                                   <option value="Pisces">Pisces</option>                             
                                 </select>
-                                <div class="invalid-feedback">Please provide gender.</div>
+                                <div class="invalid-feedback">Please provide rasi.</div>
                               </div>
                             </div>
                             
@@ -199,7 +256,7 @@
                                   <option value="Uthirattathi">Uthirattathi</option>
                                   <option value="Revathi">Revathi</option>
                                 </select>
-                                <div class="invalid-feedback">Please provide gender.</div>
+                                <div class="invalid-feedback">Please provide natchathram.</div>
                               </div>
                             </div>
                             
@@ -221,21 +278,25 @@
                                   <option value="Aquarius">Aquarius</option>
                                   <option value="Pisces">Pisces</option>                             
                                 </select>
-                                <div class="invalid-feedback">Please provide gender.</div>
+                                <div class="invalid-feedback">Please provide lagnam.</div>
                               </div>
                             </div>
 
                             <div class="row mb-3">
                               <label class="col-sm-2 col-form-label col-form-label-sm" for="gothram">Gothram</label>
                               <div class="col-sm-10">
-                                <input class="form-control" id="gothram" name="gothram" type="text"  value="sdfsdf"/>
+                                <input class="form-control" id="gothram" name="gothram" type="text"  value="sdfsdf" maxlength="25"/>
                               </div>
                             </div>
 
                             <div class="row mb-3">
                               <label class="col-sm-2 col-form-label col-form-label-sm" for="dosham">Dosham </label>
                               <div class="col-sm-10">
-                                <input class="form-control" id="dosham" name="dosham" type="text" value="sdf"/>
+                                <select class="form-select" id="dosham" name="dosham" aria-label="Default select example" required="">
+                                  <option selected value="No">No</option>
+                                  <option value="Yes">Yes</option>
+                                  <option value="Dont Know">Dont Know</option>
+                                </select>
                               </div>
                             </div>
                           </div>
@@ -245,7 +306,7 @@
                         <div class="card-header p-3 border-bottom border-300 bg-soft">
                           <div class="row g-3 justify-content-between align-items-center">
                             <div class="col-12 col-md">
-                              <h4 class="text-900 mb-0" id="personalDetails">Personal Details</h4>
+                              <h4 class="text-900 mb-0" id="personalDetails">Personal Info</h4>
                             </div>
                           </div>
                         </div>
@@ -269,35 +330,47 @@
                             <div class="row mb-3">
                               <label class="col-sm-2 col-form-label col-form-label-sm" for="education">Education <code>*</code></label>
                               <div class="col-sm-10">
-                                <input class="form-control" id="education" name="education" type="text" required="" value="MCA"/>
+                                <input class="form-control" id="education" name="education" type="text" required="" value="MCA"  maxlength="50"/>
                                 <div class="invalid-feedback">Please provide education.</div>
                               </div>
                             </div>
                             <div class="row mb-3">
                               <label class="col-sm-2 col-form-label col-form-label-sm" for="height">Height <code>*</code></label>
                               <div class="col-sm-10">
-                                <input class="form-control" id="height" name="height" type="text" required="" placeholder="5.8" value="5.8"/>
+                                <input class="form-control" id="height" name="height" type="text" required="" placeholder="5.8" value="5.8" maxlength="5"/>
                                 <div class="invalid-feedback">Please provide height.</div>
                               </div>
                             </div>
                             <div class="row mb-3">
                               <label class="col-sm-2 col-form-label col-form-label-sm" for="weight">Weight <code>*</code></label>
                               <div class="col-sm-10">
-                                <input class="form-control" id="weight" name="weight" type="text" required="" placeholder="kg" value="77"/>
+                                <input class="form-control" id="weight" name="weight" type="text" required="" placeholder="kg" value="77" maxlength="3"/>
                                 <div class="invalid-feedback">Please provide weight.</div>
+                              </div>
+                            </div>
+                            <div class="row mb-3">
+                              <label class="col-sm-2 col-form-label col-form-label-sm" for="eatingHabit">Eating Habit <code>*</code></label>
+                              <div class="col-sm-10">
+                                <select class="form-select" aria-label="Default select example" id="eatingHabit" name="eatingHabit" required="">
+                                  <option selected="" disabled="" value="">Choose...</option>
+                                  <option value="Eggetarian">Eggetarian</option>
+                                  <option value="Non-Vegetarian">Non-Vegetarian</option>
+                                  <option selected value="Vegetarian">Vegetarian</option>
+                                </select>
+                                <div class="invalid-feedback">Please provide eating habit.</div>
                               </div>
                             </div>
                             <div class="row mb-3">
                               <label class="col-sm-2 col-form-label col-form-label-sm" for="address">Address <code>*</code></label>
                               <div class="col-sm-10">
-                                <input class="form-control" id="address" name="address" type="text" required="" value="1st main st."/>
+                                <input class="form-control" id="address" name="address" type="text" required="" value="1st main st." maxlength="60"/>
                                 <div class="invalid-feedback">Please provide address.</div>
                               </div>
                             </div>
                             <div class="row mb-3">
                               <label class="col-sm-2 col-form-label col-form-label-sm" for="city">City <code>*</code></label>
                               <div class="col-sm-10">
-                                <input class="form-control" id="city" name="city" type="text" required="" value="Chennai"/>
+                                <input class="form-control" id="city" name="city" type="text" required="" value="Chennai" maxlength="20"/>
                                 <div class="invalid-feedback">Please provide city.</div>
                               </div>
                             </div>
@@ -305,7 +378,7 @@
                             <div class="row mb-3">
                               <label class="col-sm-2 col-form-label col-form-label-sm" for="state">State <code>*</code></label>
                               <div class="col-sm-10">
-                                <input class="form-control" id="state" name="state" type="text" required="" value="TN"/>
+                                <input class="form-control" id="state" name="state" type="text" required="" value="TN" maxlength="20"/>
                                 <input class="form-control" id="country" name="country" type="hidden" value="IN"/>
                                 <div class="invalid-feedback">Please provide state.</div>
                               </div>
@@ -314,7 +387,7 @@
                             <div class="row mb-3">
                               <label class="col-sm-2 col-form-label col-form-label-sm" for="pincode">Pincode <code>*</code></label>
                               <div class="col-sm-10">
-                                <input class="form-control" id="pincode" name="pincode" type="text" required="" value="606601"/>
+                                <input class="form-control" id="pincode" name="pincode" type="text" required="" value="606601" maxlength="8"/>
                                 <div class="invalid-feedback">Please provide pincode.</div>
                               </div>
                             </div>
@@ -325,7 +398,7 @@
                         <div class="card-header p-3 border-bottom border-300 bg-soft">
                           <div class="row g-3 justify-content-between align-items-center">
                             <div class="col-12 col-md">
-                              <h4 class="text-900 mb-0" id="professionDetails">Profession Details</h4>
+                              <h4 class="text-900 mb-0" id="professionDetails">Profession Info</h4>
                             </div>
                           </div>
                         </div>
@@ -336,14 +409,42 @@
                             <div class="row mb-3">
                               <label class="col-sm-2 col-form-label col-form-label-sm" for="occupation">Occupation <code>*</code></label>
                               <div class="col-sm-10">
-                                <input class="form-control" id="occupation" name="occupation" type="text" placeholder="Business" required="" value="IT"/>
+                                <select class="form-select" aria-label="Choose Occupation" id="occupation" name="occupation" required="">
+                                  <option selected="" disabled="" value="">Choose...</option>
+                                  <option selected value="Administration">Administration</option>
+                                  <option value="Agriculture">Agriculture</option>
+                                  <option value="Airline">Airline</option>
+                                  <option value="Architecture & Design">Architecture & Design</option>
+                                  <option value="Banking & Finance">Banking & Finance</option>
+                                  <option value="BPO & Customer Service">BPO & Customer Service</option>
+                                  <option value="Corporate Professionals">Corporate Professionals</option>
+                                  <option value="Doctor">Doctor</option>
+                                  <option value="Education & Training">Education & Training</option>
+                                  <option value="Engineering">Engineering</option>
+                                  <option value="Hospitality">Hospitality</option>
+                                  <option value="IT & Software">IT & Software</option>
+                                  <option value="Legal">Legal</option>
+                                  <option value="Media & Entertainment">Media & Entertainment</option>
+                                  <option value="Medical & Healthcare">Medical & Healthcare</option>
+                                  <option value="Police / Law Enforcement">Police / Law Enforcement</option>
+                                  <option value="Scientist">Scientist</option>
+                                  <option value="Others">Others</option>
+                                </select>
                                 <div class="invalid-feedback">Please provide occupation.</div>
                               </div>
                             </div>
                             <div class="row mb-3">
-                              <label class="col-sm-2 col-form-label col-form-label-sm" for="employer">Employer <code>*</code></label>
+                              <label class="col-sm-2 col-form-label col-form-label-sm" for="employed">Employed in <code>*</code></label>
                               <div class="col-sm-10">
-                                <input class="form-control" id="employer" name="employer" type="text" placeholder="Work Company" required="" value="SST"/>
+                                <select class="form-select" aria-label="Choose Occupation" id="employed" name="employed" required="">
+                                  <option selected="" disabled="" value="">Choose...</option>
+                                  <option selected value="Business">Business</option>
+                                  <option value="Defence">Defence</option>
+                                  <option value="Government/PSU">Government/PSU</option>
+                                  <option value="Private">Private</option>
+                                  <option value="Self Employed">Self Employed</option>
+                                  <option value="Not Working">Not Working</option>
+                                </select>
                                 <div class="invalid-feedback">Please provide work company.</div>
                               </div>
                             </div>
@@ -357,8 +458,230 @@
                             <div class="row mb-3">
                               <label class="col-sm-2 col-form-label col-form-label-sm" for="workLocation">Work Location <code>*</code></label>
                               <div class="col-sm-10">
-                                <input class="form-control" id="workLocation" name="workLocation" type="text" required="" value="Chennai"/>
+                                <select class="form-select" aria-label="Choose Work Location" id="workLocation" name="workLocation" required="">
+                                  <option selected="" disabled="" value="">Choose...</option>
+                                  <option value="Afghanistan">Afghanistan</option>
+                                  <option value="Albania">Albania</option>
+                                  <option value="Algeria">Algeria</option>
+                                  <option value="Andorra">Andorra</option>
+                                  <option value="Angola">Angola</option>
+                                  <option value="Antigua and Barbuda">Antigua and Barbuda</option>
+                                  <option value="Argentina">Argentina</option>
+                                  <option value="Armenia">Armenia</option>
+                                  <option value="Australia">Australia</option>
+                                  <option value="Austria">Austria</option>
+                                  <option value="Azerbaijan">Azerbaijan</option>
+                                  <option value="Bahamas">Bahamas</option>
+                                  <option value="Bahrain">Bahrain</option>
+                                  <option value="Bangladesh">Bangladesh</option>
+                                  <option value="Barbados">Barbados</option>
+                                  <option value="Belarus">Belarus</option>
+                                  <option value="Belgium">Belgium</option>
+                                  <option value="Belize">Belize</option>
+                                  <option value="Benin">Benin</option>
+                                  <option value="Bhutan">Bhutan</option>
+                                  <option value="Bolivia">Bolivia</option>
+                                  <option value="Bosnia and Herzegovina">Bosnia and Herzegovina</option>
+                                  <option value="Botswana">Botswana</option>
+                                  <option value="Brazil">Brazil</option>
+                                  <option value="Brunei">Brunei</option>
+                                  <option value="Bulgaria">Bulgaria</option>
+                                  <option value="Burkina Faso">Burkina Faso</option>
+                                  <option value="Burundi">Burundi</option>
+                                  <option value="Côte d'Ivoire">Côte d'Ivoire</option>
+                                  <option value="Cabo Verde">Cabo Verde</option>
+                                  <option value="Cambodia">Cambodia</option>
+                                  <option value="Cameroon">Cameroon</option>
+                                  <option value="Canada">Canada</option>
+                                  <option value="Central African Republic">Central African Republic</option>
+                                  <option value="Chad">Chad</option>
+                                  <option value="Chile">Chile</option>
+                                  <option value="China">China</option>
+                                  <option value="Colombia">Colombia</option>
+                                  <option value="Comoros">Comoros</option>
+                                  <option value="Congo (Congo-Brazzaville)">Congo (Congo-Brazzaville)</option>
+                                  <option value="Costa Rica">Costa Rica</option>
+                                  <option value="Croatia">Croatia</option>
+                                  <option value="Cuba">Cuba</option>
+                                  <option value="Cyprus">Cyprus</option>
+                                  <option value="Czechia (Czech Republic)">Czechia (Czech Republic)</option>
+                                  <option value="Democratic Republic of the Congo">Democratic Republic of the Congo</option>
+                                  <option value="Denmark">Denmark</option>
+                                  <option value="Djibouti">Djibouti</option>
+                                  <option value="Dominica">Dominica</option>
+                                  <option value="Dominican Republic">Dominican Republic</option>
+                                  <option value="Ecuador">Ecuador</option>
+                                  <option value="Egypt">Egypt</option>
+                                  <option value="El Salvador">El Salvador</option>
+                                  <option value="Equatorial Guinea">Equatorial Guinea</option>
+                                  <option value="Eritrea">Eritrea</option>
+                                  <option value="Estonia">Estonia</option>
+                                  <option value="Eswatini (fmr. "Swaziland")">Eswatini (fmr. "Swaziland")</option>
+                                  <option value="Ethiopia">Ethiopia</option>
+                                  <option value="Fiji">Fiji</option>
+                                  <option value="Finland">Finland</option>
+                                  <option value="France">France</option>
+                                  <option value="Gabon">Gabon</option>
+                                  <option value="Gambia">Gambia</option>
+                                  <option value="Georgia">Georgia</option>
+                                  <option value="Germany">Germany</option>
+                                  <option value="Ghana">Ghana</option>
+                                  <option value="Greece">Greece</option>
+                                  <option value="Grenada">Grenada</option>
+                                  <option value="Guatemala">Guatemala</option>
+                                  <option value="Guinea">Guinea</option>
+                                  <option value="Guinea-Bissau">Guinea-Bissau</option>
+                                  <option value="Guyana">Guyana</option>
+                                  <option value="Haiti">Haiti</option>
+                                  <option value="Holy See">Holy See</option>
+                                  <option value="Honduras">Honduras</option>
+                                  <option value="Hungary">Hungary</option>
+                                  <option value="Iceland">Iceland</option>
+                                  <option selected value="India">India</option>
+                                  <option value="Indonesia">Indonesia</option>
+                                  <option value="Iran">Iran</option>
+                                  <option value="Iraq">Iraq</option>
+                                  <option value="Ireland">Ireland</option>
+                                  <option value="Israel">Israel</option>
+                                  <option value="Italy">Italy</option>
+                                  <option value="Jamaica">Jamaica</option>
+                                  <option value="Japan">Japan</option>
+                                  <option value="Jordan">Jordan</option>
+                                  <option value="Kazakhstan">Kazakhstan</option>
+                                  <option value="Kenya">Kenya</option>
+                                  <option value="Kiribati">Kiribati</option>
+                                  <option value="Kuwait">Kuwait</option>
+                                  <option value="Kyrgyzstan">Kyrgyzstan</option>
+                                  <option value="Laos">Laos</option>
+                                  <option value="Latvia">Latvia</option>
+                                  <option value="Lebanon">Lebanon</option>
+                                  <option value="Lesotho">Lesotho</option>
+                                  <option value="Liberia">Liberia</option>
+                                  <option value="Libya">Libya</option>
+                                  <option value="Liechtenstein">Liechtenstein</option>
+                                  <option value="Lithuania">Lithuania</option>
+                                  <option value="Luxembourg">Luxembourg</option>
+                                  <option value="Madagascar">Madagascar</option>
+                                  <option value="Malawi">Malawi</option>
+                                  <option value="Malaysia">Malaysia</option>
+                                  <option value="Maldives">Maldives</option>
+                                  <option value="Mali">Mali</option>
+                                  <option value="Malta">Malta</option>
+                                  <option value="Marshall Islands">Marshall Islands</option>
+                                  <option value="Mauritania">Mauritania</option>
+                                  <option value="Mauritius">Mauritius</option>
+                                  <option value="Mexico">Mexico</option>
+                                  <option value="Micronesia">Micronesia</option>
+                                  <option value="Moldova">Moldova</option>
+                                  <option value="Monaco">Monaco</option>
+                                  <option value="Mongolia">Mongolia</option>
+                                  <option value="Montenegro">Montenegro</option>
+                                  <option value="Morocco">Morocco</option>
+                                  <option value="Mozambique">Mozambique</option>
+                                  <option value="Myanmar (formerly Burma)">Myanmar (formerly Burma)</option>
+                                  <option value="Namibia">Namibia</option>
+                                  <option value="Nauru">Nauru</option>
+                                  <option value="Nepal">Nepal</option>
+                                  <option value="Netherlands">Netherlands</option>
+                                  <option value="New Zealand">New Zealand</option>
+                                  <option value="Nicaragua">Nicaragua</option>
+                                  <option value="Niger">Niger</option>
+                                  <option value="Nigeria">Nigeria</option>
+                                  <option value="North Korea">North Korea</option>
+                                  <option value="North Macedonia">North Macedonia</option>
+                                  <option value="Norway">Norway</option>
+                                  <option value="Oman">Oman</option>
+                                  <option value="Pakistan">Pakistan</option>
+                                  <option value="Palau">Palau</option>
+                                  <option value="Palestine State">Palestine State</option>
+                                  <option value="Panama">Panama</option>
+                                  <option value="Papua New Guinea">Papua New Guinea</option>
+                                  <option value="Paraguay">Paraguay</option>
+                                  <option value="Peru">Peru</option>
+                                  <option value="Philippines">Philippines</option>
+                                  <option value="Poland">Poland</option>
+                                  <option value="Portugal">Portugal</option>
+                                  <option value="Qatar">Qatar</option>
+                                  <option value="Romania">Romania</option>
+                                  <option value="Russia">Russia</option>
+                                  <option value="Rwanda">Rwanda</option>
+                                  <option value="Saint Kitts and Nevis">Saint Kitts and Nevis</option>
+                                  <option value="Saint Lucia">Saint Lucia</option>
+                                  <option value="Saint Vincent and the Grenadines">Saint Vincent and the Grenadines</option>
+                                  <option value="Samoa">Samoa</option>
+                                  <option value="San Marino">San Marino</option>
+                                  <option value="Sao Tome and Principe">Sao Tome and Principe</option>
+                                  <option value="Saudi Arabia">Saudi Arabia</option>
+                                  <option value="Senegal">Senegal</option>
+                                  <option value="Serbia">Serbia</option>
+                                  <option value="Seychelles">Seychelles</option>
+                                  <option value="Sierra Leone">Sierra Leone</option>
+                                  <option value="Singapore">Singapore</option>
+                                  <option value="Slovakia">Slovakia</option>
+                                  <option value="Slovenia">Slovenia</option>
+                                  <option value="Solomon Islands">Solomon Islands</option>
+                                  <option value="Somalia">Somalia</option>
+                                  <option value="South Africa">South Africa</option>
+                                  <option value="South Korea">South Korea</option>
+                                  <option value="South Sudan">South Sudan</option>
+                                  <option value="Spain">Spain</option>
+                                  <option value="Sri Lanka">Sri Lanka</option>
+                                  <option value="Sudan">Sudan</option>
+                                  <option value="Suriname">Suriname</option>
+                                  <option value="Sweden">Sweden</option>
+                                  <option value="Switzerland">Switzerland</option>
+                                  <option value="Syria">Syria</option>
+                                  <option value="Tajikistan">Tajikistan</option>
+                                  <option value="Tanzania">Tanzania</option>
+                                  <option value="Thailand">Thailand</option>
+                                  <option value="Timor-Leste">Timor-Leste</option>
+                                  <option value="Togo">Togo</option>
+                                  <option value="Tonga">Tonga</option>
+                                  <option value="Trinidad and Tobago">Trinidad and Tobago</option>
+                                  <option value="Tunisia">Tunisia</option>
+                                  <option value="Turkey">Turkey</option>
+                                  <option value="Turkmenistan">Turkmenistan</option>
+                                  <option value="Tuvalu">Tuvalu</option>
+                                  <option value="Uganda">Uganda</option>
+                                  <option value="Ukraine">Ukraine</option>
+                                  <option value="United Arab Emirates">United Arab Emirates</option>
+                                  <option value="United Kingdom">United Kingdom</option>
+                                  <option value="United States of America">United States of America</option>
+                                  <option value="Uruguay">Uruguay</option>
+                                  <option value="Uzbekistan">Uzbekistan</option>
+                                  <option value="Vanuatu">Vanuatu</option>
+                                  <option value="Venezuela">Venezuela</option>
+                                  <option value="Vietnam">Vietnam</option>
+                                  <option value="Yemen">Yemen</option>
+                                  <option value="Zambia">Zambia</option>
+                                  <option value="Zimbabwe">Zimbabwe</option>
+                                </select>
                                 <div class="invalid-feedback">Please provide work location.</div>
+                              </div>
+                            </div>
+                            <div class="row mb-3">
+                              <label class="col-sm-2 col-form-label col-form-label-sm" for="workState">State </label>
+                              <div class="col-sm-10">
+                                <input class="form-control" id="workState" name="workState" type="text" maxlength="30"/>
+                              </div>
+                            </div>
+                            <div class="row mb-3">
+                              <label class="col-sm-2 col-form-label col-form-label-sm" for="workCity">City </label>
+                              <div class="col-sm-10">
+                                <input class="form-control" id="workCity" name="workCity" type="text" maxlength="30"/>
+                              </div>
+                            </div>
+                            <div class="row mb-3">
+                              <label class="col-sm-2 col-form-label col-form-label-sm" for="residentStatus">Resident Status </label>
+                              <div class="col-sm-10">
+                                <select class="form-select" aria-label="Choose Resident Status" id="residentStatus" name="residentStatus">
+                                  <option selected="" disabled="" value="">Choose...</option>
+                                  <option value="Permanent Resident">Permanent Resident</option>
+                                  <option value="Work Permit">Work Permit</option>
+                                  <option value="Student Visa">Student Visa</option>
+                                  <option value="Temporary Visa">Temporary Visa</option>
+                                  <option value="Citizen">Citizen</option>
+                                </select>
                               </div>
                             </div>
                           </div>
@@ -368,7 +691,7 @@
                         <div class="card-header p-4 border-bottom border-300 bg-soft">
                           <div class="row g-3 justify-content-between align-items-center">
                             <div class="col-12 col-md">
-                              <h4 class="text-900 mb-0" id="profile">Profile Details</h4>
+                              <h4 class="text-900 mb-0" id="profile">Profile Info</h4>
                             </div>
                           </div>
                         </div>
@@ -391,13 +714,13 @@
                             <div class="row mb-3">
                               <label class="col-sm-2 col-form-label col-form-label-sm" for="description">Profile Description</label>
                               <div class="col-sm-10">
-                                <textarea class="form-control" id="description" name="description" rows="3"> some desc</textarea>
+                                <textarea class="form-control" id="description" name="description" rows="3" maxlength="100"> some desc</textarea>
                               </div>
                             </div>
                             <div class="row mb-3">
                               <label class="col-sm-2 col-form-label col-form-label-sm" for="disabilityDescription">If any Disability? Add Description</label>
                               <div class="col-sm-10">
-                                <textarea class="form-control" id="disabilityDescription" name="disabilityDescription" rows="3"> disability desc</textarea>
+                                <textarea class="form-control" id="disabilityDescription" name="disabilityDescription" rows="3" maxlength="100"> disability desc</textarea>
                               </div>
                             </div>
                             <div class="row mb-3">

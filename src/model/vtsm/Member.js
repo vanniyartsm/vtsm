@@ -52,7 +52,12 @@ var memberSchema = new Schema({
     active : {
         type: Boolean,
         default: false
+    },
+    verified : {
+        type: Boolean,
+        default: false
     }, 
+    lastLogin: { type: Date },
     created: { type: Date, default: Date.now }, 
     updated: { type: Date, default: Date.now }
 }, { collection: 'vtsm_mem_members' });

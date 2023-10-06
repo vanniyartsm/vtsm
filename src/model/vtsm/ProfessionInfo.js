@@ -6,8 +6,9 @@ var Schema = mongoose.Schema;
 var SchemaTypes = mongoose.Schema.Types;
 
 var ProfessionInfoSchema = new Schema({
-    occupation: {type: String, required: true}, employer: {type: String}, annualIncome : { type: SchemaTypes.Double }, 
-    workLocation: { type: SchemaTypes.Double }
+    occupation: {type: String, required: true}, employed: {type: String}, annualIncome : { type: SchemaTypes.Double }, 
+    workLocation: { type: SchemaTypes.Double }, workState: {type: String}, workCity: {type: String}, 
+    residentStatus: {type: String}
 });
 
 var ProfessionInfo = mongoose.model('ProfessionInfo', ProfessionInfoSchema );

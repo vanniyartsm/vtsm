@@ -276,10 +276,13 @@ function _constructMember(memberJson, callback) {
     param.memberJson = memberJson;
 
     var familyReligionInfoSchema = new FamilyReligionInfo({
+        familyStatus: memberJson.familyStatus,
+        familyType: memberJson.familyType,
         fatherName: memberJson.fatherName,
         motherName: memberJson.motherName,
         sisters: memberJson.sisters,
         brothers: memberJson.brothers,
+        caste: memberJson.caste,
         rasi: memberJson.rasi,
         natchathram: memberJson.natchathram,
         lagnam: memberJson.lagnam,
@@ -292,6 +295,7 @@ function _constructMember(memberJson, callback) {
         education: memberJson.education,
         height: memberJson.height,
         weight: memberJson.weight,
+        eatingHabit: memberJson.eatingHabit,
         address: memberJson.address,
         city: memberJson.city,
         state: memberJson.state,
@@ -301,9 +305,12 @@ function _constructMember(memberJson, callback) {
 
     var professionInfoSchema = new ProfessionInfo({
         occupation: memberJson.occupation,
-        employer: memberJson.employer,
+        employed: memberJson.employed,
         annualIncome: memberJson.annualIncome,
-        workLocation: memberJson.workLocation
+        workLocation: memberJson.workLocation,
+        workState: memberJson.workState,
+        workCity: memberJson.workCity,
+        residentStatus: memberJson.residentStatus
     });
 
     var profileInfoSchema = new ProfileInfo({
@@ -320,6 +327,7 @@ function _constructMember(memberJson, callback) {
         primaryMobile: memberJson.primaryMobile,
         secondaryMobile: memberJson.secondaryMobile,
         active: true,
+        verified: false,
         familyReligionInfo: familyReligionInfoSchema,
         personalInfo: personalInfoSchema,
         professionInfo: professionInfoSchema,
@@ -1098,8 +1106,11 @@ function authenticateMember(memberJson, callback) {
             } else {
                 console.info('Comparing');
                 member.comparePassword(memberJson.password, function (err, isMatch) {
-                    console.info('isMatch compared = ', isMatch);
-                    callback(err, isMatch, member);
+                    member.lastLogin = new Date(new Date().toUTCString());
+                    member.save(function (err) {
+                        console.info('isMatch compared = ', isMatch);
+                        callback(err, isMatch, member);
+                    });
                 });
             }
         });
@@ -1197,10 +1208,13 @@ function bootstrapMemberData(callback) {
 
     var familyReligionInfoSchema = new FamilyReligionInfo({
         _id: '596c8bf65a12076ee0cc7590',
+        familyStatus: 'Middle Class',
+        familyType: 'Nuclear',
         fatherName: 'Father',
         motherName: 'Mother',
         sisters: 0,
         brothers: 0,
+        caste: 'Vanniya Kula Kshatriyar',
         rasi: 'Leo',
         natchathram: 'Aswini',
         lagnam: 'Leo',
@@ -1214,6 +1228,7 @@ function bootstrapMemberData(callback) {
         education: 'MCA',
         height: 5.7,
         weight: 70,
+        eatingHabit: 'Vegetarian',
         address: '1st Main Road',
         city: 'Tiruvannamalai',
         pincode: '606606',
@@ -1222,10 +1237,13 @@ function bootstrapMemberData(callback) {
 
     var professionInfoSchema = new ProfessionInfo({
         _id: '596c8bf65a12076ee0cc7592',
-        occupation: 'IT',
-        employer: 'Business',
+        occupation: 'Administration',
+        employed: 'Business',
         annualIncome: 10000,
-        workLocation: 'Chennai'
+        workLocation: 'India',
+        workState: '',
+        workCity: '',
+        residentStatus: ''
     });
 
     var profileInfoSchema = new ProfileInfo({
@@ -1244,6 +1262,7 @@ function bootstrapMemberData(callback) {
         primaryMobile: '1231231232',
         secondaryMobile: '1231231233',
         active: true,
+        verified: true,
         familyReligionInfo: familyReligionInfoSchema,
         personalInfo: personalInfoSchema,
         professionInfo: professionInfoSchema,

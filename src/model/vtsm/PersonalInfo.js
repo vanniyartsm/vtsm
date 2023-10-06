@@ -10,6 +10,7 @@ var PersonalInfoSchema = new Schema({
     education: {type: String},
     height: { type: SchemaTypes.Double },
     weight: { type: SchemaTypes.Double },
+    eatingHabit: {type: String},
     address: {type: String},
     state : {type: String},
     city: {type: String},
