@@ -1,3 +1,12 @@
+<% 
+    var user = req.session.user;
+    var A_USER = "596c8bf65a12076ff0cc7589";
+    var userId;
+
+    if (user) {
+      userId = user._id;
+    }
+%>
 <nav class="navbar navbar-vertical navbar-expand-lg">
     <script>
       var navbarStyle = window.config.config.phoenixNavbarStyle;
@@ -21,7 +30,12 @@
                   <li class="collapsed-nav-item-title d-none">Home
                   </li>
                   <li class="nav-item"><a class="nav-link" href="../index.html" data-bs-toggle="" aria-expanded="false">
-                      <div class="d-flex align-items-center"><span class="nav-link-text">E commerce</span>
+                      <div class="d-flex align-items-center">
+                        <span class="nav-link-text">E commerce
+                          <% if (user && A_USER == user._id) { %>
+                            Admin
+                          <% } %>
+                        </span>
                       </div>
                     </a>
                     <!-- more inner pages-->

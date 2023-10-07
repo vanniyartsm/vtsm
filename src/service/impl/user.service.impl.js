@@ -92,9 +92,30 @@ function _constructPartnerPreference(param, callback) {
         smokingHabits: 'Doesnt Matter'
     });
 
+    let ReligiousPreferenceSchema = new ReligiousPreferenceInfo({
+        religion: 'Hindu',
+        caste: 'Vanniya Kula Kshatriyar',
+        dosham: 'Doesnt Matter',
+        star: 'Any'
+    });
+
+    let ProfessionalPreferenceSchema = new ProfessionalPreferenceInfo({
+        education: 'Any',
+        employedIn: 'Any',
+        occupation: 'Any',
+        annualIncomeFrom: 'Any',
+    });
+
+    let LocationPreferenceSchema = new LocationPreferenceInfo({
+        country: 'Any'
+    });
+
     var partnerPreference = new PartnerPreference({
         ppId: ULID.ulid(),
-        basicPreference: basicPreferenceSchema
+        basicPreference: basicPreferenceSchema,
+        religiousPreference: ReligiousPreferenceSchema,
+        professionalPreference: ProfessionalPreferenceSchema,
+        locationPreference: LocationPreferenceSchema,
     });
 
     param.partnerPreference = partnerPreference;
