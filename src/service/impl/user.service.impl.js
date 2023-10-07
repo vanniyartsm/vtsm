@@ -176,7 +176,7 @@ function _constructMember(memberJson, callback) {
         emailAddress: memberJson.emailAddress,
         password: memberJson.password,
         transactionPassword: memberJson.transactionPassword,
-        dob: memberJson.dateOfBirth,
+        dob:  moment(memberJson.dateOfBirth).format('DD/MM/YYYY'),
         primaryMobile: memberJson.primaryMobile,
         secondaryMobile: memberJson.secondaryMobile,
         active: true,
