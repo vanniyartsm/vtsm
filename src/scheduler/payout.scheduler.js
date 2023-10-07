@@ -9,7 +9,7 @@ var CronJob = require('cron').CronJob
     , tradingPayoutService = require('../service/trading.payout.service');
 
 var binarySchedule = (global.config.system.payout.live) ? global.config.system.payout.liveSchedule: global.config.system.payout.testSchedule;
-logger.info('Binary Payout Scheduled Cron : "' + binarySchedule + '" is Live : ' + global.config.system.payout.live);
+logger.info('Scheduled Cron : "' + binarySchedule + '" is Live : ' + global.config.system.payout.live);
 
 var job = new CronJob(binarySchedule, function() {
     var isSystemLive = (global.config.system.payout.live)

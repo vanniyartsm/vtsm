@@ -19,6 +19,7 @@
             </a>
             <div class="text-center mb-3">
                 <h3 class="text-1000">Sign Up to find lifetime Companian!</h3>
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
                 <p class="text-700">Vanniyar Thirumana Sevai Maiyam - <a class="fs--1 fw-bold" href="/web/auth/login">Sign In</a></p>
                 <%- include('../common/message') %>
             </div>
@@ -27,7 +28,7 @@
                   <div class="col-12 col-xl-12 order-1 order-xl-0">
                     <div class="mb-9">
                       <div class="card shadow-none border border-300 my-4" data-component-card="data-component-card">
-                        <div class="card-header p-3 border-bottom border-300 bg-soft">
+                        <div class="card-header p-2 border-bottom border-300 bg-soft">
                           <div class="row g-3 justify-content-between align-items-center">
                             <div class="col-12 col-md">
                               <h4 class="text-900 mb-0" id="basicDetails">Basic Info</h4>
@@ -38,42 +39,42 @@
                           <div class="collapse code-collapse" id="example-code">
                           </div>
                           <div class="p-4 code-to-copy">
-                            <div class="row mb-3">
+                            <div class="row mb-1">
                               <label class="col-sm-2 col-form-label col-form-label-sm" for="fullName">Full Name <code>*</code></label>
                               <div class="col-sm-10">
                                 <input class="form-control form-control-sm" id="fullName" name="fullName" type="text" required="" value="test" maxlength="50"/>
                                 <div class="invalid-feedback">Please provide full name.</div>
                               </div>
                             </div>
-                            <div class="row mb-3">
+                            <div class="row mb-1">
                               <label class="col-sm-2 col-form-label col-form-label-sm" for="emailAddress">Email address <code>*</code></label>
                               <div class="col-sm-10">
                                 <input class="form-control" id="emailAddress" name="emailAddress" type="email" placeholder="name@example.com" required="" value="test@test.com" maxlength="30"/>
                                 <div class="invalid-feedback">Please provide an email address.</div>
                               </div>
                             </div>
-                            <div class="row mb-3">
+                            <div class="row mb-1">
                               <label class="col-sm-2 col-form-label col-form-label-sm" for="emailAddress">Password <code>*</code></label>
                               <div class="col-sm-10">
                                 <input class="form-control" id="password" name="password" type="password" required="" value="test@123" maxlength="20"/>
                                 <div class="invalid-feedback">Please provide password.</div>
                               </div>
                             </div>
-                            <div class="row mb-3">
+                            <div class="row mb-1">
                               <label class="col-sm-2 col-form-label col-form-label-sm" for="confirmPassword">Confirm password <code>*</code></label>
                               <div class="col-sm-10">
                                 <input class="form-control" id="confirmPassword" name="confirmPassword" type="password" required="" value="test@123" maxlength="20"/>
                                 <div class="invalid-feedback">Password and confirm password should be same .</div>
                               </div>
                             </div>
-                            <div class="row mb-3">
+                            <div class="row mb-1">
                               <label class="col-sm-2 col-form-label col-form-label-sm" for="dateOfBirth">Date of Birth <code>*</code></label>
                               <div class="col-sm-10">
                                 <input class="form-control datetimepicker" id="dateOfBirth" name="dateOfBirth" type="text" placeholder="dd/mm/yyyy" data-options='{"required":true,"disableMobile":true,"dateFormat":"d/m/Y"}' required="" value="01/01/1980"/>
                                 <div class="invalid-feedback">Please provide date of birth.</div>
                               </div>
                             </div>
-                            <div class="row mb-3">
+                            <div class="row mb-1">
                               <label class="col-sm-2 col-form-label col-form-label-sm" for="dateOfBirth">Gender <code>*</code></label>
                               <div class="col-sm-10">
                                 <select class="form-select" aria-label="Choose Gender" required="">
@@ -84,7 +85,7 @@
                               </div>
                               <div class="invalid-feedback">Please provide gender.</div>
                             </div>
-                            <div class="row mb-3">
+                            <div class="row mb-1">
                               <label class="col-sm-2 col-form-label col-form-label-sm" for="primaryMobile">Primary Mobile <code>*</code></label>
                               <div class="col-sm-10">
                                 <input class="form-control" id="primaryMobile" name="primaryMobile" type="text" required="" value="123123123" maxlength="15"/>
@@ -92,7 +93,7 @@
                               </div>
                             </div>
                           
-                            <div class="row mb-3">
+                            <div class="row mb-1">
                               <label class="col-sm-2 col-form-label col-form-label-sm" for="secondaryMobile">Secondary Mobile <code>*</code></label>
                               <div class="col-sm-10">
                                 <input class="form-control" id="secondaryMobile" name="secondaryMobile" type="text" required="" value="234234234" maxlength="15"/>
@@ -103,7 +104,7 @@
                         </div>
                       </div>
                       <div class="card shadow-none border border-300 my-4" data-component-card="data-component-card">
-                        <div class="card-header p-3 border-bottom border-300 bg-soft">
+                        <div class="card-header p-2 border-bottom border-300 bg-soft">
                           <div class="row g-3 justify-content-between align-items-center">
                             <div class="col-12 col-md">
                               <h4 class="text-900 mb-0" id="familyReligion">Family & Religion Info</h4>
@@ -115,7 +116,7 @@
                           </div>
                           <div class="p-4 code-to-copy">
                             
-                            <div class="row mb-3">
+                            <div class="row mb-1">
                               <label class="col-sm-2 col-form-label col-form-label-sm" for="familyStatus">Family Status <code>*</code></label>
                               <div class="col-sm-10">
                                 <select class="form-select" id="familyStatus" name="familyStatus" aria-label="Default select example" required="">
@@ -129,7 +130,7 @@
                               </div>
                             </div>
 
-                            <div class="row mb-3">
+                            <div class="row mb-1">
                               <label class="col-sm-2 col-form-label col-form-label-sm" for="familyType">Family Type <code>*</code></label>
                               <div class="col-sm-10">
                                 <select class="form-select" id="familyType" name="familyType" aria-label="Default select example" required="">
@@ -141,7 +142,7 @@
                               </div>
                             </div>
 
-                            <div class="row mb-3">
+                            <div class="row mb-1">
                               <label class="col-sm-2 col-form-label col-form-label-sm" for="fatherName">Father Name <code>*</code></label>
                               <div class="col-sm-10">
                                 <input class="form-control" id="fatherName" name="fatherName" type="text" required="" value="Father Name"  maxlength="25"/>
@@ -149,7 +150,7 @@
                               </div>
                             </div>
 
-                            <div class="row mb-3">
+                            <div class="row mb-1">
                               <label class="col-sm-2 col-form-label col-form-label-sm" for="motherName">Mother Name <code>*</code></label>
                               <div class="col-sm-10">
                                 <input class="form-control" id="motherName" name="motherName" type="text" required="" value="Mother Name" maxlength="25"/>
@@ -157,7 +158,7 @@
                               </div>
                             </div>
 
-                            <div class="row mb-3">
+                            <div class="row mb-1">
                               <label class="col-sm-2 col-form-label col-form-label-sm" for="sisters">Sisters</label>
                               <div class="col-sm-10">
                                 <select class="form-select" id="sisters" name="sisters" aria-label="Default select example" required="">
@@ -172,7 +173,7 @@
                               </div>
                             </div>
 
-                            <div class="row mb-3">
+                            <div class="row mb-1">
                               <label class="col-sm-2 col-form-label col-form-label-sm" for="brothers">Brothers</label>
                               <div class="col-sm-10">
                                 <select class="form-select" id="brothers" name="brothers" aria-label="Default select example" required="">
@@ -187,7 +188,7 @@
                               </div>
                             </div>
 
-                            <div class="row mb-3">
+                            <div class="row mb-1">
                               <label class="col-sm-2 col-form-label col-form-label-sm" for="caste">Caste</label>
                               <div class="col-sm-10">
                                 <select class="form-select" id="caste" name="caste" aria-label="Default select example" required="">
@@ -201,7 +202,7 @@
                               </div>
                             </div>
 
-                            <div class="row mb-3">
+                            <div class="row mb-1">
                               <label class="col-sm-2 col-form-label col-form-label-sm" for="rasi">Rasi <code>*</code></label>
                               <div class="col-sm-10">
                                 <select class="form-select" id="rasi" name="rasi" aria-label="Default select example" required="">
@@ -223,7 +224,7 @@
                               </div>
                             </div>
                             
-                            <div class="row mb-3">
+                            <div class="row mb-1">
                               <label class="col-sm-2 col-form-label col-form-label-sm" for="natchathram">Natchathram <code>*</code></label>
                               <div class="col-sm-10">
                                 <select class="form-select" id="natchathram" name="natchathram" aria-label="Default select example" required="">
@@ -260,7 +261,7 @@
                               </div>
                             </div>
                             
-                            <div class="row mb-3">
+                            <div class="row mb-1">
                               <label class="col-sm-2 col-form-label col-form-label-sm" for="lagnam">Lagnam <code>*</code></label>
                               <div class="col-sm-10">
                                 <select class="form-select" id="lagnam" name="lagnam" aria-label="Default select example" required="">
@@ -282,14 +283,14 @@
                               </div>
                             </div>
 
-                            <div class="row mb-3">
+                            <div class="row mb-1">
                               <label class="col-sm-2 col-form-label col-form-label-sm" for="gothram">Gothram</label>
                               <div class="col-sm-10">
                                 <input class="form-control" id="gothram" name="gothram" type="text"  value="sdfsdf" maxlength="25"/>
                               </div>
                             </div>
 
-                            <div class="row mb-3">
+                            <div class="row mb-1">
                               <label class="col-sm-2 col-form-label col-form-label-sm" for="dosham">Dosham </label>
                               <div class="col-sm-10">
                                 <select class="form-select" id="dosham" name="dosham" aria-label="Default select example" required="">
@@ -303,7 +304,7 @@
                         </div>
                       </div>
                       <div class="card shadow-none border border-300 my-4" data-component-card="data-component-card">
-                        <div class="card-header p-3 border-bottom border-300 bg-soft">
+                        <div class="card-header p-2 border-bottom border-300 bg-soft">
                           <div class="row g-3 justify-content-between align-items-center">
                             <div class="col-12 col-md">
                               <h4 class="text-900 mb-0" id="personalDetails">Personal Info</h4>
@@ -314,7 +315,7 @@
                           <div class="collapse code-collapse" id="example-code">
                           </div>
                           <div class="p-4 code-to-copy">
-                            <div class="row mb-3">
+                            <div class="row mb-1">
                               <label class="col-sm-2 col-form-label col-form-label-sm" ffor="maritalStatus">Marital status <code>*</code></label>
                               <div class="col-sm-10">
                                 <select class="form-select" aria-label="Default select example" id="maritalStatus" name="maritalStatus" required="">
@@ -327,28 +328,28 @@
                                 <div class="invalid-feedback">Please provide gender.</div>
                               </div>
                             </div>
-                            <div class="row mb-3">
+                            <div class="row mb-1">
                               <label class="col-sm-2 col-form-label col-form-label-sm" for="education">Education <code>*</code></label>
                               <div class="col-sm-10">
                                 <input class="form-control" id="education" name="education" type="text" required="" value="MCA"  maxlength="50"/>
                                 <div class="invalid-feedback">Please provide education.</div>
                               </div>
                             </div>
-                            <div class="row mb-3">
+                            <div class="row mb-1">
                               <label class="col-sm-2 col-form-label col-form-label-sm" for="height">Height <code>*</code></label>
                               <div class="col-sm-10">
                                 <input class="form-control" id="height" name="height" type="text" required="" placeholder="5.8" value="5.8" maxlength="5"/>
                                 <div class="invalid-feedback">Please provide height.</div>
                               </div>
                             </div>
-                            <div class="row mb-3">
+                            <div class="row mb-1">
                               <label class="col-sm-2 col-form-label col-form-label-sm" for="weight">Weight <code>*</code></label>
                               <div class="col-sm-10">
                                 <input class="form-control" id="weight" name="weight" type="text" required="" placeholder="kg" value="77" maxlength="3"/>
                                 <div class="invalid-feedback">Please provide weight.</div>
                               </div>
                             </div>
-                            <div class="row mb-3">
+                            <div class="row mb-1">
                               <label class="col-sm-2 col-form-label col-form-label-sm" for="eatingHabit">Eating Habit <code>*</code></label>
                               <div class="col-sm-10">
                                 <select class="form-select" aria-label="Default select example" id="eatingHabit" name="eatingHabit" required="">
@@ -360,14 +361,14 @@
                                 <div class="invalid-feedback">Please provide eating habit.</div>
                               </div>
                             </div>
-                            <div class="row mb-3">
+                            <div class="row mb-1">
                               <label class="col-sm-2 col-form-label col-form-label-sm" for="address">Address <code>*</code></label>
                               <div class="col-sm-10">
                                 <input class="form-control" id="address" name="address" type="text" required="" value="1st main st." maxlength="60"/>
                                 <div class="invalid-feedback">Please provide address.</div>
                               </div>
                             </div>
-                            <div class="row mb-3">
+                            <div class="row mb-1">
                               <label class="col-sm-2 col-form-label col-form-label-sm" for="city">City <code>*</code></label>
                               <div class="col-sm-10">
                                 <input class="form-control" id="city" name="city" type="text" required="" value="Chennai" maxlength="20"/>
@@ -375,7 +376,7 @@
                               </div>
                             </div>
 
-                            <div class="row mb-3">
+                            <div class="row mb-1">
                               <label class="col-sm-2 col-form-label col-form-label-sm" for="state">State <code>*</code></label>
                               <div class="col-sm-10">
                                 <input class="form-control" id="state" name="state" type="text" required="" value="TN" maxlength="20"/>
@@ -384,7 +385,7 @@
                               </div>
                             </div>
 
-                            <div class="row mb-3">
+                            <div class="row mb-1">
                               <label class="col-sm-2 col-form-label col-form-label-sm" for="pincode">Pincode <code>*</code></label>
                               <div class="col-sm-10">
                                 <input class="form-control" id="pincode" name="pincode" type="text" required="" value="606601" maxlength="8"/>
@@ -395,7 +396,7 @@
                         </div>
                       </div>
                       <div class="card shadow-none border border-300 my-4" data-component-card="data-component-card">
-                        <div class="card-header p-3 border-bottom border-300 bg-soft">
+                        <div class="card-header p-2 border-bottom border-300 bg-soft">
                           <div class="row g-3 justify-content-between align-items-center">
                             <div class="col-12 col-md">
                               <h4 class="text-900 mb-0" id="professionDetails">Profession Info</h4>
@@ -406,7 +407,7 @@
                           <div class="collapse code-collapse" id="example-code">
                           </div>
                           <div class="p-4 code-to-copy">
-                            <div class="row mb-3">
+                            <div class="row mb-1">
                               <label class="col-sm-2 col-form-label col-form-label-sm" for="occupation">Occupation <code>*</code></label>
                               <div class="col-sm-10">
                                 <select class="form-select" aria-label="Choose Occupation" id="occupation" name="occupation" required="">
@@ -433,7 +434,7 @@
                                 <div class="invalid-feedback">Please provide occupation.</div>
                               </div>
                             </div>
-                            <div class="row mb-3">
+                            <div class="row mb-1">
                               <label class="col-sm-2 col-form-label col-form-label-sm" for="employed">Employed in <code>*</code></label>
                               <div class="col-sm-10">
                                 <select class="form-select" aria-label="Choose Occupation" id="employed" name="employed" required="">
@@ -448,14 +449,14 @@
                                 <div class="invalid-feedback">Please provide work company.</div>
                               </div>
                             </div>
-                            <div class="row mb-3">
+                            <div class="row mb-1">
                               <label class="col-sm-2 col-form-label col-form-label-sm" for="annualIncome">Annual Income <code>*</code></label>
                               <div class="col-sm-10">
                                 <input class="form-control" id="annualIncome" name="annualIncome" type="text" required="" placeholder="500000" value="500000"/>
                                 <div class="invalid-feedback">Please provide annual income.</div>
                               </div>
                             </div>
-                            <div class="row mb-3">
+                            <div class="row mb-1">
                               <label class="col-sm-2 col-form-label col-form-label-sm" for="workLocation">Work Location <code>*</code></label>
                               <div class="col-sm-10">
                                 <select class="form-select" aria-label="Choose Work Location" id="workLocation" name="workLocation" required="">
@@ -659,19 +660,19 @@
                                 <div class="invalid-feedback">Please provide work location.</div>
                               </div>
                             </div>
-                            <div class="row mb-3">
+                            <div class="row mb-1">
                               <label class="col-sm-2 col-form-label col-form-label-sm" for="workState">State </label>
                               <div class="col-sm-10">
                                 <input class="form-control" id="workState" name="workState" type="text" maxlength="30"/>
                               </div>
                             </div>
-                            <div class="row mb-3">
+                            <div class="row mb-1">
                               <label class="col-sm-2 col-form-label col-form-label-sm" for="workCity">City </label>
                               <div class="col-sm-10">
                                 <input class="form-control" id="workCity" name="workCity" type="text" maxlength="30"/>
                               </div>
                             </div>
-                            <div class="row mb-3">
+                            <div class="row mb-1">
                               <label class="col-sm-2 col-form-label col-form-label-sm" for="residentStatus">Resident Status </label>
                               <div class="col-sm-10">
                                 <select class="form-select" aria-label="Choose Resident Status" id="residentStatus" name="residentStatus">
@@ -688,7 +689,7 @@
                         </div>
                       </div>
                       <div class="card shadow-none border border-300 my-4" data-component-card="data-component-card">
-                        <div class="card-header p-4 border-bottom border-300 bg-soft">
+                        <div class="card-header p-2 border-bottom border-300 bg-soft">
                           <div class="row g-3 justify-content-between align-items-center">
                             <div class="col-12 col-md">
                               <h4 class="text-900 mb-0" id="profile">Profile Info</h4>
@@ -699,31 +700,31 @@
                           <div class="collapse code-collapse" id="file-input-code">
                           </div>
                           <div class="p-4 code-to-copy">
-                            <!-- <div class="row mb-3">
+                            <!-- <div class="row mb-1">
                               <label class="col-sm-2 col-form-label col-form-label-sm" for="photo">Photo</label>
                               <div class="col-sm-10">
                                 <input class="form-control" id="photo" name="photo" type="file" multiple="multiple">
                               </div>
                             </div>
-                            <div class="row mb-3">
+                            <div class="row mb-1">
                               <label class="col-sm-2 col-form-label col-form-label-sm" for="jathagam">Jadhagam</label>
                               <div class="col-sm-10">
                                 <input class="form-control" id="jadhagam" name="jadhagam" type="file">
                               </div>
                             </div> -->
-                            <div class="row mb-3">
+                            <div class="row mb-1">
                               <label class="col-sm-2 col-form-label col-form-label-sm" for="description">Profile Description</label>
                               <div class="col-sm-10">
                                 <textarea class="form-control" id="description" name="description" rows="3" maxlength="100"> some desc</textarea>
                               </div>
                             </div>
-                            <div class="row mb-3">
+                            <div class="row mb-1">
                               <label class="col-sm-2 col-form-label col-form-label-sm" for="disabilityDescription">If any Disability? Add Description</label>
                               <div class="col-sm-10">
                                 <textarea class="form-control" id="disabilityDescription" name="disabilityDescription" rows="3" maxlength="100"> disability desc</textarea>
                               </div>
                             </div>
-                            <div class="row mb-3">
+                            <div class="row mb-1">
                               <label class="col-sm-2 col-form-label col-form-label-sm" for="submit"></label>
                               <div class="col-sm-10">
                                 <button class="btn btn-primary" type="submit">Submit form</button>

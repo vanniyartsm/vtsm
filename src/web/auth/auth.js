@@ -34,19 +34,19 @@ router.get('/login', csrfProtect, function(req, res, next) {
 });
 
 //Get Registration Page
-router.get('/signup', function(req, res, next) {
+router.get('/signup', csrfProtect, function(req, res, next) {
     var locals = {
         title: 'Page Title',
         description: 'Page Description',
         header: 'Page Header'
     };
     
-    res.render(renderConstants.REGISTER_PAGE, { layout: renderConstants.LAYOUT_NO_HEADER, req: req});
+    res.render(renderConstants.REGISTER_PAGE, { layout: renderConstants.LAYOUT_NO_HEADER, req: req, csrfToken: req.csrfToken()});
 
 });
 
 //Sign Up
-router.post('/signup', function(req, res, next) {
+router.post('/signup', csrfProtect, function(req, res, next) {
 
     // create a new user
     var memberJson = req.body;
@@ -70,18 +70,18 @@ router.post('/signup', function(req, res, next) {
                 if (err) {
                     logger.debug(err);
                     //var baseError = new BaseError(Utils.buildErrorResponseWithType(constants.USER_OBJ_EMPTY, '', constants.USER_OBJ_EMPTY_MSG, err.message, 500, renderConstants.MSG_ERROR));
-                    res.render(renderConstants.REGISTER_PAGE, { layout: renderConstants.LAYOUT_NO_HEADER, req: req, err: err});
+                    res.render(renderConstants.REGISTER_PAGE, { layout: renderConstants.LAYOUT_NO_HEADER, req: req, csrfToken: req.csrfToken(), err: err});
                 } else {
                     
                     //baseService.sendRegistrationMailMessage(user, memberJson);
                     var baseMessage = new BaseError(Utils.buildErrorResponseWithType(constants.USER_REGISTERED, '', constants.USER_REGISTERED_MSG, constants.USER_REGISTERED_MSG, 200, constants.ALERT_MESSAGE_SUCCESS));
-                    res.render(renderConstants.LOGIN_PAGE, { layout: renderConstants.LAYOUT_NO_HEADER, req: req, err: baseMessage});
+                    res.render(renderConstants.LOGIN_PAGE, { layout: renderConstants.LAYOUT_NO_HEADER, req: req, csrfToken: req.csrfToken(), err: baseMessage});
                     //res.redirect('/web/auth/index');
                 }
             });
         } else {
             var baseError = new BaseError(Utils.buildErrorResponseWithType(constants.USER_EMAIL_ALREADY_EXISTS, '', constants.USER_EMAIL_ALREADY_EXISTS_MSG, constants.USER_EMAIL_ALREADY_EXISTS_MSG, 422, constants.ALERT_MESSAGE_DANGER));
-            res.render(renderConstants.REGISTER_PAGE, { layout: renderConstants.LAYOUT_NO_HEADER, req: req, err: baseError});
+            res.render(renderConstants.REGISTER_PAGE, { layout: renderConstants.LAYOUT_NO_HEADER, req: req, csrfToken: req.csrfToken(), err: baseError});
         }
     });
 });
